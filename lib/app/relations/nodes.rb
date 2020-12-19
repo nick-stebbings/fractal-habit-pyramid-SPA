@@ -1,6 +1,6 @@
 module App
   module Relations
-    class Node < ROM::Relation[:sql]
+    class Nodes < ROM::Relation[:sql]
       schema(:nodes, infer: true)
     end
 

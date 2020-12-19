@@ -45,10 +45,24 @@ GEM
       dry-logic (~> 1.0, >= 1.0.2)
     ice_nine (0.11.2)
     method_source (1.0.0)
+    multi_json (1.15.0)
+    mustermann (1.1.1)
+      ruby2_keywords (~> 0.0.1)
+    nio4r (2.5.4)
     pg (1.2.3)
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
+    puma (5.1.1)
+      nio4r (~> 2.0)
+    rack (2.2.3)
+    rack-protection (2.1.0)
+      rack
+    rack-test (1.1.0)
+      rack (>= 1.0, < 3)
+    racksh (1.0.0)
+      rack (>= 1.0)
+      rack-test (>= 0.5)
     rake (13.0.1)
     rom (5.2.4)
       rom-changeset (~> 5.2, >= 5.2.3)
@@ -78,7 +92,20 @@ GEM
       dry-types (~> 1.0)
       rom-core (~> 5.2, >= 5.2.1)
       sequel (>= 4.49)
+    ruby2_keywords (0.0.2)
     sequel (5.39.0)
+    sinatra (2.1.0)
+      mustermann (~> 1.0)
+      rack (~> 2.2)
+      rack-protection (= 2.1.0)
+      tilt (~> 2.0)
+    sinatra-contrib (2.1.0)
+      multi_json
+      mustermann (~> 1.0)
+      rack-protection (= 2.1.0)
+      sinatra (= 2.1.0)
+      tilt (~> 2.0)
+    tilt (2.0.10)
     transproc (1.1.1)
 
 PLATFORMS
@@ -90,9 +117,13 @@ DEPENDENCIES
   dry-system
   pg
   pry
+  puma
+  racksh
   rake
   rom
   rom-sql
+  sinatra
+  sinatra-contrib
 
 RUBY VERSION
    ruby 2.7.1p83

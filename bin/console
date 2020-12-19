@@ -2,7 +2,7 @@
 
 require_relative '../config/application'
 
-Bix::Application.finalize!
+App::Application.finalize!
 
-require 'irb'
-IRB.start
+require 'pry'
+Pry.start

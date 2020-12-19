@@ -1,3 +1,3 @@
-require './app'
+require './lib/api/main.rb'
 
-run App
+run InternalAPI

@@ -6,9 +6,9 @@ ruby '2.7.1'
 gem 'rake'
 
 # Frameworks
-# gem 'sinatra'
-# gem 'sinatra-contrib'
-# gem 'puma'
+gem 'sinatra'
+gem 'sinatra-contrib'
+gem 'puma'
 
 # Development
 gem 'pry'
