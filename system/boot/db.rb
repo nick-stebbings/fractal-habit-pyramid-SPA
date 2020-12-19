@@ -1,5 +1,5 @@
 # db.rb
-Bix::Application.boot(:db) do
+App::Application.boot(:db) do
   init do
     require "rom"
     require "rom-sql"

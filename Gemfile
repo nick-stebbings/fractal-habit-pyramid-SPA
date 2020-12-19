@@ -3,20 +3,23 @@
 source 'https://rubygems.org'
 ruby '2.7.1'
 
+gem 'rake'
+
+# Frameworks
 # gem 'sinatra'
 # gem 'sinatra-contrib'
-
-# gem 'racksh'
-
 # gem 'puma'
-# gem 'pg'
 
+# Development
 gem 'pry'
+gem 'racksh'
+
+# Environment
 gem 'dotenv'
 gem 'dry-system'
 gem 'dry-auto_inject'
+
+# Persistence Layer
 gem 'pg'
 gem 'rom'
 gem 'rom-sql'
-
-gem 'rake'
