@@ -1,7 +1,8 @@
 *.gem
 *.rbc
+*.lock
+.gitignore
 /.config
-/config/*.env
 /.vscode/
 /coverage/
 /InstalledFiles
@@ -13,7 +14,8 @@
 /tmp/
 
 # Used by dotenv library to load environment variables.
-# .env
+.env
+/config/.env*
 
 # Ignore Byebug command history file.
 .byebug_history
@@ -31,7 +33,6 @@
 
 # for a library or gem, you might want to ignore these files since the code is
 # intended to run in multiple environments; otherwise, check them in:
-# Gemfile.lock
 # .ruby-version
 # .ruby-gemset
 
