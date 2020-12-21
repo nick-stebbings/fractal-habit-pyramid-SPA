@@ -1,6 +1,6 @@
-module App
+module Persistence
   module Entities
-    class SubTree
+    class Node < ROM::Struct
       def initialize(root_habit_name, depth)
         # retrieve hierarchy from repo.
         # construct tree in ruby

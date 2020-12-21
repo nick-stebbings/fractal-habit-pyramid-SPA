@@ -1,10 +1,10 @@
-# db.rb
-App::Application.boot(:db) do
+Hht::Container.boot(:db, namespace: true) do
   init do
     require "rom"
     require "rom-sql"
     
-    options = { adapter: :postgres,
+    options = { 
+      adapter: :postgres,
       :host => ENV['HOST'],
       port: ENV['PORT'], 
       database: ENV['DATABASE_NAME'], 
@@ -14,7 +14,7 @@ App::Application.boot(:db) do
     }
 
     connection = Sequel.connect(options)
-    register('db.connection', connection)
-    register('db.config', ROM::Configuration.new(:sql, connection))
+    register('connection', connection)
+    register('config', ROM::Configuration.new(:sql, connection))
   end
 end

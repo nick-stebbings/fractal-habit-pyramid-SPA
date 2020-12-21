@@ -1,8 +1,8 @@
-App::Application.boot(:persistence) do |app|
-  start do
-    config = app['db.config']
-    config.auto_registration(app.root + "lib/app")
+Hht::Container.boot(:persistence, namespace: true) do |app|
+  rom_config = app['db.config']
 
-    register('container', ROM.container(app['db.config']))
+  start do
+    rom_config.auto_registration(app.root.join("lib/persistence"))
+    register('container', ROM.container(rom_config))
   end
 end

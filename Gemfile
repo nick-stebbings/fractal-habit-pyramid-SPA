@@ -8,16 +8,20 @@ gem 'rake'
 # Frameworks
 gem 'sinatra'
 gem 'sinatra-contrib'
-gem 'puma'
+
+group :production do
+  gem 'puma'
+end 
 
 # Development
-gem 'pry'
+gem 'pry-byebug'
 gem 'racksh'
+gem 'rubocop'
+gem 'shotgun'
 
 # Environment
 gem 'dotenv'
 gem 'dry-system'
-gem 'dry-auto_inject'
 
 # Persistence Layer
 gem 'pg'

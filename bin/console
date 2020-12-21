@@ -1,8 +1,5 @@
 #!/usr/bin/env ruby
-
-require_relative '../config/application'
-
-App::Application.finalize!
+require_relative '../system/boot'
 
 require 'pry'
 Pry.start

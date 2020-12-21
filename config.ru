@@ -1,3 +1,2 @@
-require './lib/api/main.rb'
-
-run InternalAPI
+require_relative "system/boot"
+run Hht::InternalAPI
