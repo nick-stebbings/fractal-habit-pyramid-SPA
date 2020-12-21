@@ -9,6 +9,5 @@ module Persistence
         nodes.to_a
       end
     end
-
   end
 end

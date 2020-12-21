@@ -132,6 +132,7 @@ GEM
       tilt (~> 2.0)
     tilt (2.0.10)
     transproc (1.1.1)
+    tree (0.2.1)
     unicode-display_width (1.7.0)
 
 PLATFORMS
@@ -139,7 +140,6 @@ PLATFORMS
 
 DEPENDENCIES
   dotenv
-  dry-auto_inject
   dry-system
   pg
   pry-byebug
@@ -152,6 +152,7 @@ DEPENDENCIES
   shotgun
   sinatra
   sinatra-contrib
+  tree (~> 0.2.1)
 
 RUBY VERSION
    ruby 2.7.1p83

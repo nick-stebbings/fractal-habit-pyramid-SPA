@@ -1,11 +1,8 @@
-require "rom-repository"
-require "hht/container"
-require "hht/import"
-
 module Hht
   module Repos
     class NodeRepo < ROM::Repository[:nodes]
-      # struct_namespace Entities
+      struct_namespace Hht::Entities
+
       include Hht::Import['persistence.container']
 
       # find all nodes with the given attributes

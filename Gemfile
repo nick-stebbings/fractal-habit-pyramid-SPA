@@ -27,3 +27,6 @@ gem 'dry-system'
 gem 'pg'
 gem 'rom'
 gem 'rom-sql'
+
+# Data structures
+gem 'tree', '~> 0.2.1'
