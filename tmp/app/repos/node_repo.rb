@@ -1,10 +1,8 @@
-# frozen_string_literal: true
-
-module Hht
+module App
   module Repos
     class NodeRepo < ROM::Repository[:nodes]
-      struct_namespace Hht::Entities
-      include Hht::Import['persistence.container']
+      # struct_namespace Entities
+      include Import['container']
 
       # find all nodes with the given attributes
       def query(conditions)
@@ -13,8 +11,7 @@ module Hht
 
       # collect a list of all node ids
       def ids
-        binding.pry
-        nodes.where(id: 1)
+        nodes.pluck(:id)
       end
     end
   end

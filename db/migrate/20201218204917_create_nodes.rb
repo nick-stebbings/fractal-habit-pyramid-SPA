@@ -8,7 +8,7 @@ ROM::SQL.migration do
       column :lft, Integer, null: false
       column :rgt, Integer, null: false
       column :domain_id, Integer, null: false, on_delete: :cascade
-      
+
       foreign_key [:parent_id], :nodes, name: 'fk_child_parent'
       foreign_key [:domain_id], :domains, name: 'fk_node_domain'
     end

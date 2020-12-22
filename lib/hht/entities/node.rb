@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pry'
 
 module Hht
@@ -7,8 +9,6 @@ module Hht
 
       def initialize(attributes)
         @attributes = attributes
-        # retrieve hierarchy from repo.
-        # construct tree in ruby
       end
 
       def to_s

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Gemfile
 
 source 'https://rubygems.org'
@@ -11,13 +13,14 @@ gem 'sinatra-contrib'
 
 group :production do
   gem 'puma'
-end 
+end
 
-# Development
-gem 'pry-byebug'
-gem 'racksh'
-gem 'rubocop'
-gem 'shotgun'
+group :development do
+  gem 'pry-byebug'
+  gem 'racksh'
+  gem 'rubocop'
+  gem 'shotgun'
+end
 
 # Environment
 gem 'dotenv'

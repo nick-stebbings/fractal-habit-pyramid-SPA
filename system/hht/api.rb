@@ -1,13 +1,15 @@
-require_relative "container"
+# frozen_string_literal: true
+
+require_relative 'container'
 require 'sinatra'
 require 'sinatra/base'
 
 module Hht
   class InternalAPI < Sinatra::Base
-    set :root, File.expand_path("../../", __FILE__)
-    set :public_folder, Proc.new { File.join(root, 'public') }
+    set :root, File.expand_path('..', __dir__)
+    set :public_folder, (proc { File.join(root, 'public') })
 
-    include Hht::Import["node_repo"]
+    include Hht::Import['node_repo']
 
     def node_one
       node_repo.query(id: '1').to_a
@@ -19,6 +21,7 @@ module Hht
 
     get '/' do
       puts node_one
+      binding.pry
       puts node_all
     end
   end
