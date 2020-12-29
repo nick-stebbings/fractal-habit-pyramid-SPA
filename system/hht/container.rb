@@ -8,11 +8,11 @@ module Hht
     configure do
       config.name = :hht
       config.default_namespace = 'hht'
-      config.auto_register = %w[lib/hht lib/hht/Repos]
+      config.auto_register = %w[lib/hht]
     end
 
-    register 'node_repo' do
-      Hht::Repos::NodeRepo.new
+    register 'habit_node_repo' do
+      Hht::Repos::HabitNodeRepo.new
     end
 
     register 'domain_repo' do

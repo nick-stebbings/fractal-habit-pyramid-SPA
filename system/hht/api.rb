@@ -5,23 +5,23 @@ require 'sinatra'
 require 'sinatra/base'
 
 module Hht
-  class InternalAPI < Sinatra::Base
+  class Api < Sinatra::Base
     set :root, File.expand_path('..', __dir__)
     set :public_folder, (proc { File.join(root, 'public') })
 
-    include Hht::Import['node_repo']
+    include Import['habit_node_repo']
 
     def node_one
-      node_repo.query(id: '1').to_a
+      habit_node_repo.query(id: '1').to_a
     end
 
     def node_all
-      node_repo.ids.to_a
+      habit_node_repo.ids.to_a
     end
 
     get '/' do
-      puts node_one
       binding.pry
+      puts node_one
       puts node_all
     end
   end

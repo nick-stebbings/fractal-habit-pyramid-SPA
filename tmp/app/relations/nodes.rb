@@ -1,10 +1,10 @@
 module App
   module Relations
-    class Nodes < ROM::Relation[:sql]
-      schema(:nodes, infer: true)
+    class HabitNodes < ROM::Relation[:sql]
+      schema(:habit_nodes, infer: true)
       
       def all
-        nodes.to_a
+        habit_nodes.to_a
       end
     end
 

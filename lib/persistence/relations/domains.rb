@@ -12,7 +12,7 @@ module Persistence
         primary_key :id
 
         associations do
-          has_many :nodes
+          has_many :habit_nodes
         end
       end
 

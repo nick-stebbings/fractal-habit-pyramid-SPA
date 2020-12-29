@@ -1,6 +1,6 @@
 module App
   module Repos
-    class NodeRepo < ROM::Repository[:nodes]
+    class HabitNodeRepo < ROM::Repository[:nodes]
       # struct_namespace Entities
       include Import['container']
 

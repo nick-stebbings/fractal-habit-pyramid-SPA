@@ -2,10 +2,10 @@
 
 module Persistence
   module Relations
-    class Nodes < ROM::Relation[:sql]
-      schema(:nodes) do
+    class HabitNodes < ROM::Relation[:sql]
+      schema(:habit_nodes) do
         attribute :id, Types::Integer
-        attribute :parent_id, Types::ForeignKey(:nodes)
+        attribute :parent_id, Types::ForeignKey(:habit_nodes)
         attribute :lft, Types::Integer
         attribute :rgt, Types::Integer
         attribute :domain_id, Types::ForeignKey(:domains)
@@ -22,7 +22,7 @@ module Persistence
         # end
 
       def all
-        nodes.to_a
+        habit_nodes.to_a
       end
     end
   end
