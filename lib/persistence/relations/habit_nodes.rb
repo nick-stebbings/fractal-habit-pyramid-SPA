@@ -12,14 +12,11 @@ module Persistence
         primary_key :id
 
         associations do
-          many_to_one :domains, as: :domain_id
-          # belongs_to :nodes, as: :parent_id
+          belongs_to :domain
+          has_many :habit_nodes
         end
 
       end
-        # view(:by_domain) do |domain|
-        #   where(domain_id: domain)
-        # end
 
       def all
         habit_nodes.to_a

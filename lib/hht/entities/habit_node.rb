@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'pry'
-
 module Entities
   class HabitNode < ROM::Struct
     require 'tree'

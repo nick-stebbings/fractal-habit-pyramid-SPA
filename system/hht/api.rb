@@ -9,7 +9,8 @@ module Hht
     set :root, File.expand_path('..', __dir__)
     set :public_folder, (proc { File.join(root, 'public') })
 
-    include Import['habit_node_repo']
+    include Import['repos.habit_node_repo']
+    include Import['repos.domain_repo']
 
     def node_one
       habit_node_repo.query(id: '1').to_a
@@ -20,9 +21,8 @@ module Hht
     end
 
     get '/' do
-      binding.pry
-      puts node_one
       puts node_all
+      binding.pry
     end
   end
 end
