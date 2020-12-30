@@ -9,11 +9,19 @@ module Entities
     end
 
     def to_s
-      to_tree.to_s
+      to_tree_node.to_s
     end
 
-    def to_tree
-      Tree::TreeNode.new(attributes[:id])
+    def to_tree_node
+      Tree::TreeNode.new("Node #{attributes[:id]}")
+    end
+  end
+
+  class SubTree
+    def initialize(root_node, nodes_array)
+      # reduce the nodes array
+        # -- pushing all root nodes' children onto the root node
+      while
     end
   end
 end

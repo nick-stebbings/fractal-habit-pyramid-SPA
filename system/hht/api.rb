@@ -21,8 +21,8 @@ module Hht
     end
 
     get '/' do
-      puts node_all
       binding.pry
+      puts node_all
     end
   end
 end

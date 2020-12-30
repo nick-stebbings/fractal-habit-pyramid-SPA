@@ -31,4 +31,5 @@ gem 'rom'
 gem 'rom-sql'
 
 # Data structures
-gem 'tree', '~> 0.2.1'
+# gem 'tree', '~> 0.2.1'
+gem 'rubytree'
