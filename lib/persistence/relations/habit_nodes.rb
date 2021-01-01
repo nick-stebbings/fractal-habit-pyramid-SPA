@@ -13,8 +13,7 @@ module Persistence
 
         associations do
           belongs_to :domain
-          belongs_to :habit_node, as: :parent
-          has_many :habit_nodes, as: :child
+          belongs_to :habit_nodes, as: :parent
         end
 
       end

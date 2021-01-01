@@ -30,20 +30,13 @@ module Hht
         children_of_parent(id).combine(:habit_nodes)
       end
 
-      def maptotree
-        habit_nodes.map_with(:subtree)
-      end
-
-      def subtree_nodes(id, domain_id)
-        binding.pry
-        habit_nodes.by_pk(id)
-          .combine(:habit_node)
-            .node(:habit_node) {|habits_relation|
-              binding.pry
-              puts 'hi'
-              habits_relation.ids
-            }
-            # .one
+      # Nested relation of subtree nodes retricted by root node id
+      def subtree_nodes(root_id)
+        habit_nodes
+          .combine(habit_nodes: :parent)
+          .node(:parent) do |habits_relation|
+              habits_relation.by_pk(root_id)
+            end
       end
     end
   end

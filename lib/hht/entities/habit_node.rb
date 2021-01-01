@@ -16,13 +16,4 @@ module Entities
       Tree::TreeNode.new("ID#{attributes[:id]}", "L#{attributes[:lft]}R#{attributes[:rgt]}")
     end
   end
-
-
-    # def initialize(root_node, nodes_array)
-    #   # reduce the nodes array
-    #     # -- pushing all root nodes' children onto the root node
-    #   return root_node if nodes_array.empty?
-    #   root_node << 
-    # end
-
 end
