@@ -16,7 +16,7 @@ class Subtree
       node_dict[id.to_s] = new_tree_node
       node_dict[parent_id.to_s] << new_tree_node
     end
-    node_dict[root_id]
+    @root_node = node_dict[root_id]
   end
 
   def self.jsonify(tree)

@@ -5,7 +5,7 @@ module Hht
     class HabitNodeRepo < ROM::Repository[:habit_nodes]
       struct_namespace Entities
       include Import['persistence.container']
-      include Import['mappers.subtree']
+      # include Import['mappers.subtree']
 
       # restrict by passed criteria
       def query(criteria); habit_nodes.where(criteria); end
@@ -42,7 +42,7 @@ module Hht
           .order(:lft)
       end
 
-      # Nested relation of nodes retricted by lft/rgt values
+      # Nested relation of nodes with parents, retricted by lft/rgt values
       def nest_parent_with_descendant_nodes(lft_val, rgt_val)
         habit_nodes
           .where { lft >= lft_val }

@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
-require_relative 'container'
-require_relative 'subtree'
 require 'sinatra'
 require 'sinatra/base'
 require 'sinatra/json'
+
+require_relative 'container'
+require_relative '../../lib/subtree'
 
 module Hht
   class Api < Sinatra::Base
@@ -31,7 +32,7 @@ module Hht
           .map { |node| node.to_tree_node }
       end
 
-      def map_node_and_descendants_to_nodes(root_id)
+      def map_node_and_descendants_to_struct_nodes(root_id)
         root = habit_node_repo.by_id(root_id).one
         habit_node_repo
           .nest_parent_with_descendant_nodes(root.lft, root.rgt)
@@ -39,14 +40,14 @@ module Hht
       end
 
       def generate_subtree(root_id)
-        nodes_array = map_node_and_descendants_to_nodes(root_id)
+        nodes_array = map_node_and_descendants_to_struct_nodes(root_id)
         root_node = nodes_array.shift
         Subtree.new(root_node.to_tree_node, nodes_array).build
       end
     end
 
     get '/' do
-      json Subtree.jsonify(generate_subtree(1))
+      json Subtree.jsonify(generate_subtree(3))
     end
   end
 end
