@@ -51,7 +51,7 @@ FROM
 
 -- insert enough habits to create a small heirarchy under the seed domain ('Physical').
 INSERT INTO
-  nodes
+  habit_nodes
 VALUES
   (1, null, 1, 14, 1),
   (2, 1, 2, 7, 1),

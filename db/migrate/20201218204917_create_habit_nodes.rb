@@ -7,10 +7,10 @@ ROM::SQL.migration do
       column :parent_id, Integer, on_delete: :cascade
       column :lft, Integer, null: false
       column :rgt, Integer, null: false
-      column :domain_id, Integer, null: false, on_delete: :cascade
+      column :habit_id, Integer, null: false, on_delete: :cascade
 
-      foreign_key [:parent_id], :habit_nodes, name: 'fk_child_parent'
-      foreign_key [:domain_id], :domains, name: 'fk_node_domain'
+      foreign_key [:parent_id], :habit_nodes, name: 'fk_parent_child_linkage'
+      foreign_key [:habit_id], :habits, name: 'fk_habit_node_habit'
     end
   end
 end

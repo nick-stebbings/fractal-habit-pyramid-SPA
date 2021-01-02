@@ -8,11 +8,11 @@ module Persistence
         attribute :parent_id, Types::ForeignKey(:habit_nodes)
         attribute :lft, Types::Integer
         attribute :rgt, Types::Integer
-        attribute :domain_id, Types::ForeignKey(:domains)
+        attribute :habit_id, Types::ForeignKey(:habits)
         primary_key :id
 
         associations do
-          belongs_to :domain
+          has_one :habit
           belongs_to :habit_nodes, as: :parent
         end
 
