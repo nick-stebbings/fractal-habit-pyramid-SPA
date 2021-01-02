@@ -2,7 +2,7 @@
 
 # Gemfile
 source 'https://rubygems.org'
-ruby '2.7.1'
+ruby '2.4.1'
 
 gem 'rake'
 
@@ -33,3 +33,4 @@ gem 'rom-sql'
 # Data structures
 # gem 'tree', '~> 0.2.1'
 gem 'rubytree'
+gem 'json'

@@ -13,7 +13,7 @@ module Entities
     end
 
     def to_tree_node
-      Tree::TreeNode.new("ID#{attributes[:id]}", "L#{attributes[:lft]}R#{attributes[:rgt]}")
+      Tree::TreeNode.new(attributes[:id].to_s, "L#{attributes[:lft]}R#{attributes[:rgt]}")
     end
   end
 end
