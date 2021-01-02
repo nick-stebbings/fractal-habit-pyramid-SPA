@@ -30,14 +30,26 @@ module Hht
         children_of_parent(id).combine(:habit_nodes)
       end
 
-      # Nested relation of subtree nodes retricted by root node id
-      def subtree_nodes(root_id)
-        habit_nodes
+      # Nested relation of children (nesting retricted by parent_id)
+      def nest_parent_with_immediate_child_nodes(parent_id)
+        nest_parents = habit_nodes
           .combine(habit_nodes: :parent)
-          .node(:parent) do |habits_relation|
-              habits_relation.by_pk(root_id)
+          .node(:parent) do |habit_node|
+              habit_node.by_pk(parent_id)
             end
+            
+        nest_parents
+          .order(:lft)
       end
+
+      # Nested relation of nodes retricted by lft/rgt values
+      def nest_parent_with_descendant_nodes(lft_val, rgt_val)
+        habit_nodes
+          .where { lft >= lft_val }
+          .where { rgt <= rgt_val }
+          .combine(habit_nodes: :parent)
+      end
+      
     end
   end
 end
