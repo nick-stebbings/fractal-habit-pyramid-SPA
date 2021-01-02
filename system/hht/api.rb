@@ -4,6 +4,7 @@ require_relative 'container'
 require_relative 'subtree'
 require 'sinatra'
 require 'sinatra/base'
+require 'sinatra/json'
 
 module Hht
   class Api < Sinatra::Base
@@ -45,7 +46,7 @@ module Hht
     end
 
     get '/' do
-      binding.pry
+      json Subtree.jsonify(generate_subtree(1))
     end
   end
 end

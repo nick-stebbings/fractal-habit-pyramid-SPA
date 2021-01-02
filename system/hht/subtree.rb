@@ -1,6 +1,5 @@
 class Subtree
   attr_reader :root_node
-  require 'json'
 
   def initialize(root_node, nodes_array)
     @root_node = root_node
@@ -18,5 +17,20 @@ class Subtree
       node_dict[parent_id.to_s] << new_tree_node
     end
     node_dict[root_id]
+  end
+
+  def self.jsonify(tree)
+    root_json = tree.as_json
+    if root_json["children"]
+      { 
+        "name" => root_json[:name].to_s,
+        "children" => root_json["children"].map { |child| jsonify(child) }
+      }
+    else
+      { 
+        "name" => root_json[:name].to_s,
+        "children" => []
+      }
+    end
   end
 end
