@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require 'sinatra/base'
+require 'sinatra/namespace'
+require 'sinatra/reloader'
 require 'sinatra/json'
 
 require_relative 'container'
@@ -8,8 +10,10 @@ require File.join(APP_ROOT, "lib", "subtree")
 
 module Hht
   class Api < Sinatra::Base
-    set :root, File.expand_path('..', __dir__)
-    set :public_folder, (proc { File.join(root, 'public') })
+    register Sinatra::Namespace
+    configure :development { register Sinatra::Reloader }
+    set :root, APP_ROOT
+    set :public_folder, (proc { File.join(APP_ROOT, 'public') })
 
     include Import['repos.habit_node_repo']
     include Import['repos.domain_repo']
@@ -45,27 +49,31 @@ module Hht
       end
     end
 
-    get '/' do
-      binding.pry
-      "Hello, world!"
+    # get "/favicon.ico" do
+    # end
+
+    namespace '/api' do  
+      get '' do
+        "Hello, world!"
+      end
+
+      post '' do; halt 405; end
     end
 
-    # Get root node tree
-    get '/habit_trees' do
-      root_id = habit_node_repo.root_node.one.id
-      tree = generate_subtree(root_id)
-      json Subtree.jsonify(tree)
+    namespace '/api/habit_trees' do  
+      # Get root node tree
+      get '' do
+        root_id = habit_node_repo.root_node.one.id
+        tree = generate_subtree(root_id)
+        json Subtree.jsonify(tree)
+      end
+      # Get subtree by root node id
+      get '/:root_id' do |root_id|
+        tree = generate_subtree(root_id)
+        json Subtree.jsonify(tree)
+      end
     end
 
-    # Get subtree by root node id
-    get '/habit_trees/:root_id' do |root_id|
-      tree = generate_subtree(root_id)
-      json Subtree.jsonify(tree)
-    end
-
-    post '/habit_trees' do
-      binding.pry
-    end
 
     # RESOURCES TO BE DESCRIBED LATER
     get '/habits' do

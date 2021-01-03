@@ -15,14 +15,13 @@
 ENV["RACK_ENV"] ||= "test"
 require File.expand_path("../../system/boot", __FILE__)
 require 'rspec'
-# require 'rack/test'
 require 'capybara/rspec'
 require 'capybara/dsl'
 require 'database_cleaner'
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
-  # config.include Rack::Test::Methods
+  config.include Rack::Test::Methods
 
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest

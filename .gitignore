@@ -3,7 +3,8 @@
 .gitignore
 /.vscode/
 /tmp/
-/test/tmp/
+/test/
+/tests/
 
 # Used by dotenv library to load environment variables.
 .env

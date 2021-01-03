@@ -1,39 +1,36 @@
-# testing.rb
-ENV['RACK_ENV'] = 'test'
-
-require 'bundler/setup'
-require File.join(APP_ROOT, "system", "boot")
-
-require 'rspec'
-require 'rack/test'
-require 'pry'
-
 RSpec.describe 'Api' do
-  include Rack::Test::Methods
-
   def app
     Hht::Api
   end
 
-  it "says hello" do
-    get '/'
-    expect(last_response).to be_ok
-    expect(last_response.body).to eq('Hello, world!')
+  # it "says hello" do
+  #   get '/api/'
+  #   expect(last_response).to be_ok
+  #   expect(last_response.body).to eq('Hello, world!')
+  # end
+
+  context "post to /api" do
+    let(:response) { post "/api" }
+
+    it { expect(response.status).to eq 405 }
   end
 
-  # it "should return root tree as json" do
-  #   get '/habit_trees'
-  #   _(last_response.headers['Content-Type']).must_equal 'application/json;charset=utf-8'
-  # end 
+  context "get to /api/habit_trees" do
+    let(:response) { get "/api/habit_trees" }
 
-  # it "should return subtrees as json" do
+    it "should return json" do
+      expect(response.headers['Content-Type']).to eq('application/json')
+    end 
+    
+    it "returns the status 200" do
+      expect(response.status).to eq 200
+    end
+  end
+  
+  # it "should return json" do
   #   get '/habit_trees/1'
-  #   _(last_response.headers['Content-Type']).must_equal 'application/json;charset=utf-8'
+  #   expect(last_response.headers['Content-Type']).to eq('application/json')
   # end 
-
-  # it "should return the factors of 6" do
-  #   6.factors.must_equal [1,2,3,6]
-  # end
 
   # it "should say that 2 is prime" do
   #   assert 2.prime?
