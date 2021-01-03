@@ -47,6 +47,7 @@ module Hht
     end
 
     get '/' do
+      binding.pry
       json Subtree.jsonify(generate_subtree(3))
     end
   end

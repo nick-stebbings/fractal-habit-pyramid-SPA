@@ -5,7 +5,6 @@ ROM::SQL.migration do
     create_table :dates do
       primary_key :id
       column :h_date, DateTime, null: false
-      column :completed_status, TrueClass
     end
   end
 end

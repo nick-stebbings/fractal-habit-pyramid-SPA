@@ -8,11 +8,12 @@ module Persistence
         attribute :name, Types::String
         attribute :description, Types::String
         attribute :domain_id, Types::ForeignKey(:domains)
+        attribute :habit_node_id, Types::ForeignKey(:habit_nodes)
         primary_key :id
 
         associations do
           belongs_to :domain
-          belongs_to :habit_node
+          has_many :habit_nodes
           has_many :habit_dates
           has_many :dates, through: :habit_dates
         end

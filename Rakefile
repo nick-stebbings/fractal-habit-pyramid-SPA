@@ -10,4 +10,8 @@ namespace :db do
     config = Hht::Container['db.config']
     config.gateways[:default].use_logger(Logger.new($stdout))
   end
+
+  task :seed do
+    
+  end
 end

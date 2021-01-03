@@ -6,7 +6,6 @@ module Persistence
       schema(:dates) do
         attribute :id, Types::Integer
         attribute :h_date, Types::Nominal::DateTime
-        attribute :status_completed, Types::Nominal::Bool
         primary_key :id
 
         associations do
