@@ -50,14 +50,24 @@ module Hht
       binding.pry
     end
 
+    # Get root node tree
     get '/habit_trees' do
+      root_id = habit_node_repo.root_node.one.id
+      tree = generate_subtree(root_id)
+      json Subtree.jsonify(tree)
+    end
+
+    # Get subtree by root node id
+    get '/habit_trees/:root_id' do |root_id|
+      tree = generate_subtree(root_id)
+      json Subtree.jsonify(tree)
+    end
+
+    post '/habit_trees' do
       binding.pry
     end
 
-    get '/habit_trees/:root_id' do
-      json Subtree.jsonify(generate_subtree(root_id))
-    end
-    
+    # RESOURCES TO BE DESCRIBED LATER
     get '/habits' do
       binding.pry
     end
@@ -70,10 +80,6 @@ module Hht
       binding.pry
     end
 
-    post '/habit_trees' do
-      binding.pry
-    end
-    
     post '/habits' do
       binding.pry
     end
@@ -85,6 +91,5 @@ module Hht
     post '/domains' do
       binding.pry
     end
-
   end
 end

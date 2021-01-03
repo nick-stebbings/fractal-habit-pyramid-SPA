@@ -21,6 +21,12 @@ group :development do
   gem 'shotgun'
 end
 
+group :test do
+  gem 'minitest'  
+  gem 'minitest-reporters'
+  gem 'rack-test'
+end
+
 # Environment
 gem 'dotenv'
 gem 'dry-system'
