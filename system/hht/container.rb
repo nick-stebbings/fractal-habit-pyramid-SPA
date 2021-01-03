@@ -8,7 +8,7 @@ module Hht
     configure do
       config.name = :hht
 
-      config.root = Pathname('../') if ENV['RACK_ENV'] == 'test'
+      config.root = APP_ROOT
       config.default_namespace = 'hht'
       config.auto_register = %w[lib/hht]
     end

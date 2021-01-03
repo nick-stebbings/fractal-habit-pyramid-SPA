@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
-require 'sinatra'
 require 'sinatra/base'
 require 'sinatra/json'
 
 require_relative 'container'
-require_relative '../../lib/subtree'
+require File.join(APP_ROOT, "lib", "subtree")
 
 module Hht
   class Api < Sinatra::Base
@@ -48,6 +47,7 @@ module Hht
 
     get '/' do
       binding.pry
+      "Hello, world!"
     end
 
     # Get root node tree
@@ -91,5 +91,7 @@ module Hht
     post '/domains' do
       binding.pry
     end
+
+    # run! if app_file == $0
   end
 end

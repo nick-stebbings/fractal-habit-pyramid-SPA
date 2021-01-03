@@ -22,9 +22,11 @@ group :development do
 end
 
 group :test do
-  gem 'minitest'  
-  gem 'minitest-reporters'
-  gem 'rack-test'
+  gem 'capybara'  
+  gem 'database_cleaner'  
+  gem 'rack-test',           '~> 1.1'
+  gem 'rspec',               '~> 3.8'
+  gem 'selenium-webdriver',  '~> 3.142', '>= 3.142.2'
 end
 
 # Environment
