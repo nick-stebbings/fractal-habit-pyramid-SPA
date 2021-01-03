@@ -48,7 +48,43 @@ module Hht
 
     get '/' do
       binding.pry
-      json Subtree.jsonify(generate_subtree(3))
     end
+
+    get '/habit_trees' do
+      binding.pry
+    end
+
+    get '/habit_trees/:root_id' do
+      json Subtree.jsonify(generate_subtree(root_id))
+    end
+    
+    get '/habits' do
+      binding.pry
+    end
+
+    get '/dates' do
+      binding.pry
+    end
+
+    get '/domains' do
+      binding.pry
+    end
+
+    post '/habit_trees' do
+      binding.pry
+    end
+    
+    post '/habits' do
+      binding.pry
+    end
+
+    post '/dates' do
+      binding.pry
+    end
+
+    post '/domains' do
+      binding.pry
+    end
+
   end
 end
