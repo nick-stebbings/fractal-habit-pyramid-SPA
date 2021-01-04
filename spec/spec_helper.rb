@@ -15,7 +15,11 @@
 # it.
 #
 ENV['RACK_ENV'] ||= 'test'
+
+# Boot the app
 require File.expand_path('../system/boot', __dir__)
+
+# Require test libraries
 require 'rspec'
 require 'capybara/rspec'
 require 'capybara/dsl'

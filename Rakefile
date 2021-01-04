@@ -3,6 +3,7 @@
 require_relative 'system/boot'
 require 'rom-sql'
 require 'rom/sql/rake_task'
+require 'rspec/core/rake_task'
 
 namespace :db do
   task :setup do
@@ -14,3 +15,8 @@ namespace :db do
   task :seed do
   end
 end
+
+RSpec::Core::RakeTask.new(:spec) do |t|
+  t.pattern = Dir.glob('spec/**/*_spec.rb')
+end
+task :default => :spec
