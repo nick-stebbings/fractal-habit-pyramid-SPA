@@ -22,8 +22,8 @@ group :development do
 end
 
 group :test do
-  gem 'capybara'  
-  gem 'database_cleaner'  
+  gem 'capybara'
+  gem 'database_cleaner'
   gem 'rack-test',           '~> 1.1'
   gem 'rspec',               '~> 3.8'
   gem 'selenium-webdriver',  '~> 3.142', '>= 3.142.2'
@@ -40,5 +40,5 @@ gem 'rom-sql'
 
 # Data structures
 # gem 'tree', '~> 0.2.1'
-gem 'rubytree'
 gem 'json'
+gem 'rubytree'

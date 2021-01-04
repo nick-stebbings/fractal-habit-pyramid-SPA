@@ -6,12 +6,14 @@ require 'sinatra/reloader'
 require 'sinatra/json'
 
 require_relative 'container'
-require File.join(APP_ROOT, "lib", "subtree")
+require File.join(APP_ROOT, 'lib', 'subtree')
 
 module Hht
   class Api < Sinatra::Base
     register Sinatra::Namespace
-    configure :development { register Sinatra::Reloader }
+    configure :development do
+      register Sinatra::Reloader
+    end
     set :root, APP_ROOT
     set :public_folder, (proc { File.join(APP_ROOT, 'public') })
 
@@ -24,7 +26,7 @@ module Hht
           .nest_parent_with_immediate_child_nodes(parent_id)
           .to_a
           .reject { |node| node.parent.nil? }
-          .map { |node| node.to_tree_node }
+          .map(&:to_tree_node)
       end
 
       def map_node_and_immediate_children_to_tree_nodes(parent_id)
@@ -32,7 +34,7 @@ module Hht
           .nest_parent_with_immediate_child_nodes(parent_id)
           .to_a
           .select { |node| !node.parent.nil? || node.id == parent_id }
-          .map { |node| node.to_tree_node }
+          .map(&:to_tree_node)
       end
 
       def map_node_and_descendants_to_struct_nodes(root_id)
@@ -52,15 +54,17 @@ module Hht
     # get "/favicon.ico" do
     # end
 
-    namespace '/api' do  
+    namespace '/api' do
       get '' do
-        "Hello, world!"
+        'Hello, world!'
       end
 
-      post '' do; halt 405; end
+      post '' do
+        halt 405
+      end
     end
 
-    namespace '/api/habit_trees' do  
+    namespace '/api/habit_trees' do
       # Get root node tree
       get '' do
         root_id = habit_node_repo.root_node.one.id
@@ -73,7 +77,6 @@ module Hht
         json Subtree.jsonify(tree)
       end
     end
-
 
     # RESOURCES TO BE DESCRIBED LATER
     get '/habits' do

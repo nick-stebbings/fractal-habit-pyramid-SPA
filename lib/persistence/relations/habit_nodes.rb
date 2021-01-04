@@ -16,7 +16,6 @@ module Persistence
           belongs_to :habits, as: :habit_tree_node
           belongs_to :habit_nodes, as: :parent
         end
-
       end
 
       def all

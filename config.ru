@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 require_relative 'system/boot'
-if ENV['APP_ENV'] == 'development'
-  require 'pry'
-end
+require 'pry' if ENV['APP_ENV'] == 'development'
 
 run Hht::Api

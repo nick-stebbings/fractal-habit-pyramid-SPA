@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Tree data structure (constructed of TreeNodes, hence Tree namespace already taken)
 class Subtree
   attr_reader :root_node
 
@@ -9,7 +12,7 @@ class Subtree
   def build
     root_id = root_node.name.to_s
     node_dict = { root_id => root_node }
-    @descendant_nodes.each do |node, idx|
+    @descendant_nodes.each do |node, _idx|
       id = node.id
       parent_id = node.parent_id
       new_tree_node = node.to_tree_node
@@ -21,16 +24,12 @@ class Subtree
 
   def self.jsonify(tree)
     root_json = tree.as_json
-    if root_json["children"]
-      { 
-        "name" => root_json[:name].to_s,
-        "children" => root_json["children"].map { |child| jsonify(child) }
-      }
-    else
-      { 
-        "name" => root_json[:name].to_s,
-        "children" => []
-      }
-    end
+    new_json = { 'name' => root_json[:name].to_s }
+    children_json = if root_json['children']
+                      { 'children' => root_json['children'].map { |child| jsonify(child) } }
+                    else
+                      { 'children' => [] }
+                    end
+    new_json.merge(children_json)
   end
 end
