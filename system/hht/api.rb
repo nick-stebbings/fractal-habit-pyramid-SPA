@@ -102,7 +102,5 @@ module Hht
     post '/domains' do
       binding.pry
     end
-
-    # run! if app_file == $0
   end
 end

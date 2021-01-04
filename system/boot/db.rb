@@ -15,6 +15,7 @@ Hht::Container.boot(:db, namespace: true) do
       extensions: %i[pg_timestamptz]
     }
 
+    register('options', options)
     connection = Sequel.connect(options)
     register('connection', connection)
     register('config', ROM::Configuration.new(:sql, connection))

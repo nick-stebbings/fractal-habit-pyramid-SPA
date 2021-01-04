@@ -11,13 +11,12 @@ VALUES
 
 -- habit seed
 INSERT INTO
-  habits (name, description, initiation_date, domain_id, habit_node_id)
+  habits (name, description, initiation_date, domain_id)
 VALUES
   (
     'Shop healthily',
     'You are what you eat, so do not eat pizza every day',
     date_trunc('day', now()) :: timestamptz,
-    1,
     1
   );
 

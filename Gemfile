@@ -22,11 +22,12 @@ group :development do
 end
 
 group :test do
-  gem 'capybara'
+  # gem 'webmock'
   gem 'database_cleaner'
   gem 'rack-test',           '~> 1.1'
   gem 'rspec',               '~> 3.8'
-  gem 'selenium-webdriver',  '~> 3.142', '>= 3.142.2'
+  # gem 'capybara'
+  # gem 'selenium-webdriver',  '~> 3.142', '>= 3.142.2'
 end
 
 # Environment
@@ -39,6 +40,5 @@ gem 'rom'
 gem 'rom-sql'
 
 # Data structures
-# gem 'tree', '~> 0.2.1'
 gem 'json'
 gem 'rubytree'
