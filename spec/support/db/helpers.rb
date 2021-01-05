@@ -1,6 +1,15 @@
 module Test
   module DatabaseHelpers
+    include Dry::Monads[:result]
     module_function
+
+    def success
+      Success
+    end
+
+    def failure
+      Failure
+    end
 
     def rom
       Hht::Container['persistence.container']
