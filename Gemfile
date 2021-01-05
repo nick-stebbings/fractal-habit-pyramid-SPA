@@ -22,10 +22,11 @@ group :development do
 end
 
 group :test do
-  # gem 'webmock'
+  gem 'rom-factory'
   gem 'database_cleaner'
   gem 'rack-test',           '~> 1.1'
   gem 'rspec',               '~> 3.8'
+  # gem 'webmock'
   # gem 'capybara'
   # gem 'selenium-webdriver',  '~> 3.142', '>= 3.142.2'
 end

@@ -20,6 +20,7 @@ require_relative '../system/boot'
 # Require test libraries
 require 'rspec'
 require 'rack/test'
+require 'rom-factory'
 # require 'capybara/rspec'
 # require 'capybara/dsl'
 require 'database_cleaner'

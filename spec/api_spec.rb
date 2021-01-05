@@ -5,11 +5,11 @@ RSpec.describe 'Api' do
     Hht::Api
   end
 
-  # it "says hello" do
-  #   get '/api/'
-  #   expect(last_response).to be_ok
-  #   expect(last_response.body).to eq('Hello, world!')
-  # end
+  it "says hello" do
+    get '/api'
+    expect(last_response).to be_ok
+    expect(last_response.body).to eq('Hello, world!')
+  end
 
   context 'post to /api' do
     let(:response) { post '/api' }
