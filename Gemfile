@@ -39,6 +39,7 @@ gem 'dry-system'
 gem 'pg'
 gem 'rom'
 gem 'rom-sql'
+gem 'dry-validation', '~> 1.4'
 
 # Data structures
 gem 'json'

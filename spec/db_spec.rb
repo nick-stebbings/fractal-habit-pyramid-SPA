@@ -8,8 +8,6 @@ RSpec.describe 'Habit Nodes' do
   #   expect(Factory.rom.relations[:habit_nodes].one[:id]).to eq(parent.id)
   # end
 
-  it { should validate_presence_of(:id) }
-  
   it 'has a valid factory' do
     expect(habit_nodes_factory.create).to be_kind_of Entities::HabitNode
   end
