@@ -21,9 +21,9 @@ require_relative '../system/boot'
 require 'rspec'
 require 'rack/test'
 require 'rom-factory'
+require 'database_cleaner'
 # require 'capybara/rspec'
 # require 'capybara/dsl'
-require 'database_cleaner'
 
 RSpec.configure do |config|
   config.include Rack::Test::Methods
@@ -36,4 +36,15 @@ RSpec.configure do |config|
   end
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
+
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.around(:each) do |example|
+    DatabaseCleaner.cleaning do
+      example.run
+    end
+  end
 end

@@ -14,4 +14,6 @@ require_relative 'hht/container'
 require_relative 'hht/import'
 Hht::Container.finalize!
 
+ROM_CONTAINER = Hht::Container['persistence.container']
+
 require_relative 'hht/api'
