@@ -3,7 +3,7 @@ module Persistence
     class CreateHabitNode < ROM::Commands::Create[:sql]
       relation :habit_nodes
       register_as :create
-      # result :one
+      result :one
     end
   end
 end

@@ -2,6 +2,7 @@
 
 module Entities
   class HabitNode < ROM::Struct
+    attr_reader :attributes
     require 'tree'
 
     def initialize(attributes)
