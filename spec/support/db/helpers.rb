@@ -11,6 +11,10 @@ module Test
       Failure
     end
 
+    def app
+      Hht::Api
+    end
+
     def rom
       Hht::Container['persistence.container']
     end

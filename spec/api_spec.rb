@@ -5,31 +5,17 @@ RSpec.describe 'Api' do
     Hht::Api
   end
 
-  it "says hello" do
-    get '/api'
-    expect(last_response).to be_ok
-    expect(last_response.body).to eq('Hello, world!')
-  end
+  # it "says hello" do
+  #   get '/api'
+  #   expect(last_response).to be_ok
+  #   expect(last_response.body).to eq('Hello, world!')
+  # end
 
-  context 'post to /api' do
-    let(:response) { post '/api' }
+  # context 'post to /api' do
+  #   let(:response) { post '/api' }
 
-    it { expect(response.status).to eq 405 }
-  end
-
-  context 'get to /api/habit_trees' do
-    let(:response) { get '/api/habit_trees' }
-
-    it 'should return json' do
-      skip
-      expect(response.headers['Content-Type']).to eq('application/json')
-    end
-
-    it 'returns the status 200' do
-      skip
-      expect(response.status).to eq 200
-    end
-  end
+  #   it { expect(response.status).to eq 405 }
+  # end
 
   # it "should return json" do
   #   get '/habit_trees/1'
