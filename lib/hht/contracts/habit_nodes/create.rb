@@ -1,7 +1,7 @@
 module Hht
   module Contracts
     module HabitNodes
-      class CreateHabitNode < Dry::Validation::Contract
+      class Create < Dry::Validation::Contract
         params do
           required(:id).filled(:integer)
           required(:lft).filled(:integer)

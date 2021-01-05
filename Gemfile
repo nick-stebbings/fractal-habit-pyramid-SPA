@@ -24,8 +24,8 @@ end
 group :test do
   gem 'rom-factory'
   gem 'database_cleaner'
-  gem 'rack-test',           '~> 1.1'
-  gem 'rspec',               '~> 3.8'
+  gem 'rack-test'
+  gem 'rspec'
   # gem 'webmock'
   # gem 'capybara'
   # gem 'selenium-webdriver',  '~> 3.142', '>= 3.142.2'
@@ -39,7 +39,8 @@ gem 'dry-system'
 gem 'pg'
 gem 'rom'
 gem 'rom-sql'
-gem 'dry-validation', '~> 1.4'
+gem 'dry-validation'
+gem 'dry-monads'
 
 # Data structures
 gem 'json'
