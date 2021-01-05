@@ -5,7 +5,6 @@ Hht::Container.boot(:persistence, namespace: true) do |app|
 
   start do
     rom_config.auto_registration(app.root.join('lib/persistence'))
-    # register('config', rom_config)
     register('container', ROM.container(rom_config))
   end
 end
