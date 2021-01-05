@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-require_relative 'system/boot'
+require_relative 'system/environment'
+require_relative 'system/hht/container'
 require 'rom-sql'
 require 'rom/sql/rake_task'
 require 'rspec/core/rake_task'

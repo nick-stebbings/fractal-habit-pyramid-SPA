@@ -3,7 +3,7 @@ module Test
     module_function
 
     def rom
-      ROM_CONTAINER
+      Hht::Container['persistence.container']
     end
 
     def db
