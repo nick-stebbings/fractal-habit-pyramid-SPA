@@ -52,3 +52,16 @@ RSpec.configure do |config|
     end
   end
 end
+
+RSpec::Matchers.define(:return_success_monad) do
+  match do |transaction|
+    transaction.is_a?(Test::DatabaseHelpers.success)
+  end
+end
+
+RSpec::Matchers.define(:return_failure_monad) do
+  match do |transaction|
+    puts transaction
+    transaction.is_a?(Test::DatabaseHelpers.failure)
+  end
+end
