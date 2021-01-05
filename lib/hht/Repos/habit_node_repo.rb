@@ -6,6 +6,7 @@ module Hht
       struct_namespace Entities
       include Import['persistence.container']
       # include Import['mappers.subtree']
+      commands :create, :delete
 
       # restrict by passed criteria
       def query(criteria)

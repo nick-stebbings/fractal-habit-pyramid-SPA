@@ -4,13 +4,14 @@ module Hht
       class Create
         include Dry::Monads[:result]
         include Dry::Monads::Do.for(:call)
-        include Import["contracts.habit_nodes.create"]
-        include Import["persistence.container"]
+        include Import[
+          "contracts.habit_nodes.create",
+          "repos.habit_node_repo",
+        ]
 
         def call(input)
           values = yield validate(input)
           habit_node = yield persist(values)
-
           Success(habit_node)
         end
 
@@ -19,8 +20,7 @@ module Hht
         end
 
         def persist(result)
-          command = container.commands[:habit_nodes][:create]
-          Success(command.call(result.values))
+          Success(habit_node_repo.create(result.values))
         end
       end
     end

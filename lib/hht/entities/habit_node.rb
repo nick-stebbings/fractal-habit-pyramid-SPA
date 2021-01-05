@@ -7,7 +7,7 @@ module Entities
     def initialize(attributes)
       @attributes = attributes
     end
-
+    
     def to_s
       to_tree_node.to_s
     end

@@ -61,7 +61,6 @@ end
 
 RSpec::Matchers.define(:return_failure_monad) do
   match do |transaction|
-    puts transaction
     transaction.is_a?(Test::DatabaseHelpers.failure)
   end
 end

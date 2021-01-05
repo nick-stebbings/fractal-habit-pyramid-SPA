@@ -1,6 +1,6 @@
-RSpec.describe 'Habit Nodes' do
+RSpec.describe Hht::Transactions::HabitNodes::Create do
   let(:habit_nodes_factory) { Factory.registry.elements[:habit_node] }
-  let(:create_transaction) { Hht::Transactions::HabitNodes::Create.new }
+  let(:create_transaction) { described_class.new }
 
   context 'When first created' do    
     it 'has a valid factory' do
@@ -46,12 +46,12 @@ RSpec.describe 'Habit Nodes' do
     end
   end
   
-  # it "should create a habit node" do
-  #   Factory.rom.commands[:habit_nodes][:create].call(id:1, lft:1, rgt:4)
-  #   parent = Factory.registry.elements[:habit_node].create
+  it "should create a habit node" do
+    Factory.rom.commands[:habit_nodes][:create].call(id:1, lft:1, rgt:4)
+    parent = Factory.registry.elements[:habit_node].create
     
-  #   expect(Factory.rom.relations[:habit_nodes].count).to be(1)
-  #   expect(Factory.rom.relations[:habit_nodes].one[:id]).to eq(parent.id)
-  # end
+    expect(Factory.rom.relations[:habit_nodes].count).to be(1)
+    expect(Factory.rom.relations[:habit_nodes].one[:id]).to eq(parent.id)
+  end
 
 end
