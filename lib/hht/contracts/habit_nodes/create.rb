@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Hht
   module Contracts
     module HabitNodes

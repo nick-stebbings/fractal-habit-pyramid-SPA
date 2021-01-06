@@ -25,4 +25,4 @@ RSpec::Core::RakeTask.new(:spec) do |t|
   t.pattern = Dir.glob('spec/**/*_spec.rb')
   # ROM::SQL::RakeSupport.env = Hht::Container['db.config']
 end
-task :default => :spec
+task default: :spec

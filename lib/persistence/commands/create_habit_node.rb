@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Persistence
   module Commands
     class CreateHabitNode < ROM::Commands::Create[:sql]

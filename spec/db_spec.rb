@@ -1,8 +1,9 @@
+# frozen_string_literal: true
 # RSpec.describe Hht::Transactions::HabitNodes::Create do
 #   let(:habit_nodes_factory) { Factory.registry.elements[:habit_node] }
 #   let(:create_transaction) { described_class.new }
 
-#   context 'When first created' do    
+#   context 'When first created' do
 #     it 'has a valid factory' do
 #       expect(habit_nodes_factory.create).to be_kind_of Entities::HabitNode
 #     end
@@ -45,11 +46,11 @@
 #       end
 #     end
 #   end
-  
+
 #   it "should create a habit node" do
 #     Factory.rom.commands[:habit_nodes][:create].call(id:1, lft:1, rgt:4)
 #     node = habit_nodes_factory.create
-    
+
 #     expect(Factory.rom.relations[:habit_nodes].count).to be(1)
 #     expect(Factory.rom.relations[:habit_nodes].one[:id]).to eq(node.id)
 #   end

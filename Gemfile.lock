@@ -72,6 +72,9 @@ GEM
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
     json (2.5.1)
+    json_spec (1.1.5)
+      multi_json (~> 1.0)
+      rspec (>= 2.0, < 4.0)
     method_source (1.0.0)
     multi_json (1.15.0)
     mustermann (1.1.1)
@@ -192,6 +195,7 @@ DEPENDENCIES
   dry-system
   dry-validation
   json
+  json_spec
   pg
   pry-byebug
   puma

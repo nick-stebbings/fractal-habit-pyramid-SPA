@@ -3,12 +3,13 @@
 module Entities
   class HabitNode < ROM::Struct
     attr_reader :attributes
+
     require 'tree'
 
     def initialize(attributes)
       @attributes = attributes
     end
-    
+
     def to_s
       to_tree_node.to_s
     end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Hht
   module Transactions
     module HabitNodes
@@ -6,8 +8,8 @@ module Hht
         include Dry::Monads[:result]
         include Dry::Monads::Do.for(:call)
         include Import[
-          "contracts.habit_nodes.create",
-          "repos.habit_node_repo",
+          'contracts.habit_nodes.create',
+          'repos.habit_node_repo',
         ]
 
         def call(input)

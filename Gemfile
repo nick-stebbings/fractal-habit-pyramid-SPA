@@ -22,10 +22,12 @@ group :development do
 end
 
 group :test do
-  gem 'rom-factory'
   gem 'database_cleaner'
+  gem 'json_spec'
   gem 'rack-test'
+  gem 'rom-factory'
   gem 'rspec'
+  # gem 'faker'
   # gem 'webmock'
   # gem 'capybara'
   # gem 'selenium-webdriver',  '~> 3.142', '>= 3.142.2'
@@ -36,11 +38,11 @@ gem 'dotenv'
 gem 'dry-system'
 
 # Persistence Layer
+gem 'dry-monads'
+gem 'dry-validation'
 gem 'pg'
 gem 'rom'
 gem 'rom-sql'
-gem 'dry-validation'
-gem 'dry-monads'
 
 # Data structures
 gem 'json'

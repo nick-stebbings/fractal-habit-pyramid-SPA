@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 Hht::Container.boot(:core) do
   init do
-    require "dry-validation"
-    require "dry/monads"
-    require "dry/monads/do"
+    require 'dry-validation'
+    require 'dry/monads'
+    require 'dry/monads/do'
   end
 
   start do

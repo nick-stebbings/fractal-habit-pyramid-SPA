@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 module Test
   module DatabaseHelpers
     include Dry::Monads[:result]
+
     module_function
 
     def success
@@ -20,7 +23,7 @@ module Test
     end
 
     def db
-      Hht::Container["db.connection"]
+      Hht::Container['db.connection']
     end
   end
 end

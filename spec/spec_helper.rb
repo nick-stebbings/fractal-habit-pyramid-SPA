@@ -18,10 +18,11 @@ ENV['APP_ENV'] = 'test'
 require_relative '../system/boot'
 
 SPEC_ROOT = File.join(APP_ROOT, 'spec')
-Dir.glob(File.join(SPEC_ROOT, 'support', 'db', '*.rb')).each { |file| require file }
+Dir.glob(File.join(SPEC_ROOT, 'support', 'db', '*.rb')).sort.each { |file| require file }
 
 # Require test libraries
 require 'rspec'
+require 'json_spec'
 require 'rack/test'
 require 'database_cleaner'
 # require 'capybara/rspec'
@@ -30,6 +31,14 @@ require 'database_cleaner'
 RSpec.configure do |config|
   config.include Rack::Test::Methods
   config.include Test::DatabaseHelpers
+
+  config.backtrace_exclusion_patterns = [
+    /\/lib\d*\/ruby\//,
+    /bin\//,
+    /gems/,
+    /spec\/spec_helper\.rb/,
+    /lib\/rspec\/(core|expectations|matchers|mocks)/
+  ]
 
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true

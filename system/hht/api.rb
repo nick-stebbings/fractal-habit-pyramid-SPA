@@ -18,10 +18,10 @@ module Hht
     set :public_folder, (proc { File.join(APP_ROOT, 'public') })
 
     include Import[
-      "repos.domain_repo",
-      "repos.habit_node_repo",
+      'repos.domain_repo',
+      'repos.habit_node_repo',
     ]
-    
+
     helpers do
       def map_immediate_children_to_tree_nodes(parent_id)
         habit_node_repo
