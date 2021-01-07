@@ -72,12 +72,12 @@ module Hht
       get '' do
         root_id = habit_node_repo.root_node.one.id
         tree = generate_subtree(root_id)
-        json Subtree.jsonify(tree)
+        json Subtree.as_json(tree)
       end
       # Get subtree by root node id
       get '/:root_id' do |root_id|
         tree = generate_subtree(root_id)
-        json Subtree.jsonify(tree)
+        json Subtree.as_json(tree)
       end
     end
 

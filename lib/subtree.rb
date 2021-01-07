@@ -22,11 +22,11 @@ class Subtree
     @root_node = node_dict[root_id]
   end
 
-  def self.jsonify(tree)
+  def self.as_json(tree)
     root_json = tree.as_json
     new_json = { 'name' => root_json[:name].to_s }
     children_json = if root_json['children']
-                      { 'children' => root_json['children'].map { |child| jsonify(child) } }
+                      { 'children' => root_json['children'].map { |child| as_json(child) } }
                     else
                       { 'children' => [] }
                     end

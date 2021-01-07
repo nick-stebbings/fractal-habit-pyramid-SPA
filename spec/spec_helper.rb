@@ -32,6 +32,8 @@ RSpec.configure do |config|
   config.include Rack::Test::Methods
   config.include Test::DatabaseHelpers
   config.include JsonSpec::Helpers
+  config.include Hht::Import['repos.domain_repo']
+  config.include Hht::Import['repos.habit_node_repo']
   Faker::Config.random = Random.new(42)
 
   config.backtrace_exclusion_patterns = [

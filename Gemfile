@@ -29,6 +29,7 @@ group :test do
   gem 'rspec'
   gem 'multi_json'
   gem 'faker'
+  # gem 'fuubar'
   # gem 'webmock'
   # gem 'capybara'
   # gem 'selenium-webdriver',  '~> 3.142', '>= 3.142.2'

@@ -2,12 +2,8 @@
 
 RSpec.describe 'Feature: habit_nodes resource' do
   context 'Given a persisted node' do
-    let(:habit_node_repo) { Hht::Repos::HabitNodeRepo.new }
-    let(:factory) { Factory.registry.elements[:habit_node] }
-    let(:factory_habit_node) { factory.create }
-
-    before do
-      habit_node_repo.create({ id: 1, lft: 1, rgt: 2 })
+    before(:all) do
+      habit_node_repo.create(valid_habit_node.attributes)
     end
 
     describe 'When #get to /api/habit_trees' do

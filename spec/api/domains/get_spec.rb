@@ -1,22 +1,20 @@
 # frozen_string_literal: true
 
 RSpec.describe 'Feature: domains resource' do
-  context 'Given two persisted domain tuples' do
-    let(:domain_repo) { Hht::Repos::DomainRepo.new }
-    let(:resource) { JSON.load response.body }
-
-    before do
+  context 'Given two persisted domain tuples' do    
+    before(:all) do
       @domain1 = valid_domain
       @domain2 = valid_domain
       domain_repo.create(@domain1.attributes)
       domain_repo.create(@domain2.attributes)
     end
-
+    
     describe 'When #get to /api/domains' do
       let(:response) { get '/api/domains' }
+      let(:resource) { JSON.load response.body }
 
-      describe 'Then returns correct status code' do
-        it { expect(response.status).to eq 200 }
+      it 'Then returns correct status code' do
+        expect(response.status).to eq 200
       end
 
       describe 'And returns json' do
@@ -48,7 +46,7 @@ RSpec.describe 'Feature: domains resource' do
       end
     end
 
-    describe 'When #get to /api/domains/id' do
+    describe 'When #get to /api/domains/:id' do
       let(:response) { get "/api/domains/#{domain_repo.ids.first}" }
 
       describe 'Then returns correct status code' do
