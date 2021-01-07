@@ -4,6 +4,7 @@ require 'sinatra/base'
 require 'sinatra/namespace'
 require 'sinatra/reloader'
 require 'sinatra/json'
+require 'multi_json'
 
 require_relative 'container'
 require File.join(APP_ROOT, 'lib', 'subtree')
@@ -80,6 +81,52 @@ module Hht
       end
     end
 
+    namespace '/api/domains' do
+      get '' do
+        content_type 'application/json'
+        json domain_repo.all_as_json
+      end
+  
+      post '' do
+        # Parse payload
+        domain = MultiJson.load(request.body.read, :symbolize_keys => true)
+        # TODO: Use contract to verify payload
+        domain_repo.create(domain)
+        # If returns success monad, we know it persisted
+        # So redirect
+        url = "http://localhost:9393/domains/#{domain['id']}"
+        response.headers['Location'] = url
+        
+        # So we can return 201 and the persisted item
+        status 201
+      end
+
+      get '/:domain_id' do |id|
+        content_type 'application/json'
+        status 200
+        json domain_repo.as_json(id)
+      end
+
+      put '/:domain_id' do |id|
+        # Parse payload
+        domain = MultiJson.load(request.body.read, :symbolize_keys => true)
+        # TODO: Use contract to verify payload
+        
+        if domain_repo.by_id(id)
+          domain_repo.update(id, domain)
+          # If returns success monad, we know it persisted
+        else
+          halt 204
+        end
+        # So redirect
+        url = "http://localhost:9393/domains/#{domain['id']}"
+        response.headers['Location'] = url
+        
+        # So we can return 201 and the persisted item
+        status 201
+      end
+    end
+
     # RESOURCES TO BE DESCRIBED LATER
     get '/habits' do
       binding.pry
@@ -89,19 +136,12 @@ module Hht
       binding.pry
     end
 
-    get '/domains' do
-      binding.pry
-    end
 
     post '/habits' do
       binding.pry
     end
 
     post '/dates' do
-      binding.pry
-    end
-
-    post '/domains' do
       binding.pry
     end
   end

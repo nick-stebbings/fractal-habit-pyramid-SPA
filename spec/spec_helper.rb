@@ -31,6 +31,8 @@ require 'database_cleaner'
 RSpec.configure do |config|
   config.include Rack::Test::Methods
   config.include Test::DatabaseHelpers
+  config.include JsonSpec::Helpers
+  Faker::Config.random = Random.new(42)
 
   config.backtrace_exclusion_patterns = [
     /\/lib\d*\/ruby\//,

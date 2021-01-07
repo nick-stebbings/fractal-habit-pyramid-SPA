@@ -4,15 +4,32 @@ module Hht
   module Repos
     class DomainRepo < ROM::Repository[:domains]
       include Import['persistence.container']
+      struct_namespace Entities
+      commands :create, delete: :by_pk, update: :by_pk
 
-      # find all domains with the given attributes
-      def query(conditions)
-        domains.where(conditions)
+      def query(conditions); domains.where(conditions); end
+
+      def ids
+        domains.pluck(:id)
       end
 
-      # collect a list of all domain ids
-      def ids
-        domains.pluck(:id).to_a
+      def by_id(id)
+        domains.by_pk(id).one
+      end
+
+      def as_json(id)
+        domain = domains.by_pk(id).one
+        { 
+          'id' => domain.fetch(:id),
+          'name' => domain.fetch(:name),
+          'description' => domain.fetch(:description),
+          'rank' => domain.fetch(:rank),
+          'hashtag' => domain.fetch(:hashtag),
+        }
+      end
+
+      def all_as_json
+        { :domains => domains.all }.to_json
       end
     end
   end

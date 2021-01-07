@@ -25,5 +25,13 @@ module Test
     def db
       Hht::Container['db.connection']
     end
+
+    def valid_domain
+      Factory.registry.elements[:domain].create
+    end
+
+    def valid_habit_node
+      Factory.registry.elements[:habit_node].create
+    end
   end
 end

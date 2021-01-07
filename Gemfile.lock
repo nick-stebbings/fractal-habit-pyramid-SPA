@@ -194,8 +194,10 @@ DEPENDENCIES
   dry-monads
   dry-system
   dry-validation
+  faker
   json
   json_spec
+  multi_json
   pg
   pry-byebug
   puma

@@ -1,24 +1,82 @@
 # frozen_string_literal: true
 
 RSpec.describe 'Feature: domains resource' do
-  context 'Given a persisted domain tuple' do
+  context 'Given two persisted domain tuples' do
     let(:domain_repo) { Hht::Repos::DomainRepo.new }
+    let(:resource) { JSON.load response.body }
+
     before do
-      domain_repo.create( name: 'A domain',
-                          description: 'A description',
-                          rank: 1,
-                          hashtag: '#this')
+      @domain1 = valid_domain
+      @domain2 = valid_domain
+      domain_repo.create(@domain1.attributes)
+      domain_repo.create(@domain2.attributes)
     end
 
-    describe 'When get to /api/domains' do
+    describe 'When #get to /api/domains' do
       let(:response) { get '/api/domains' }
 
-      describe 'Then returns status code 200' do
+      describe 'Then returns correct status code' do
         it { expect(response.status).to eq 200 }
       end
 
       describe 'And returns json' do
-        it { expect(response.body).to have_json_type }
+        it 'has json mime type in response header' do
+          expect(response.header['Content-Type']).to eq 'application/json'
+        end
+        it 'returns the created json objects' do
+          expect(resource).to include_json(@domain1.attributes.to_json).at_path("domains")
+          expect(resource).to include_json(@domain2.attributes.to_json).at_path("domains")
+        end
+      end
+
+      describe 'And has resources with necessary attributes' do
+        it 'has two tuples' do
+          expect(resource).to have_json_size(2).at_path("domains")
+        end
+        it 'has tuples with id attr' do
+          expect(resource).to have_json_path("domains/0/id")
+          expect(resource).to have_json_type(Integer).at_path("domains/0/id")
+        end
+        it 'has tuples with name attr' do
+          expect(resource).to have_json_path("domains/0/name")
+          expect(resource).to have_json_type(String).at_path("domains/0/name")
+        end
+        it 'has tuples with description attr' do
+          expect(resource).to have_json_path("domains/0/description")
+          expect(resource).to have_json_type(String).at_path("domains/0/description")
+        end
+      end
+    end
+
+    describe 'When #get to /api/domains/id' do
+      let(:response) { get "/api/domains/#{domain_repo.ids.first}" }
+
+      describe 'Then returns correct status code' do
+        it { expect(response.status).to eq 200 }
+      end
+
+      describe 'And returns json' do
+        it 'has json mime type in response header' do
+          expect(response.header['Content-Type']).to eq 'application/json'
+        end
+        it 'returns the created json object' do
+          expect(response.body).to be_json_eql(@domain1.attributes.to_json)
+        end
+      end
+
+      describe 'And has necessary attributes' do
+        it 'has id attr' do
+          expect(response.body).to have_json_path("id")
+          expect(response.body).to have_json_type(Integer).at_path("id")
+        end
+        it 'has name attr' do
+          expect(response.body).to have_json_path("name")
+          expect(response.body).to have_json_type(String).at_path("name")
+        end
+        it 'has description attr' do
+          expect(response.body).to have_json_path("description")
+          expect(response.body).to have_json_type(String).at_path("description")
+        end
       end
     end
   end

@@ -10,7 +10,7 @@ RSpec.describe 'Feature: habit_nodes resource' do
       habit_node_repo.create({ id: 1, lft: 1, rgt: 2 })
     end
 
-    describe 'When get to /api/habit_trees' do
+    describe 'When #get to /api/habit_trees' do
       let(:response) { get '/api/habit_trees' }
 
       describe 'Then returns status code 200' do
