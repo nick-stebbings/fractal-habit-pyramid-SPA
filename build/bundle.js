@@ -1,3 +1,5 @@
+'use strict';
+
 //our app's namespace
 var chain = {};
 

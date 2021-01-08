@@ -25,5 +25,8 @@
   "homepage": "https://github.com/nick-stebbings/fractal-habit-pyramid-SPA#readme",
   "devDependencies": {
     "rollup": "^2.36.1"
+  },
+  "dependencies": {
+    "axios": "^0.21.1"
   }
 }
