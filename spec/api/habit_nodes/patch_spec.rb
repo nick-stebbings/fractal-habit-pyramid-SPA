@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe 'Feature: habit_nodes resource' do
-  context 'Given a valid habit_node update json And a persisted habit_node tuple' do
+  context 'Given a valid habit_node update json AND a persisted habit_node tuple' do
     let(:resource) { JSON.load response.body }
 
     before do
