@@ -163,6 +163,24 @@ module Hht
           halt 204
         end
       end
+
+      patch '/:domain_id' do |id|
+        # Parse payload
+        domain = MultiJson.load(request.body.read, :symbolize_keys => true)
+        # TODO: Use contract to verify payload
+        
+        existing = domain_repo.by_id(id)
+        if existing
+          domain_repo.update(id, domain) #TODO: make it REPLACE the domain
+          # If returns success monad, we know it persisted
+          # So redirect
+          url = "http://localhost:9393/domains/#{domain['id']}"
+          response.headers['Location'] = url
+          status 201
+        else
+          halt 204
+        end
+      end
     end
 
     # RESOURCES TO BE DESCRIBED LATER

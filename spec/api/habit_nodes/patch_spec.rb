@@ -6,7 +6,6 @@ RSpec.describe 'Feature: habit_nodes resource' do
 
     before do
       @habit_node_update = { id: 3 }
-      @habit_node_update_as_json = @habit_node_update.to_json
       
       @habit_node = valid_root_node.create
       habit_node_repo.create(@habit_node.attributes)
@@ -14,7 +13,7 @@ RSpec.describe 'Feature: habit_nodes resource' do
     end
 
     describe 'When #patch to /api/habit_trees/nodes/:id' do
-      let!(:response) { patch("/api/habit_trees/nodes/#{@habit_node_id}", @habit_node_update_as_json) }
+      let!(:response) { patch("/api/habit_trees/nodes/#{@habit_node_id}", @habit_node_update.to_json) }
 
       it 'Then returns status code 201' do
         expect(response.status).to eq 201
