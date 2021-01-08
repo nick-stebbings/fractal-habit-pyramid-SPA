@@ -114,16 +114,147 @@ module Hht
     namespace '/api/habit_trees' do
       # Get root node tree
       get '' do
-        get "/#{habit_node_repo.root_node.one.id}"
+        root_id = habit_node_repo.root_node.one.id
+        tree = generate_subtree(root_id)
+        json Subtree.as_json(tree)
       end
+
+      post '' do
+        halt 405
+      end
+
       # Get subtree by root node id
       get '/:root_id' do |root_id|
         tree = generate_subtree(root_id)
         json Subtree.as_json(tree)
       end
-      
     end
 
+    namespace '/api/domains' do
+      get '' do
+        content_type 'application/json'
+        json domain_repo.all_as_json
+      end
+  
+      post '' do
+        # Parse payload
+        domain = MultiJson.load(request.body.read, :symbolize_keys => true)
+        # TODO: Use contract to verify payload
+        domain_repo.create(domain)
+        # If returns success monad, we know it persisted
+        # So redirect
+        url = "http://localhost:9393/domains/#{domain['id']}"
+        response.headers['Location'] = url
+        
+        # So we can return 201 (and the persisted item?)
+        status 201
+      end
+
+      get '/:domain_id' do |id|
+        content_type 'application/json'
+        status 200
+        json domain_repo.as_json(id)
+      end
+
+      put '/:domain_id' do |id|
+        # Parse payload
+        domain = MultiJson.load(request.body.read, :symbolize_keys => true)
+        # TODO: Use contract to verify payload
+        
+        existing = domain_repo.by_id(id)
+        if existing
+          domain_repo.update(id, domain) #TODO: make it REPLACE the domain
+          # If returns success monad, we know it persisted
+          # So redirect
+          url = "http://localhost:9393/domains/#{domain['id']}"
+          response.headers['Location'] = url
+          status 201
+        else
+          halt 204
+        end
+      end
+
+      patch '/:domain_id' do |id|
+        # Parse payload
+        domain = MultiJson.load(request.body.read, :symbolize_keys => true)
+        # TODO: Use contract to verify payload
+        
+        existing = domain_repo.by_id(id)
+        if existing
+          domain_repo.update(id, domain) #TODO: make it REPLACE the domain
+          # If returns success monad, we know it persisted
+          # So redirect
+          url = "http://localhost:9393/domains/#{domain['id']}"
+          response.headers['Location'] = url
+          status 201
+        else
+          halt 204
+        end
+      end
+    end
+
+    namespace '/api/domains' do
+      get '' do
+        content_type 'application/json'
+        json domain_repo.all_as_json
+      end
+  
+      post '' do
+        # Parse payload
+        domain = MultiJson.load(request.body.read, :symbolize_keys => true)
+        # TODO: Use contract to verify payload
+        domain_repo.create(domain)
+        # If returns success monad, we know it persisted
+        # So redirect
+        url = "http://localhost:9393/domains/#{domain['id']}"
+        response.headers['Location'] = url
+        
+        # So we can return 201 (and the persisted item?)
+        status 201
+      end
+
+      get '/:domain_id' do |id|
+        content_type 'application/json'
+        status 200
+        json domain_repo.as_json(id)
+      end
+
+      put '/:domain_id' do |id|
+        # Parse payload
+        domain = MultiJson.load(request.body.read, :symbolize_keys => true)
+        # TODO: Use contract to verify payload
+        
+        existing = domain_repo.by_id(id)
+        if existing
+          domain_repo.update(id, domain) #TODO: make it REPLACE the domain
+          # If returns success monad, we know it persisted
+          # So redirect
+          url = "http://localhost:9393/domains/#{domain['id']}"
+          response.headers['Location'] = url
+          status 201
+        else
+          halt 204
+        end
+      end
+
+      patch '/:domain_id' do |id|
+        # Parse payload
+        domain = MultiJson.load(request.body.read, :symbolize_keys => true)
+        # TODO: Use contract to verify payload
+        
+        existing = domain_repo.by_id(id)
+        if existing
+          domain_repo.update(id, domain) #TODO: make it REPLACE the domain
+          # If returns success monad, we know it persisted
+          # So redirect
+          url = "http://localhost:9393/domains/#{domain['id']}"
+          response.headers['Location'] = url
+          status 201
+        else
+          halt 204
+        end
+      end
+    end
     # RESOURCES TO BE DESCRIBED LATER
     namespace '/api/habits' do
     end

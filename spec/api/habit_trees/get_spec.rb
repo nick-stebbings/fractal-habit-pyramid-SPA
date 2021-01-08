@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
-RSpec.describe 'Feature: habit_nodes resource' do
+RSpec.describe 'Feature: habit_trees' do
   context 'Given a persisted node' do
-    before(:all) do
-      habit_node_repo.create(valid_root_node.attributes)
+    before do
+      habit_node_repo.create(valid_root_node.create.attributes)
     end
 
     describe 'When #get to /api/habit_trees' do
-      let(:response) { get '/api/habit_trees' }
+      let!(:response) { get '/api/habit_trees' }
 
-      it 'Then returns status code 200' do
+      it 'Then returns correct status code' do
         expect(response.status).to eq 200
       end
     end

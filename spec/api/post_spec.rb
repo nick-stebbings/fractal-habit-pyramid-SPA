@@ -7,10 +7,10 @@ RSpec.describe 'Feature: API root' do
     end
 
     describe 'When post to /api' do
-      let(:response) { post '/api' }
+      let!(:response) { post '/api' }
 
-      describe 'Then returns correct status code' do
-        it { expect(response.status).to eq 405 }
+      it 'Then returns correct status code' do
+        expect(response.status).to eq 405
       end
     end
   end
