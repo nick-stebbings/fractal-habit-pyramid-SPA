@@ -1,0 +1,29 @@
+{
+  "name": "hhtspav1",
+  "version": "1.0.0",
+  "description": "A fractal habit tracking single page app",
+  "main": "main.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "rake spec",
+    "build": "./node_modules/.bin/rollup -c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nick-stebbings/fractal-habit-pyramid-SPA.git"
+  },
+  "keywords": [
+    "habit-tracking"
+  ],
+  "author": "Nick Stebbings",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nick-stebbings/fractal-habit-pyramid-SPA/issues"
+  },
+  "homepage": "https://github.com/nick-stebbings/fractal-habit-pyramid-SPA#readme",
+  "devDependencies": {
+    "rollup": "^2.36.1"
+  }
+}
