@@ -3,7 +3,7 @@
 RSpec.describe 'Feature: domains resource' do
   context 'Given a valid domain json' do
     before do
-      @domain = valid_domain
+      @domain = valid_domain.create
       @domain_id = @domain.attributes[:id]
       @domain_as_json = @domain.attributes.to_json
     end

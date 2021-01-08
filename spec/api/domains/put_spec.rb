@@ -3,7 +3,7 @@
 RSpec.describe 'Feature: domains resource' do
   context 'Given a valid domain json AND a persisted domain tuple with the same id' do
     before do
-      @domain = valid_domain
+      @domain = valid_domain.create
       @domain_id = @domain.attributes[:id]
       @domain_as_json = @domain.attributes.to_json
       

@@ -27,11 +27,15 @@ module Test
     end
 
     def valid_domain
-      Factory.registry.elements[:domain].create
+      Factory.registry.elements[:domain]
+    end
+
+    def valid_root_node
+      Factory.registry.elements[:root_node]
     end
 
     def valid_habit_node
-      Factory.registry.elements[:habit_node].create
+      Factory.registry.elements[:habit_node]
     end
   end
 end

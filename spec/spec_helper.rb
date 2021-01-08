@@ -32,8 +32,10 @@ RSpec.configure do |config|
   config.include Rack::Test::Methods
   config.include Test::DatabaseHelpers
   config.include JsonSpec::Helpers
-  config.include Hht::Import['repos.domain_repo']
-  config.include Hht::Import['repos.habit_node_repo']
+  config.include Hht::Import[
+    'repos.domain_repo',
+    'repos.habit_node_repo',
+  ]
   Faker::Config.random = Random.new(42)
 
   config.backtrace_exclusion_patterns = [
@@ -59,10 +61,12 @@ RSpec.configure do |config|
     DatabaseCleaner.clean_with(:truncation)
   end
 
-  config.around(:each) do |example|
-    DatabaseCleaner.cleaning do
-      example.run
-    end
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
   end
 end
 
