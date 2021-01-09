@@ -1,35 +1,93 @@
 import client from "./client/client.js";
+import HabitNodes from "./models/HabitNodes";
 
-client.get_all().then(function (response) {
-  console.log(m);
-});
+var hht = {};
 
-// //our app's namespace
-// var chain = {};
+//models
+var hhtHabitNode = {
+  show: client.show_one_node,
+  load: HabitNodes.list,
+  save: client.create_node,
+  update: client.update_node,
+  delete: client.delete_node,
+}
 
-// chain.view = function (ctrl) {
-//   return m(
-//     "table",
-//     chain.seven(function () {
-//       return m(
-//         "tr",
-//         chain.seven(function () {
-//           return m("td", [m("input[type=checkbox]")]);
-//         })
-//       );
-//     })
-//   );
+// hhtHabitDate = {
+//   localStorage: [],
+//   habitDate.today = function () {
+//     var now = new Date();
+//     return new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0, 0);
+//   },
+//   habitDate.resetDate = function () {
+//     return localStorage["habitDate-app.start-date"] = habitDate.today().getTime();
+//   },
+//   habitDate.startDate = function () {
+//     return new Date(parseInt(localStorage["habitDate-app.start-date"] || habitDate.resetDate()));
+//   },
+//   habitDate.dateAt = function (index) {
+//     var date = new Date(habitDate.startDate());
+//     date.setDate(date.getDate() + index);
+//     return date;
+//   }
+// }
+
+// //controller
+// hhtHabitNode.controller = function () {
+//   var list = hhtHabitNode.load();
+
+//   this.isChecked = function (index) {
+//     return list[index]
+//   };
+//   // this.check = function (index, status) {
+//   //   if (hhtHabitNode.dateAt(index).getTime() <= hhtHabitNode.today().getTime()) {
+//   //     list[index] = status;
+//   //     hhtHabitNode.save(list);
+//   //   }
+//   // };
 // };
 
-// //create a helper utility that we can use in the view
-// chain.seven = function (subject) {
+
+
+//view
+hht.view = function (ctrl) {
+  return m("table", hht.seven(function (y) {
+    return m("tr", hht.seven(function (x) {
+      var index = hht.indexAt(x, y)
+      return m("td", hht.highlights(index), [
+        m("input[type=checkbox]", hht.checks(ctrl, index))
+      ]);
+    }));
+  }));
+};
+
+// hht.seven = function (subject) {
 //   var output = [];
 //   for (var i = 0; i < 7; i++) output.push(subject(i));
 //   return output;
 // };
 
-var list = require("./views/nodeList");
+// hht.checks = function (ctrl, index) {
+//   return {
+//     onclick: function () {
+//       ctrl.check(index, this.checked);
+//     },
+//     checked: ctrl.isChecked(index)
+//   };
+// };
 
+// hht.highlights = function (index) {
+//   return {
+//     style: {
+//       background: hht.dateAt(index).getTime() == hht.today().getTime() ? "silver" : ""
+//     }
+//   };
+// };
+
+// hht.indexAt = function (x, y) {
+//   return y * 7 + x;
+// }
+
+var list = require("./views/nodeList");
 m.mount(document.body, list);
 //render it
 // m.mount(document.body, { controller: function () {}, view: chain.view });

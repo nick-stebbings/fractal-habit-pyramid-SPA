@@ -1,13 +1,14 @@
 // src/views/view.js
 
-var HabitNode = require("../models/HabitNode.js");
+var HabitNodes = require("../models/HabitNodes.js");
+
 module.exports = {
-  oninit: HabitNode.loadList,
+  oninit: HabitNodes.loadList,
   view: function () {
     return m(
-      ".node-list",
-      HabitNode.list.map(function (node) {
-        return m(".node-list-item", node.parent_id);
+      "ul",
+      HabitNodes.list.map(function (node) {
+        return m("li", node.id);
       })
     );
   },
