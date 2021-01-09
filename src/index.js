@@ -1,8 +1,7 @@
-import m from "mithril";
 import client from "./client/client.js";
 
 client.get_all().then(function (response) {
-  console.log(response);
+  console.log(m);
 });
 
 //our app's namespace
@@ -30,4 +29,4 @@ chain.seven = function (subject) {
 };
 
 //render it
-m.module(document.body, { controller: function () {}, view: chain.view });
+m.mount(document.body, { controller: function () {}, view: chain.view });

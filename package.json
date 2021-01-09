@@ -29,6 +29,7 @@
     "grunt-contrib-clean": "^2.0.0",
     "grunt-contrib-watch": "^1.1.0",
     "gruntify-eslint": "^5.0.0",
+    "html-webpack-plugin": "^4.5.1",
     "mithril": "^2.0.4",
     "webpack": "^5.12.2",
     "webpack-cli": "^4.3.1"

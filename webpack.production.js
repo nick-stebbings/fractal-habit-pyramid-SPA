@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
 module.exports = {
-  mode: "development",
+  mode: "production",
   entry: "./src/index.js",
   output: {
     filename: "main.[contenthash]].js",
@@ -17,4 +17,4 @@ module.exports = {
       m: "mithril", //Global access
     }),
   ],
-};
+};\
