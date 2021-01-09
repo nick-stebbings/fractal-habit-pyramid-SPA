@@ -1,12 +1,13 @@
 // src/models/nodes.js
-import client from '../client';
+var client = require('../client/client').default;
 
 let HabitNode = {
   list: [],
   loadList: function () {
-    client.show_one_node.then(function(){
-      HabitNode.list = result.data
-    })
+    return client.get_all().
+      then(function(result){
+        HabitNode.list = result.data['children']
+      })
   },
 };
 
