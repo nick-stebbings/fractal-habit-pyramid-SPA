@@ -1,6 +1,6 @@
 // src/views/view.js
 
-var HabitNode = require("../models/nodes.js");
+var HabitNode = require("../models/HabitNode.js");
 module.exports = {
   oninit: HabitNode.loadList,
   view: function () {

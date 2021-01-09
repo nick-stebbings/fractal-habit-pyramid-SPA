@@ -28,8 +28,8 @@ client.get_all().then(function (response) {
 //   return output;
 // };
 
-var HabitNodeList = require("./views/view");
+var list = require("./views/nodeList");
 
-m.mount(document.body, HabitNodeList);
+m.mount(document.body, list);
 //render it
 // m.mount(document.body, { controller: function () {}, view: chain.view });
