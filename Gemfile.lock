@@ -93,6 +93,8 @@ GEM
     puma (5.1.1)
       nio4r (~> 2.0)
     rack (2.2.3)
+    rack-cors (1.1.1)
+      rack (>= 2.0.0)
     rack-protection (2.1.0)
       rack
     rack-test (1.1.0)
@@ -202,6 +204,7 @@ DEPENDENCIES
   pg
   pry-byebug
   puma
+  rack-cors
   rack-test
   racksh
   rake
@@ -214,7 +217,7 @@ DEPENDENCIES
   shotgun
   sinatra
   sinatra-contrib
-  sinatra-cross_origin (~> 0.3.1)
+  sinatra-cross_origin
 
 RUBY VERSION
    ruby 2.4.1p111

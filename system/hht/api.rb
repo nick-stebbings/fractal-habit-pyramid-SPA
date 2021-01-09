@@ -13,30 +13,23 @@ require File.join(APP_ROOT, 'lib', 'subtree')
 module Hht
   class Api < Sinatra::Base
     register Sinatra::Namespace
-    register Sinatra::CrossOrigin
-    enable :cross_origin
 
-    configure :development do
+    configure :development, :test do
       register Sinatra::Reloader
+      
+      # CORS workaround
+      register Sinatra::CrossOrigin
+      enable :cross_origin      
+      set :allow_origin, '*'
+      set :allow_methods, 'GET,HEAD,POST'
+      set :allow_headers, 'content-type,if-modified-since,access-control-allow-methods,access-control-allow-origin'
+      set :expose_headers, 'content-disposition'
+      set :allow_credentials, true
+      set :protection, :except => :json_csrf
     end
 
     set :root, APP_ROOT
     set :public_folder, (proc { File.join(APP_ROOT, 'public') })
-
-    set :allow_origin, :any
-    set :allow_methods, [:get, :post, :options]
-    set :allow_credentials, true
-    set :max_age, "1728000"
-    set :expose_headers, ['Content-Type']
-    before do
-      response.headers['Access-Control-Allow-Origin'] = '*'
-    end
-    options "*" do
-      response.headers["Allow"] = "GET, PUT, POST, DELETE, OPTIONS"
-      response.headers["Access-Control-Allow-Headers"] = "Authorization, Content-Type, Accept, X-User-Email, X-Auth-Token"
-      response.headers["Access-Control-Allow-Origin"] = "*"
-      200
-    end
 
     include Import[
       'repos.domain_repo',
