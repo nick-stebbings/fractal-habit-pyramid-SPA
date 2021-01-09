@@ -5,8 +5,9 @@ Gemfile.lock
 /.vscode/
 /tmp/
 /test/
-/tests/
+tests
 node_modules
+dist
 
 # Used by dotenv library to load environment variables.
 .env

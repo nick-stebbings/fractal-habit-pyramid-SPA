@@ -16,15 +16,6 @@ module Hht
 
     configure :development, :test do
       register Sinatra::Reloader
-      
-      # CORS workaround
-      register Sinatra::CrossOrigin
-      enable :cross_origin      
-      set :allow_origin, '*'
-      set :allow_methods, 'GET,HEAD,POST'
-      set :allow_headers, 'content-type,if-modified-since,access-control-allow-methods,access-control-allow-origin'
-      set :expose_headers, 'content-disposition'
-      set :allow_credentials, true
       set :protection, :except => :json_csrf
     end
 

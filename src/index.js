@@ -1,3 +1,4 @@
+import m from "mithril";
 import client from "./client/client.js";
 
 client.get_all().then(function (response) {
