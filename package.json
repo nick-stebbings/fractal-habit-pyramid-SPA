@@ -24,9 +24,18 @@
   },
   "homepage": "https://github.com/nick-stebbings/fractal-habit-pyramid-SPA#readme",
   "devDependencies": {
-    "rollup": "^2.36.1"
+    "@rollup/plugin-commonjs": "^17.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "axios": "^0.21.1",
+    "grunt": "~0.4.5",
+    "grunt-contrib-clean": "^2.0.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-rollup": "^11.5.0",
+    "gruntify-eslint": "^5.0.0",
+    "mithril": "^2.0.4",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-globals": "^1.4.0",
+    "rollup-plugin-node-resolve": "^5.2.0"
   },
-  "dependencies": {
-    "axios": "^0.21.1"
-  }
+  "dependencies": {}
 }

@@ -68,9 +68,6 @@ GEM
       dry-schema (~> 1.5, >= 1.5.2)
     faker (2.12.0)
       i18n (>= 1.6, < 2)
-    fuubar (2.5.1)
-      rspec-core (~> 3.0)
-      ruby-progressbar (~> 1.4)
     i18n (1.8.7)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
@@ -183,6 +180,7 @@ GEM
       rack-protection (= 2.1.0)
       sinatra (= 2.1.0)
       tilt (~> 2.0)
+    sinatra-cross_origin (0.3.2)
     structured_warnings (0.4.0)
     tilt (2.0.10)
     transproc (1.1.1)
@@ -198,7 +196,6 @@ DEPENDENCIES
   dry-system
   dry-validation
   faker
-  fuubar
   json
   json_spec
   multi_json
@@ -217,6 +214,7 @@ DEPENDENCIES
   shotgun
   sinatra
   sinatra-contrib
+  sinatra-cross_origin (~> 0.3.1)
 
 RUBY VERSION
    ruby 2.4.1p111

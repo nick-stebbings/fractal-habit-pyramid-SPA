@@ -4,6 +4,7 @@ require 'sinatra/base'
 require 'sinatra/namespace'
 require 'sinatra/reloader'
 require 'sinatra/json'
+require 'sinatra/cross_origin'
 require 'multi_json'
 
 require_relative 'container'
@@ -12,11 +13,30 @@ require File.join(APP_ROOT, 'lib', 'subtree')
 module Hht
   class Api < Sinatra::Base
     register Sinatra::Namespace
+    register Sinatra::CrossOrigin
+    enable :cross_origin
+
     configure :development do
       register Sinatra::Reloader
     end
+
     set :root, APP_ROOT
     set :public_folder, (proc { File.join(APP_ROOT, 'public') })
+
+    set :allow_origin, :any
+    set :allow_methods, [:get, :post, :options]
+    set :allow_credentials, true
+    set :max_age, "1728000"
+    set :expose_headers, ['Content-Type']
+    before do
+      response.headers['Access-Control-Allow-Origin'] = '*'
+    end
+    options "*" do
+      response.headers["Allow"] = "GET, PUT, POST, DELETE, OPTIONS"
+      response.headers["Access-Control-Allow-Headers"] = "Authorization, Content-Type, Accept, X-User-Email, X-Auth-Token"
+      response.headers["Access-Control-Allow-Origin"] = "*"
+      200
+    end
 
     include Import[
       'repos.domain_repo',

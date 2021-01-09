@@ -1,3 +1,9 @@
+import client from "./client/client.js";
+
+client.get_all().then(function (response) {
+  console.log(response);
+});
+
 //our app's namespace
 var chain = {};
 
