@@ -1,4 +1,4 @@
-// src/views/view.js
+// src/views/nodeList.js
 
 var HabitNodes = require("../models/HabitNodes.js");
 
