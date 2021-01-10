@@ -19,7 +19,26 @@ module.exports = merge(common, {
     rules: [
       {
         test: /\.scss$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader", // translates CSS into CommonJS modules
+          },
+          {
+            loader: "postcss-loader", // Run post css actions
+            options: {
+              postcssOptions: {
+                plugins: function () {
+                  // post css plugins, can be exported to postcss.config.js
+                  return [require("precss"), require("autoprefixer")];
+                },
+              },
+            },
+          },
+          {
+            loader: "sass-loader", // compiles Sass to CSS
+          },
+        ],
       },
     ],
   },

@@ -20,7 +20,7 @@ group :development do
   gem 'racksh'
   gem 'rubocop'
   gem 'shotgun'
-  gem "sinatra-cross_origin"
+  # gem "sinatra-cross_origin"
 end
 
 group :test do
