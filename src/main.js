@@ -1,10 +1,10 @@
-import client from "./client/client.js";
-import HabitNodes from "./models/HabitNodes";
-
-var hht = {};
+const client = require('./client/client');
+const routes = require('./routes');
+console.log(routes);
+let hht = {};
 
 //models
-var hhtHabitNode = {
+let hhtHabitNode = {
   show: client.show_one_node,
   load: HabitNodes.list,
   save: client.create_node,
@@ -49,16 +49,16 @@ var hhtHabitNode = {
 
 
 //view
-hht.view = function (ctrl) {
-  return m("table", hht.seven(function (y) {
-    return m("tr", hht.seven(function (x) {
-      var index = hht.indexAt(x, y)
-      return m("td", hht.highlights(index), [
-        m("input[type=checkbox]", hht.checks(ctrl, index))
-      ]);
-    }));
-  }));
-};
+// hht.view = function (ctrl) {
+//   return m("table", hht.seven(function (y) {
+//     return m("tr", hht.seven(function (x) {
+//       var index = hht.indexAt(x, y)
+//       return m("td", hht.highlights(index), [
+//         m("input[type=checkbox]", hht.checks(ctrl, index))
+//       ]);
+//     }));
+//   }));
+// };
 
 // hht.seven = function (subject) {
 //   var output = [];
@@ -87,7 +87,5 @@ hht.view = function (ctrl) {
 //   return y * 7 + x;
 // }
 
-var list = require("./views/nodeList");
-m.mount(document.body, list);
-//render it
-// m.mount(document.body, { controller: function () {}, view: chain.view });
+// m.mount(document.body, hht);
+m.route(document.body, "/list", routes); 

@@ -5,21 +5,21 @@ axios.defaults.withCredentials = true;
 axios.defaults.headers.post["Content-Type"] =
   "application/json;charset=utf-8";
 
-export default (function () {
+export default (function() {
   return {
-    get_all: function () {
+    get_all: function() {
       return axios.get("/api/habit_trees/nodes");
     },
 
-    create_node: function (parent_node) {
+    create_node: function(parent_node) {
       return axios.post("/api/habit_trees/nodes", { parent_id: parent_node });
     },
 
-    show_one_node: function (id) {
+    show_one_node: function(id) {
       return axios.get("/api/habit_trees/nodes/" + id);
     },
 
-    delete_node: function (id) {
+    delete_node: function(id) {
       return axios.delete("/api/habit_trees/nodes/" + id);
     },
   };

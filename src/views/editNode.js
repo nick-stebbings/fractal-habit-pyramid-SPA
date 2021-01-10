@@ -1,6 +1,6 @@
 // src/views/editNode.js
 
-var HabitNodes = require("../models/HabitNodes.js");
+let HabitNodes = require("../models/HabitNodes.js");
 
 module.exports = {
   oninit: function(vnode) { HabitNodes.load(vnode.attrs.id) },
