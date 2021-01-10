@@ -1,4 +1,5 @@
 import PageLayout from "./components/standard-layout";
+import HabitLayout from "./components/habit-layout";
 
 // Individual pages
 import IndexPage from "./pages/landing-page";
@@ -6,17 +7,17 @@ import IndexPage from "./pages/landing-page";
 const Routes = {
   "/list": {
     render: function () {
-      return m(Layout, m(nodeList));
+      return m(HabitLayout, m(nodeList));
     },
   },
   "/new": {
     render: function () {
-      return m(Layout, m(addNode));
+      return m(HabitLayout, m(addNode));
     },
   },
   "/edit/:id": {
     render: function (vnode) {
-      return m(Layout, m(editNode, vnode.attrs));
+      return m(HabitLayout, m(editNode, vnode.attrs));
     },
   },
   "/test": {
@@ -26,6 +27,6 @@ const Routes = {
   },
 };
 
-const DefaultRoute = "/test";
+const DefaultRoute = "/list";
 
 export { Routes, DefaultRoute };

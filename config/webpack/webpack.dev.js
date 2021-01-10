@@ -4,8 +4,8 @@ const path = require("path");
 
 module.exports = merge(common, {
   mode: "development",
-  entry: ['webpack/hot/dev-server' , "./src/index.js"],
   output: {
+    filename: "main.js",
     filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist"),
   },
@@ -19,11 +19,7 @@ module.exports = merge(common, {
     rules: [
       {
         test: /\.scss$/,
-        use: [
-          "style-loader", //3. Inject styles into DOM
-          "css-loader", //2. Turns css into commonjs
-          "sass-loader", //1. Turns sass into css
-        ],
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
     ],
   },

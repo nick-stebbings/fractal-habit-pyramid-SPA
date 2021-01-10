@@ -8,13 +8,6 @@ export default function () {
           m('p', 'You\'ve spun up your very first Mithril app :-)'),
           m(SampleComponent),
       ]);
-        // return (
-        //   <div>
-        //     <h2>Congratulations, you made it!</h2>
-        //     <p>You've spun up your very first Mithril app :-)</p>
-        //     <SampleComponent />
-        //   </div>
-        // );
     },
   };
 }

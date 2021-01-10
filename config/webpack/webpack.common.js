@@ -1,15 +1,15 @@
 const webpack = require("webpack");
-const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  entry: "./src/main.js",
+  entry: {
+    main: "./src/index.js",
+    vendor: "./src/vendor.js",
+  },
   plugins: [
     new webpack.ProvidePlugin({
       m: "mithril", //Global access
     }),
-    new MiniCssExtractPlugin({ filename: "bundle.css" }),
     new HtmlWebpackPlugin({
       template: "./src/template.html",
     }),
