@@ -9,7 +9,6 @@ let HabitNodes = {
       .then(function(result){
         HabitNodes.list = JSON.parse(result.data)["habit_nodes"];
         m.redraw();
-        console.log(HabitNodes.list, 'after promise');
       })
   },
 };
