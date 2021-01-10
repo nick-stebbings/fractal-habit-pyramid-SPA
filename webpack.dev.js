@@ -4,7 +4,7 @@ const path = require("path");
 
 module.exports = merge(common, {
   mode: "development",
-  entry: ['webpack/hot/dev-server' , "./src/view/index.js"],
+  entry: ['webpack/hot/dev-server' , "./src/index.js"],
   output: {
     filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist"),
