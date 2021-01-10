@@ -1,5 +1,4 @@
 import PageLayout from "./components/standard-layout";
-import tester from "./components/test-component";
 
 // Individual pages
 import IndexPage from "./pages/landing-page";
@@ -22,7 +21,7 @@ const Routes = {
   },
   "/test": {
     render: function () {
-      return m(PageLayout, m(tester));
+      return m(PageLayout, m(IndexPage));
     },
   },
 };
