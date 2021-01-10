@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: {
-    main: "./src/index.js",
+    main: "./src/scratch_main.jsx",
     vendor: "./src/vendor.js",
   },
   plugins: [
@@ -15,7 +15,18 @@ module.exports = {
     }),
   ],
   module: {
-    rules: [
+    rules: [{
+			test: /\.jsx$/,
+			exclude: /node_modules/,
+			use: {
+				loader: 'babel-loader'
+			}
+		}, {
+			test: /\.js$/,
+			exclude: /node_modules/,
+			use: {
+				loader: 'babel-loader'
+			},
       {
         test: /\.html$/,
         use: ["html-loader"],
