@@ -31,10 +31,10 @@ module.exports = {
           loader: "babel-loader",
         },
       },
-      {
-        test: /\.woff$/,
-        use: 'url-loader?mimetype=application/font-woff&name=/fonts/[name].[ext]'
-      },
+      // {
+      //   test: /\.woff$/,
+      //   use: 'url-loader?mimetype=application/font-woff&name=/fonts/[name].[ext]'
+      // },
       {
         test: /\.html$/,
         use: ["html-loader"],

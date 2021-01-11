@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/nick-stebbings/fractal-habit-pyramid-SPA#readme",
   "devDependencies": {
+    "autoprefixer": "^10.2.1",
     "axios": "^0.21.1",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
@@ -44,14 +45,18 @@
     "node-sass": "^5.0.0",
     "optimize-css-assets-webpack-plugin": "^5.0.4",
     "popper.js": "^1.16.1",
+    "postcss": "^8.2.4",
     "postcss-loader": "^4.1.0",
     "resolve-url-loader": "^3.1.2",
     "sass-loader": "^10.1.0",
     "style-loader": "^2.0.0",
+    "tailwindcss": "^2.0.2",
     "webpack": "^4.41.3",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0",
     "webpack-merge": "^5.7.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "request": "^2.79.0"
+  }
 }

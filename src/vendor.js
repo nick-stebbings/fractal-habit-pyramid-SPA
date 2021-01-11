@@ -1,2 +1,2 @@
-import "bootstrap";
+// import "bootstrap";
 // import "designmodo-flat-ui";

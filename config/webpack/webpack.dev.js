@@ -26,18 +26,8 @@ module.exports = merge(common, {
             }, {
               loader: 'resolve-url-loader'
             }, {
-            //   loader: 'postcss-loader', // Run post css actions
-            //   options: {
-            //     postcssOptions: {
-            //       plugins: function () { // post css plugins, can be exported to postcss.config.js
-            //         return [
-            //           require('precss'),
-            //           require('autoprefixer')
-            //         ];
-            //       }
-            //     }
-            //   }
-            // }, {
+              loader: 'postcss-loader', // Run post css actions
+            }, {
               loader: 'sass-loader' // compiles Sass to CSS
             }]
         }],
