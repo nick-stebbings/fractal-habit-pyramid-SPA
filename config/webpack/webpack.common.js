@@ -1,9 +1,10 @@
+const Path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: {
-    main: "./src/scratch_main.jsx",
+    main: "./src//tmp/scratch_main.jsx",
     vendor: "./src/vendor.js",
   },
   plugins: [
@@ -15,18 +16,25 @@ module.exports = {
     }),
   ],
   module: {
-    rules: [{
-			test: /\.jsx$/,
-			exclude: /node_modules/,
-			use: {
-				loader: 'babel-loader'
-			}
-		}, {
-			test: /\.js$/,
-			exclude: /node_modules/,
-			use: {
-				loader: 'babel-loader'
-			},
+    rules: [
+      {
+        test: /\.jsx$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+        },
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+        },
+      },
+      {
+        test: /\.woff$/,
+        use: 'url-loader?mimetype=application/font-woff&name=/fonts/[name].[ext]'
+      },
       {
         test: /\.html$/,
         use: ["html-loader"],
@@ -43,4 +51,5 @@ module.exports = {
       },
     ],
   },
+  watch: true,
 };

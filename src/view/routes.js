@@ -1,5 +1,5 @@
-import PageLayout from "./components/standard-layout";
-import HabitLayout from "./components/habit-layout";
+import PageLayout from "./components/layouts/standard-layout";
+import HabitLayout from "./components/layouts/habit-layout";
 
 // Individual pages
 import IndexPage from "./pages/landing-page";

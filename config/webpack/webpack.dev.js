@@ -9,7 +9,6 @@ module.exports = merge(common, {
       output: {
         filename: "main.js",
         filename: "[name].bundle.js",
-        path: path.resolve(__dirname, "dist"),
       },
       devServer: {
         inline: true,
@@ -25,18 +24,20 @@ module.exports = merge(common, {
             }, {
               loader: 'css-loader', // translates CSS into CommonJS modules
             }, {
-              loader: 'postcss-loader', // Run post css actions
-              options: {
-                postcssOptions: {
-                  plugins: function () { // post css plugins, can be exported to postcss.config.js
-                    return [
-                      require('precss'),
-                      require('autoprefixer')
-                    ];
-                  }
-                }
-              }
+              loader: 'resolve-url-loader'
             }, {
+            //   loader: 'postcss-loader', // Run post css actions
+            //   options: {
+            //     postcssOptions: {
+            //       plugins: function () { // post css plugins, can be exported to postcss.config.js
+            //         return [
+            //           require('precss'),
+            //           require('autoprefixer')
+            //         ];
+            //       }
+            //     }
+            //   }
+            // }, {
               loader: 'sass-loader' // compiles Sass to CSS
             }]
         }],
