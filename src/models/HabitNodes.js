@@ -1,11 +1,19 @@
 // src/models/nodes.js
-let client = require('../client/client').default;
+import client from "../client/client";
 
-let HabitNodes = {
+const HabitNode = {
+  show: client.show_one_node,
+  load: client.get_all,
+  save: client.create_node,
+  // update: client.update_node,
+  delete: client.delete_node,
+};
+
+const HabitNodes = {
   list: [],
   loadList: function() {
-    return client
-      .get_all()
+    return HabitNode
+      .load()
       .then(function (result) {
       HabitNodes.list = JSON.parse(result.data)["habit_nodes"];
       m.redraw();
@@ -13,14 +21,12 @@ let HabitNodes = {
   },
   current: {},
   load: function(id) {
-    return client
-      .show_one_node(id)
+    return HabitNode
+      .show(id)
       .then(function (result) {
-      console.log(JSON.parse(result.data));
       HabitNodes.current = result.data;
-      m.redraw();
     });
   },
 };
 
-module.exports = HabitNodes
+export default HabitNodes;

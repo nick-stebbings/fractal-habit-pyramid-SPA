@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: {
-    main: "./src//tmp/scratch_main.jsx",
+    main: "./src/index.jsx",
     vendor: "./src/vendor.js",
   },
   plugins: [

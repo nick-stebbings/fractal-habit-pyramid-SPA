@@ -1,12 +1,13 @@
 
+
+import App from "../components/layouts/App.jsx"
+
 export default function () {
   return {
-    view() {
-      return m('div', [
-          m('h2', 'Congratulations, you made it!'),
-          m('p', 'You\'ve spun up your very first Mithril app :-)'),
-          // m(SampleComponent),
-      ]);
+    view(vnode) {
+      return (
+        <App>{vnode.children}</App>
+      );
     },
   };
 }

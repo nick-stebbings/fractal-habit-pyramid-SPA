@@ -1,23 +1,43 @@
 import PageLayout from "./components/layouts/standard-layout";
 import HabitLayout from "./components/layouts/habit-layout";
 
+// Models
+import HabitNodes from "../models/index";
 // Individual pages
 import IndexPage from "./pages/landing-page";
+// View
+import App from "./components/layouts/App.jsx";
+
+// Components
+// import DateBanner from "./view/components/ui/DateBanner.jsx";
+
+// namespace
+const hht = function() {
+  var model = HabitNodes;
+
+  return {
+    oninit: model.loadList,
+    view: App.view,
+    controller: function() {
+      this.list = model.list;
+    }
+  }
+}
 
 const Routes = {
-  "/list": {
-    render: function () {
-      return m(HabitLayout, m(nodeList));
-    },
-  },
+  // "/list": {
+  //   render: function () {
+  //     return m(hht());
+  //   },
+  // },
   "/new": {
     render: function () {
-      return m(HabitLayout, m(addNode));
+      return m(PageLayout, m(IndexPage));
     },
   },
   "/edit/:id": {
-    render: function (vnode) {
-      return m(HabitLayout, m(editNode, vnode.attrs));
+    render: function () {
+      return m(PageLayout, m(IndexPage));
     },
   },
   "/test": {
@@ -27,6 +47,6 @@ const Routes = {
   },
 };
 
-const DefaultRoute = "/list";
+const DefaultRoute = "/test";
 
 export { Routes, DefaultRoute };
