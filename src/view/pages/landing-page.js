@@ -1,13 +1,11 @@
-
+// src/view/components/pages/landing-page.jsx
 
 import App from "../components/layouts/App.jsx"
 
-export default function () {
-  return {
-    view(vnode) {
+export default {
+    view: function({attrs}) {
       return (
-        <App>{vnode.children}</App>
+        <App routes={attrs.routes}></App>
       );
     },
-  };
 }

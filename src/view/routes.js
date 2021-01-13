@@ -24,15 +24,30 @@ const hht = function() {
   }
 }
 
+const routeNames = [
+  {
+    name: "Domains",
+    url: "/domains"
+  },
+  {
+    name: "Habits",
+    url: "/habits"
+  },
+  {
+    name: "Visualise",
+    url: "/vis"
+  },
+];
+
 const Routes = {
   // "/list": {
   //   render: function () {
   //     return m(hht());
   //   },
   // },
-  "/new": {
+  "/": {
     render: function () {
-      return m(PageLayout, m(IndexPage));
+      return m(PageLayout, m(App, {routes: routeNames}));
     },
   },
   "/edit/:id": {
@@ -47,6 +62,6 @@ const Routes = {
   },
 };
 
-const DefaultRoute = "/test";
+const DefaultRoute = "/";
 
 export { Routes, DefaultRoute };

@@ -2,14 +2,12 @@
 
 import NavBar from "./NavBar.jsx";
 import HabitView from "./habit-layout/HabitView.jsx";
-// import NavBar from "./NavBar.jsx";
 
 const App = {
-  view: (vnode) => (
+  view: ({attrs}) => (
     <div class="App">
+      <NavBar routes={attrs.routes}></NavBar>
       {/* <HabitView>{console.log(vnode)}</HabitView> */}
-      <NavBar />
-      
     </div>
   )
 };
