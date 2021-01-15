@@ -5,26 +5,18 @@ const HabitNode = {
   show: client.show_one_node,
   load: client.get_all,
   save: client.create_node,
-  // update: client.update_node,
   delete: client.delete_node,
 };
+// update: client.update_node,
 
 const HabitNodes = {
-  list: [],
-  loadList: function() {
-    return HabitNode
-      .load()
-      .then(function (result) {
-      HabitNodes.list = JSON.parse(result.data)["habit_nodes"];
-      m.redraw();
-    });
-  },
+  loadList: HabitNode.load,
   current: {},
   load: function(id) {
     return HabitNode
       .show(id)
       .then(function (result) {
-      HabitNodes.current = result.data;
+        this.current = result.data;
     });
   },
 };

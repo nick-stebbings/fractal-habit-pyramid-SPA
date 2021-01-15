@@ -1,29 +1,23 @@
-// import nodeList from "../../../habit-node/
-const nodeList = {
-    view: ({ children }) => {
-      return m(
-        "ul",
-        children.map(function (node) {
-          return m("li", node.id);
-        })
-      );
-    },
-  };
+// Models
+import stream from 'mithril/stream'
+import HabitNodes from "../../../../models/index";
 
-const HabitView = (ctrl) => [
-<nodeList>
-		{
-			ctrl.list
-		}
-	</nodeList>
-];
+const HabitView = (function() {
+  let habitNodes = stream([]);
+  HabitNodes.loadList()
+    .then(response => JSON.parse(response.data).habit_nodes)
+    .then(habitNodes)
+    .then(() => m.redraw());
 
-// <StageBanner action={() => console.log(`Logging out!`)} title="Conferences" />,
-// <CardContainer>
-// 	{
-// 		conferences
-// 			.map((conference) => <ConferenceCard conference={conference} />)
-// 	}
-// </CardContainer>
+  return {
+    view: () => [m("ul",
+      habitNodes().map(function (book) {
+        return m("li", {
+          key: book.id
+        }, book.parent_id);
+      })
+    )]
+  }
+})()
 
 export default HabitView;

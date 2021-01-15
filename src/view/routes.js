@@ -1,67 +1,62 @@
+// Layouts
 import PageLayout from "./components/layouts/standard-layout";
 import HabitLayout from "./components/layouts/habit-layout";
-
-// Models
-import HabitNodes from "../models/index";
 // Individual pages
 import IndexPage from "./pages/landing-page";
-// View
-import App from "./components/layouts/App.jsx";
 
+// Models
+// import HabitNodes from "../models/index";
+// View
+// import App from "./components/layouts/App.jsx";
 // Components
 // import DateBanner from "./view/components/ui/DateBanner.jsx";
 
 // namespace
 const hht = function() {
-  var model = HabitNodes;
-
   return {
-    oninit: model.loadList,
-    view: App.view,
-    controller: function() {
-      this.list = model.list;
+    oninit: function() {
+      console.log('from shell');
+    },
+    view: function() {
+      return m.mount('.habits', HabitLayout)
     }
   }
 }
 
 const routeNames = [
   {
-    name: "Domains",
+    label: "Domains",
     url: "/domains"
   },
   {
-    name: "Habits",
+    label: "Habits",
     url: "/habits"
   },
   {
-    name: "Visualise",
+    label: "Visualise",
     url: "/vis"
   },
 ];
+let hhtApp = hht();
 
 const Routes = {
-  // "/list": {
-  //   render: function () {
-  //     return m(hht());
-  //   },
-  // },
   "/": {
     render: function () {
-      return m(PageLayout, m(App, {routes: routeNames}));
+      return m(IndexPage, {routes: routeNames});
     },
   },
   "/edit/:id": {
     render: function () {
-      return m(PageLayout, m(IndexPage));
+      return m(PageLayout, m(IndexPage, {routes: routeNames}));
     },
   },
   "/test": {
     render: function () {
-      return m(PageLayout, m(IndexPage));
+      return m(hhtApp);
     },
   },
 };
 
-const DefaultRoute = "/";
+const DefaultRoute = "/test";
 
 export { Routes, DefaultRoute };

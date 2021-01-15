@@ -5,13 +5,12 @@ import HabitView from "./habit-layout/HabitView.jsx";
 
 const App = {
   view: ({attrs}) => (
-    <div class="App">
+    <div class="container">
       <NavBar routes={attrs.routes}></NavBar>
-      {/* <HabitView>{console.log(vnode)}</HabitView> */}
+      <HabitView></HabitView>
     </div>
   )
 };
-
 
 export default App;
 

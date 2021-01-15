@@ -18,6 +18,9 @@ module Hht
       register Sinatra::Reloader
       set :protection, :except => :json_csrf
     end
+    before do
+      # halt 200 if request.request_method == 'OPTIONS'
+    end
 
     set :root, APP_ROOT
     set :public_folder, (proc { File.join(APP_ROOT, 'public') })

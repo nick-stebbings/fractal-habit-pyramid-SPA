@@ -1,4 +1,6 @@
-module.exports = {
+import HabitView from './HabitView.jsx';
+
+export default {
   view: function (vnode) {
     return m("main.layout", [
       m("nav.menu", [
@@ -6,7 +8,7 @@ module.exports = {
         m(m.route.Link, { href: "/new" }, "New Habit Node"),
         m(m.route.Link, { href: "/edit/2" }, "Edit Habit Node"),
       ]),
-      m("section", vnode.children),
+      m("section", HabitView),
     ]);
   },
 };

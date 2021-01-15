@@ -1,6 +1,6 @@
 // src/view/components/ui/MenuListCards.jsx
 
-const MenuList = {
+const MenuListCards = {
   view: ({ attrs }) => (
     <div class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-blue-800">
       <div class="container mx-auto w-full flex flex-wrap justify-between mx-2">
@@ -81,4 +81,4 @@ const MenuList = {
   )
 };
 
-export default MenuList;
+export default MenuListCards;
