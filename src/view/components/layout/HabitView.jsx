@@ -1,6 +1,9 @@
-// Models
+// src/view/components/layout/HabitView.jsx
+
 import stream from 'mithril/stream'
-import HabitNodes from "../../../../models/index";
+
+// Model
+import HabitNodes from "../../../models/index";
 
 const HabitView = (function() {
   let habitNodes = stream([]);

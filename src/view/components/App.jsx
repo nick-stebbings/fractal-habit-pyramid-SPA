@@ -1,7 +1,7 @@
-// src/view/components/layouts/App.jsx
+// src/view/components/App.jsx
 
-import NavBar from "./NavBar.jsx";
-import HabitView from "./habit-layout/HabitView.jsx";
+import NavBar from "./layout/NavBar.jsx";
+import HabitView from "./layout/HabitView.jsx";
 
 const App = {
   view: ({attrs}) => (

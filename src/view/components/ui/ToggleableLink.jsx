@@ -1,7 +1,7 @@
 // src/view/components/ui/ToggleableLink.jsx
 
 const ToggleableLink = {
-  view: ({ chidren, attrs }) => (
+  view: ({attrs}) => (
     <li class="toggleable">
       <input type="checkbox" value="selected" id={`toggle-${attrs.id}`} class="toggle-input" />
       <label for={`toggle-${attrs.id}`} class="block cursor-pointer py-6 px-4 lg:p-6 text-sm lg:text-base font-bold">

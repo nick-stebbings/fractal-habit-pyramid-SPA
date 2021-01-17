@@ -1,29 +1,16 @@
 // Layouts
-import PageLayout from "./components/layouts/standard-layout";
-import HabitLayout from "./components/layouts/habit-layout";
+import Layout from "./components/layout/index";
+
 // Individual pages
-import IndexPage from "./pages/landing-page";
+
 
 // Models
 // import HabitNodes from "../models/index";
-// View
-// import App from "./components/layouts/App.jsx";
+
 // Components
-// import DateBanner from "./view/components/ui/DateBanner.jsx";
+import App from "./components/App.jsx";
 
-// namespace
-const hht = function() {
-  return {
-    oninit: function() {
-      console.log('from shell');
-    },
-    view: function() {
-      return m.mount('.habits', HabitLayout)
-    }
-  }
-}
-
-const routeNames = [
+const routes = [
   {
     label: "Domains",
     url: "/domains"
@@ -37,22 +24,32 @@ const routeNames = [
     url: "/vis"
   },
 ];
-let hhtApp = hht();
 
+// namespace
+const hht = function() {
+  return {
+    oninit: function() {
+      console.log('from shell');
+    },
+    view: () => m(App, { routes })
+  }
+}
+
+let hhtApp = hht();
 const Routes = {
-  "/": {
-    render: function () {
-      return m(IndexPage, {routes: routeNames});
-    },
-  },
-  "/edit/:id": {
-    render: function () {
-      return m(PageLayout, m(IndexPage, {routes: routeNames}));
-    },
-  },
+  // "/": {
+    //   render: function () {
+      //     return m(IndexPage, {routes: routeNames});
+      //   },
+      // },
+      // "/edit/:id": {
+        //   render: function () {
+          //     return m(PageLayout, m(IndexPage, {routes: routeNames}));
+  //   },
+  // },
   "/test": {
     render: function () {
-      return m(hhtApp);
+      return m(Layout, m(hhtApp));
     },
   },
 };

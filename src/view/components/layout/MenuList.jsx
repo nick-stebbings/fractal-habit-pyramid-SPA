@@ -1,4 +1,4 @@
-// src/view/components/ui/MenuList.jsx
+// src/view/components/layout/MenuList.jsx
 
 const MenuList = {
   view: ({ children }) => (
