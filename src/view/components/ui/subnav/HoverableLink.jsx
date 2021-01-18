@@ -12,7 +12,7 @@ const HoverableLink = {
       >
         { attrs.label }  
       </a>
-      <div class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-blue-800">
+      <div class="mega-menu">
         { <MenuList items={children}></MenuList> }
       </div>
     </li>

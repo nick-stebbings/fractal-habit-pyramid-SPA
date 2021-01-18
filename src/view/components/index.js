@@ -4,6 +4,6 @@ import "./style.scss";
 
 export default function () {
   return {
-    view: (vnode) => m("#container", vnode.children),
+    view: (vnode) => m("#container.mx-auto", vnode.children),
   };
 }

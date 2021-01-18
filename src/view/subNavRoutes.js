@@ -12,5 +12,6 @@ const habitRoutes = [
     url: "/vis",
   },
 ];
+habitRoutes['selected'] = "Objective";
 
 export default habitRoutes;

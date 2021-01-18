@@ -5,7 +5,7 @@ import BlockSection from "./BlockSection.jsx";
 
 const MainStage = {
   view: ({attrs}) => (
-    <main class="w-3/4">
+    <main class="mx-auto">
       <NavBar routes={attrs.routes}></NavBar>
       <BlockSection selected={attrs.selectedSection}></BlockSection>
     </main>

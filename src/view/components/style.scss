@@ -2,40 +2,92 @@ $strong: text-pastel;
 $faint: text-pastel-light;
 $light-bg: bg-gray-100;
 $dark-bg: bg-gray-200;
+$mega-menu-bg: bg-pastel;
+
+body {
+  @apply  font-sans
+          leading-normal
+          tracking-normal
+          bg-gray-100
+          w-auto;
+}
 
 #container {
   @apply  flex
-          justify-center
           mx-auto
-          w-3/4
+          w-11/12
           bg-gray-100;
 }
 
 nav {
-  @apply  bg-pastel-light-fawn
+  @apply  #{$dark-bg}
           border-b-2
           border-gray-300
           text-gray-900;
 
+  .sub-nav-title {
+    @apply  block p-4
+            lg:p-6;
+  }
+
+  .hero-message {
+    @apply  w-full 
+          text-white
+            mb-8;
+
+    h2 {
+      @apply  font-bold
+              text-2xl;
+    }
+  }
+
   .container:first-child {
     @apply  text-xl
-           #{$strong}
+            #{$strong}
             font-bold;
   }
 
   li.hoverable {
     @apply  #{$dark-bg}
-            hover:text-white;
+            hover:#{$mega-menu-bg}
+            font-light;
   }
 
-  li.hoverable a {
+  li.hoverable > a {
     @apply  py-6 px-4
             lg:p-6
             text-sm
             lg:text-base
             font-bold
-            #{$dark-bg}
-            hover:text-white
-          ;
+            hover:text-pastel-hover;
   }
+
+  .hoverable:hover > a {
+    @apply text-white;
+  }
+
+  li.hoverable > div.mega-menu {
+    @apply  p-2
+            mr-2
+            sm:mb-0
+            shadow-xl
+            rounded-xl
+            #{$mega-menu-bg};
+            width: 110%;
+
+      .sub-menu.container {
+        @apply  mx-auto
+                my-2
+                p-1
+                w-full
+                flex
+                justify-items-center
+                items-center
+                flex-col
+                rounded-xl
+                border-2
+                bg-pastel-light
+                border-gray-300;
+      }
+    }
 }
