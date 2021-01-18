@@ -1,10 +1,12 @@
 // Layouts
-import Layout from "./components/layout/index";
+import Layout from "./components/index";
 
 // Individual pages
+//.. by date
+// .. by domain
 
 // Components
-import MainStage from "./components/MainStage.jsx";
+import MainStage from "./components/layout/MainStage.jsx";
 
 const routes = [{
     label: "Objectives",
