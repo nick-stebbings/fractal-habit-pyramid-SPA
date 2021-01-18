@@ -1,4 +1,4 @@
-// src/view/components/ui/RegularLink.jsx
+// src/view/components/ui/subnav/RegularLink.jsx
 
 const RegularLink = {
   view: ({ attrs }) => (

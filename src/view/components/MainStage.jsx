@@ -1,18 +1,16 @@
-// src/view/components/App.jsx
+// src/view/components/MainStage.jsx
 
 import NavBar from "./layout/NavBar.jsx";
-import HabitView from "./layout/HabitView.jsx";
 
-const App = {
+const MainStage = {
   view: ({attrs}) => (
     <div class="container">
       <NavBar routes={attrs.routes}></NavBar>
-      <HabitView></HabitView>
     </div>
   )
 };
 
-export default App;
+export default MainStage;
 
   //  |-- App
 //  |   |   |-- RouteNav

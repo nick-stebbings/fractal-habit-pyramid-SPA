@@ -13,11 +13,13 @@ const HabitView = (function() {
     .then(() => m.redraw());
 
   return {
+    oninit: (vnode) => {
+    },
     view: () => [m("ul",
-      habitNodes().map(function (book) {
+      habitNodes().map(function (habitNode) {
         return m("li", {
-          key: book.id
-        }, book.parent_id);
+          key: habitNode.id
+        }, habitNode.parent_id);
       })
     )]
   }

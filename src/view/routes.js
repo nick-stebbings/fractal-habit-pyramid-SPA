@@ -3,17 +3,12 @@ import Layout from "./components/layout/index";
 
 // Individual pages
 
-
-// Models
-// import HabitNodes from "../models/index";
-
 // Components
-import App from "./components/App.jsx";
+import MainStage from "./components/MainStage.jsx";
 
-const routes = [
-  {
-    label: "Domains",
-    url: "/domains"
+const routes = [{
+    label: "Objectives",
+    url: "/objectives"
   },
   {
     label: "Habits",
@@ -25,35 +20,40 @@ const routes = [
   },
 ];
 
-// namespace
-const hht = function() {
+const appFactory = function () {
   return {
-    oninit: function() {
-      console.log('from shell');
-    },
-    view: () => m(App, { routes })
+    // oninit: function() {
+    // },
+    view: () => m(MainStage, {
+      routes
+    })
   }
 }
 
-let hhtApp = hht();
+// namespace
+let App = appFactory();
+
 const Routes = {
-  // "/": {
-    //   render: function () {
-      //     return m(IndexPage, {routes: routeNames});
-      //   },
-      // },
-      // "/edit/:id": {
-        //   render: function () {
-          //     return m(PageLayout, m(IndexPage, {routes: routeNames}));
-  //   },
-  // },
-  "/test": {
+  "/": {
     render: function () {
-      return m(Layout, m(hhtApp));
+      return m(Layout, m(appFactory()));
+    },
+  },
+  "/test1": {
+    render: function () {
+      return m(Layout, m(appFactory()));
+    },
+  },
+  "/test2": {
+    render: function () {
+      return m(Layout, m(App));
     },
   },
 };
 
-const DefaultRoute = "/test";
+const DefaultRoute = "/test1";
 
-export { Routes, DefaultRoute };
+export {
+  Routes,
+  DefaultRoute
+};
