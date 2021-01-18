@@ -11,7 +11,7 @@ import HoverableLink from "../ui/subnav/HoverableLink.jsx";
 
 const NavBar = {
   view: ({attrs, children}) => (
-    <nav class="relative bg-white border-b-2 border-gray-300 text-gray-900">
+    <nav class="relative">
       <div class="container mx-auto flex justify-between">
         <div class="relative block p-4 lg:p-6 text-xl text-blue-600 font-bold">Habit Data:</div>
         <ul class="flex">

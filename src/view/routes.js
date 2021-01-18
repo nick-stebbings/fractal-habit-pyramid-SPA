@@ -1,6 +1,7 @@
 // Layouts
 import Layout from "./components/index";
-
+import habitRoutes from "./subNavRoutes";
+console.log(habitRoutes);
 // Individual pages
 //.. by date
 // .. by domain
@@ -8,21 +9,7 @@ import Layout from "./components/index";
 // Components
 import MainStage from "./components/layout/MainStage.jsx";
 
-const routes = [{
-    label: "Objectives",
-    url: "/objectives"
-  },
-  {
-    label: "Habits",
-    url: "/habits"
-  },
-  {
-    label: "Visualise",
-    url: "/vis"
-  },
-];
-
-const appFactory = function () {
+const appFactory = function (routes) {
   return {
     // oninit: function() {
     // },
@@ -38,7 +25,7 @@ let App = appFactory();
 const Routes = {
   "/": {
     render: function () {
-      return m(Layout, m(appFactory()));
+      return m(Layout, m(appFactory(habitRoutes)));
     },
   },
   "/test1": {
@@ -53,7 +40,7 @@ const Routes = {
   },
 };
 
-const DefaultRoute = "/test1";
+const DefaultRoute = "/";
 
 export {
   Routes,

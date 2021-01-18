@@ -1,6 +1,7 @@
 // src/view/components/layout/MainStage.jsx
 
 import NavBar from "./NavBar.jsx";
+import BlockSection from "./BlockSection.jsx";
 
 const MainStage = {
   view: ({attrs}) => (
