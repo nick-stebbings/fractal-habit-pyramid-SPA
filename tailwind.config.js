@@ -16,6 +16,13 @@ module.exports = {
           hover: "#92e8f8",
           DEFAULT: "#4b5873",
         },
+        "pastel-dark": {
+          alert: "#cb5c5c",
+          success: "#5caf8c",
+          fawn: "#f8f4bc",
+          hover: "#6bbcde",
+          DEFAULT: "#374054",
+        },
       },
     },
   },

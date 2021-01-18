@@ -2,7 +2,7 @@ $strong: text-pastel;
 $faint: text-pastel-light;
 $light-bg: bg-gray-100;
 $dark-bg: bg-gray-200;
-$mega-menu-bg: bg-pastel;
+$mega-menu-bg: bg-pastel-light-success;
 
 body {
   @apply  font-sans
@@ -41,12 +41,6 @@ nav {
     }
   }
 
-  .container:first-child {
-    @apply  text-xl
-            #{$strong}
-            font-bold;
-  }
-
   li.hoverable {
     @apply  #{$dark-bg}
             hover:#{$mega-menu-bg}
@@ -59,7 +53,7 @@ nav {
             text-sm
             lg:text-base
             font-bold
-            hover:text-pastel-hover;
+            hover:text-pastel-dark-success;
   }
 
   .hoverable:hover > a {
@@ -71,14 +65,16 @@ nav {
             mr-2
             sm:mb-0
             shadow-xl
-            rounded-xl
+            rounded-bl-lg rounded-br-lg 
             #{$mega-menu-bg};
-            width: 110%;
+            width: 100%;
+
+      .inset {
+        @apply flex justify-items-center items-center
+      }
 
       .sub-menu.container {
-        @apply  mx-auto
-                my-2
-                p-1
+        @apply  px-1
                 w-full
                 flex
                 justify-items-center
@@ -90,4 +86,8 @@ nav {
                 border-gray-300;
       }
     }
+  }
+
+nav>.container:first-child {
+  @apply text-xl #{$strong};
 }
