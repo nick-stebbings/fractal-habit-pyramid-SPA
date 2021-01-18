@@ -10,20 +10,23 @@ import ToggleableLink from "../ui/subnav/ToggleableLink.jsx";
 import HoverableLink from "../ui/subnav/HoverableLink.jsx";
 
 const NavBar = {
-  view: ({attrs, children}) => (
+  oninit: (vnode) => {
+    vnode.state.subnav = vnode.attrs.routes[2].hrefs
+  },
+  view: (vnode) => (
     <nav class="relative">
       <div class="container mx-auto flex justify-between">
-        <div class="relative sub-nav-title">{attrs.routes.selected} Data:</div>
+        <div class="relative sub-nav-title">{vnode.attrs.routes.selected} Data:</div>
         <ul class="flex">
           {
-            attrs.routes.map(route => { 
+            vnode.attrs.routes.map(route => { 
               return (
                 <HoverableLink
                   label={`${route.label}`}
                   id={`nav-${route.label}`}
-                  href={`${route.url}`} >
-                    <HabitView />
-                </HoverableLink>
+                  hrefs={`${route.hrefs}`} >
+                    { vnode.state.subnav }
+                  </HoverableLink>
               )
             })
           }

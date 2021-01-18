@@ -3,10 +3,9 @@
 import MenuList from "../../layout/MenuList.jsx";
 
 const HoverableLink = {
-  view: ({attrs, children}) => (
+  view: ({ attrs, children }) => (
     <li class="hoverable">
       <a 
-        href={`${attrs.href}`}
         id={`${attrs.id}`}
         class="relative block"
       >
@@ -14,7 +13,7 @@ const HoverableLink = {
       </a>
       <div class="mega-menu">
         <div class="inset">
-          { <MenuList items={children}></MenuList> }
+          { <MenuList>{ children }</MenuList> }
         </div>
       </div>
     </li>

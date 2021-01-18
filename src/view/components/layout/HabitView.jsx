@@ -5,6 +5,8 @@ import stream from 'mithril/stream'
 // Model
 import HabitNodes from "../../../models/index";
 
+import MenuListCard from "../ui/subnav/MenuListCard.jsx";
+
 const HabitView = (function() {
   let habitNodes = stream([]);
   HabitNodes.loadList()
@@ -15,13 +17,13 @@ const HabitView = (function() {
   return {
     oninit: (vnode) => {
     },
-    view: () => [m("ul",
-      habitNodes().map(function (habitNode) {
-        return m("li", {
-          key: habitNode.id
-        }, habitNode.parent_id);
-      })
-    )]
+    view: () => (
+      <ul>
+        { habitNodes().map(
+            habitNode => <MenuListCard key={ habitNode.id } habit={ habitNode } ></MenuListCard>
+          ) }
+      </ul>
+    )
   }
 })()
 

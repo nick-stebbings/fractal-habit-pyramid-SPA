@@ -2,7 +2,7 @@ $strong: text-pastel;
 $faint: text-pastel-light;
 $light-bg: bg-gray-100;
 $dark-bg: bg-gray-200;
-$mega-menu-bg: bg-pastel-light-success;
+$mega-menu-bg: bg-pastel-light-fawn;
 
 body {
   @apply  font-sans
@@ -57,7 +57,7 @@ nav {
   }
 
   .hoverable:hover > a {
-    @apply text-white;
+    @apply text-pastel;
   }
 
   li.hoverable > div.mega-menu {
@@ -74,20 +74,33 @@ nav {
       }
 
       .sub-menu.container {
-        @apply  px-1
+        @apply  px-5 py-8 mt-4
                 w-full
                 flex
+                flex-wrap
                 justify-items-center
-                items-center
-                flex-col
                 rounded-xl
                 border-2
                 bg-pastel-light
                 border-gray-300;
+
+                .hero-message {
+                  @apply px-4
+                }
       }
     }
   }
 
-nav>.container:first-child {
+nav > .container:first-child {
   @apply text-xl #{$strong};
+}
+
+.habit-view {
+  ul {
+
+
+    li {
+      @apply text-xl text-gray-200;
+    }
+  }
 }

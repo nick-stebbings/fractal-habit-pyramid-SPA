@@ -1,7 +1,7 @@
 // Layouts
 import Layout from "./components/index";
 import habitRoutes from "./subNavRoutes";
-console.log(habitRoutes);
+
 // Individual pages
 //.. by date
 // .. by domain

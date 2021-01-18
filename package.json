@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/nick-stebbings/fractal-habit-pyramid-SPA#readme",
   "devDependencies": {
+    "@tailwindcss/custom-forms": "^0.2.1",
     "autoprefixer": "^10.2.1",
     "axios": "^0.21.1",
     "babel-cli": "^6.26.0",

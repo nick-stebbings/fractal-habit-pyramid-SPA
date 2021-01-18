@@ -1,4 +1,7 @@
 module.exports = {
+  plugins: [
+    require('@tailwindcss/custom-forms')
+  ],
   theme: {
     extend: {
       colors: {
