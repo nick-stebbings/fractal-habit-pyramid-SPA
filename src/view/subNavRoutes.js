@@ -56,21 +56,25 @@ const habitRoutes = [
         title: "Habit Tree",
         description:
           "Traditional hierarchical Tree diagram showing habit nodes.",
+        icon: "fa-tree",
       },
       "/vis/habit-triangle": {
         title: "Habit Triangle",
         description:
           "Fractal pyramid of habits. Navigate all the way up to the sky or drill down into the minutiae.",
+        icon: "fa-caret-up",
       },
       "/vis/date-lines": {
         title: "Date Comparison",
         description:
           "See how your different habits have overlapped over time using this line diagram.",
+        icon: "fa-line-chart",
       },
       "/vis/radial-tree": {
         title: "Radial Tree",
         description:
           "A pretty hierarchical tree diagram where your habits branch off from the centre of a circle.",
+        icon: "fa-pagelines",
       },
     },
   },
