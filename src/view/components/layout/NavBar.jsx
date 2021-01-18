@@ -13,7 +13,7 @@ const NavBar = {
   view: ({attrs, children}) => (
     <nav class="relative">
       <div class="container mx-auto flex justify-between">
-        <div class="relative block p-4 lg:p-6 text-xl text-blue-600 font-bold">Habit Data:</div>
+        <div class="relative block p-4 lg:p-6">Habit Data:</div>
         <ul class="flex">
           {
             attrs.routes.map(route => { 

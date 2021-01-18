@@ -1,3 +1,8 @@
+$strong: text-pastel;
+$faint: text-pastel-light;
+$light-bg: bg-gray-100;
+$dark-bg: bg-gray-200;
+
 #container {
   @apply  flex
           justify-center
@@ -6,9 +11,31 @@
           bg-gray-100;
 }
 
-#nav {
-  @apply  bg-white
+nav {
+  @apply  bg-pastel-light-fawn
           border-b-2
           border-gray-300
           text-gray-900;
+
+  .container:first-child {
+    @apply  text-xl
+           #{$strong}
+            font-bold;
+  }
+
+  li.hoverable {
+    @apply  #{$dark-bg}
+            hover:text-white;
+  }
+
+  li.hoverable a {
+    @apply  py-6 px-4
+            lg:p-6
+            text-sm
+            lg:text-base
+            font-bold
+            #{$dark-bg}
+            hover:text-white
+          ;
+  }
 }
