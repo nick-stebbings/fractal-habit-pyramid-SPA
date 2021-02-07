@@ -1,8 +1,28 @@
-$strong: text-pastel;
-$faint: text-pastel-light;
-$light-bg: bg-gray-100;
-$dark-bg: bg-gray-200;
-$mega-menu-bg: bg-pastel-light-fawn;
+// @import "../../../assets/fonts/Silka-Regular-&-Italic/Silka_Regular &_Italic_Webfont/Silka-Regular-&-Italic-Webfont/stylesheet.css"
+
+$strong: text-balance-lilac;
+$hover: text-balance-darkbg;
+$faint: text-balance-lightprimary;
+
+$light-bg: bg-balance-lightgrey;
+$dark-bg: bg-balance-darkprimary;
+$mega-menu-bg: text-black;
+
+#masthead {
+  mask-repeat: no-repeat;
+  mask-position: 10px -20px;
+  mask-image: url('../../assets/images/fibonacci-mask-long.svg');
+  z-index: 2;
+  position: absolute;
+}
+
+.overlay {
+  background-image: url('../../assets/images/wm1.png');
+  background-repeat: no-repeat;
+  background-position: 0 -4em;
+  background-color: #000;
+  height: 360px;
+}
 
 body {
   @apply  font-sans
@@ -14,20 +34,46 @@ body {
 
 #container {
   @apply  flex
-          mx-auto
-          w-11/12
           bg-gray-100;
+}
+
+.main-content {
+  @apply text-gray-600
+          absolute;
+          z-index: 1;
+          top: 8em;
 }
 
 nav {
   @apply  #{$dark-bg}
+          h-12
+          w-full
+          justify-end
+          relative
           border-b-2
           border-gray-300
           text-gray-900;
 
+  .sub-nav-title,
+  .sub-nav-links,
+  .sub-nav-links > li > a {
+    @apply  flex
+            h-12;
+  }
+          
+  .sub-nav-container {
+    @apply  container
+            flex
+            justify-between
+            w-full
+            mr-2;
+            max-width: 100%;
+  }
+  
+  .sub-nav {
+    @apply px-16;
+  }
   .sub-nav-title {
-    @apply  block p-4
-            lg:p-6;
   }
 
   .hero-message {
@@ -43,34 +89,35 @@ nav {
 
   li.hoverable {
     @apply  #{$dark-bg}
-            hover:#{$mega-menu-bg}
+            hover:#{text-gray-100}
             font-light;
   }
 
   li.hoverable > a {
-    @apply  py-6 px-4
-            lg:p-6
-            text-sm
-            lg:text-base
+    @apply  text-sm
             font-bold
-            hover:text-pastel-dark-success;
+            hover:text-gray-50;
+            line-height: 3em;
   }
 
   .hoverable:hover > a {
-    @apply text-pastel;
+    @apply text-balance;
   }
 
   li.hoverable > div.mega-menu {
-    @apply  p-2
-            mr-2
-            sm:mb-0
-            shadow-xl
+    @apply  mr-2
             rounded-bl-lg rounded-br-lg 
             #{$mega-menu-bg};
-            width: 100%;
+
+      .inset, .sub-menu.container {
+        display: none;
+      }
 
       .inset {
-        @apply flex justify-items-center items-center
+        @apply  flex absolute pr-4;
+                right: 0;
+                background-image: linear-gradient(to right, rgb(97, 97, 97), rgb(241, 241, 241));
+                margin-left: 30%;
       }
 
       .sub-menu.container {
@@ -81,18 +128,20 @@ nav {
                 justify-items-center
                 rounded-xl
                 border-2
-                bg-pastel-light
+                bg-black
+                bg-opacity-80
                 border-gray-300;
 
                 .hero-message {
                   @apply px-4
                 }
       }
-    }
   }
+}
+
 
 nav > .container:first-child {
-  @apply text-xl #{$strong};
+  @apply text-xl #{bg-balance-lilac};
 }
 
 .habit-view {

@@ -10,6 +10,7 @@ const ToggleableLink = {
         { attrs.label }
       </label>
       <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-blue-800">
+        <div class="overlay w-full absolute"></div>
         { <MenuList items={children}></MenuList> }
       </div>
     </li>

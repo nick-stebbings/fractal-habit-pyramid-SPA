@@ -8,6 +8,8 @@ Gemfile.lock
 tests
 node_modules
 dist
+/src/assets/icons/
+/src/assets/fonts/
 
 # Used by dotenv library to load environment variables.
 .env

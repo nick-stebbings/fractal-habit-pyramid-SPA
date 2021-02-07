@@ -1,16 +1,20 @@
 module.exports = {
-  plugins: [
-    require('@tailwindcss/custom-forms')
-  ],
+  plugins: [require("@tailwindcss/custom-forms")],
   theme: {
     extend: {
       colors: {
-        pastel: {
-          alert: "#de6868",
-          success: "#68c49f",
-          fawn: "#fcfad1",
-          hover: "#79d1ed",
-          DEFAULT: "#3e495f",
+        balance: {
+          alert: "#F25042",
+          success: "#80E055",
+          info: "#56CCF2",
+          darkprimary: "#CFDC4F",
+          lightprimary: "#E8F18F",
+          darkbg: "#50442E",
+          lightbg: "#8C7851",
+          darkgrey: "#E2E1E1",
+          lightgrey: "#F1EDEB",
+          lilac: "#EDD3F8",
+          DEFAULT: "#121428",
         },
         "pastel-light": {
           alert: "#f07e7e",
@@ -25,6 +29,18 @@ module.exports = {
           fawn: "#f8f4bc",
           hover: "#6bbcde",
           DEFAULT: "#374054",
+        },
+        balanced: {
+          alert: "#F25042",
+          success: "#80E055",
+          darkprimary: "#CFDC4F",
+          lightprimary: "#E8F18F",
+          darkbg: "#50442E",
+          lightbg: "#8C7851",
+          darkgrey: "#E2E1E1",
+          lightgrey: "#F1EDEB",
+          lilac: "#EDD3F8",
+          DEFAULT: "#121428",
         },
       },
     },

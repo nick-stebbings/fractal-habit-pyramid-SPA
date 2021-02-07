@@ -7,11 +7,12 @@ const HoverableLink = {
     <li class="hoverable">
       <a 
         id={`${attrs.id}`}
-        class="relative block"
+        class="h-12"
       >
         { attrs.label }  
       </a>
       <div class="mega-menu">
+        <div class="overlay w-full absolute"></div>
         <div class="inset">
           { <MenuList>{ children }</MenuList> }
         </div>

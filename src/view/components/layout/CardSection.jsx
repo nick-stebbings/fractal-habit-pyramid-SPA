@@ -1,9 +1,9 @@
 // src/view/components/layout/BlockSection.jsx
 
-const BlockSection = {
+const CardSection = {
   view: ({attrs, children}) => (
-  <section class="text-gray-600 body-font">
-    <div class="container px-5 py-8 mx-auto">
+  <section class="main-content">
+    <div class="container px-5 py-8">
       <div class="flex flex-wrap -mx-4 -my-8">
         <div class="py-8 px-4 lg:w-1/3">
           <div class="h-full flex items-start">
@@ -68,4 +68,4 @@ const BlockSection = {
   )
 };
 
-export default BlockSection;
+export default CardSection;
