@@ -2,25 +2,21 @@ const habitRoutes = [
   {
     label: "Objectives",
     hrefs: {
-      "/vis/habit-tree": {
-        name: "Habit Tree",
-        description:
-          "Traditional hierarchical Tree diagram showing habit nodes.",
+      "/obj/list": {
+        title: "List Objectives",
+        description: "A flat list of all objectives for your perusal.",
+        icon: "fa-tree",
       },
-      "/vis/habit-triangle": {
-        name: "Habit Triangle",
-        description:
-          "Fractal pyramid of habits. Navigate all the way up to the sky or drill down into the minutiae.",
+      "/obj/new": {
+        title: "Add Objective",
+        description: "Create a completely blank objective.",
+        icon: "fa-tree",
       },
-      "/vis/date-lines": {
-        name: "Date Comparison",
+      "/obj/edit": {
+        title: "Link Habits",
         description:
-          "See how your different habits have overlapped over time using this line diagram.",
-      },
-      "/vis/radial-tree": {
-        name: "Radial Tree",
-        description:
-          "A pretty hierarchical tree diagram where your habits branch off from the centre of a circle.",
+          "Link existing behaviors to a new objective, or move habits from one objective to the other.",
+        icon: "fa-tree",
       },
     },
   },
@@ -28,17 +24,17 @@ const habitRoutes = [
     label: "Habits",
     hrefs: {
       "/vis/habit-tree": {
-        name: "Habit Tree",
+        title: "Habit Tree",
         description:
           "Traditional hierarchical Tree diagram showing habit nodes.",
       },
       "/vis/habit-triangle": {
-        name: "Habit Triangle",
+        title: "Habit Triangle",
         description:
           "Fractal pyramid of habits. Navigate all the way up to the sky or drill down into the minutiae.",
       },
       "/vis/date-lines": {
-        name: "Date Comparison",
+        title: "Date Comparison",
         description:
           "See how your different habits have overlapped over time using this line diagram.",
       },

@@ -4,14 +4,12 @@
 import HabitView from "./HabitView.jsx";
 
 // Components
-// import NavListButton from "../ui/NavListButton.jsx";
-// import RegularLink from "../ui/RegularLink.jsx";
 import ToggleableLink from "../ui/subnav/ToggleableLink.jsx";
 import HoverableLink from "../ui/subnav/HoverableLink.jsx";
 
 const NavSection = {
   oninit: (vnode) => {
-    vnode.state.subnav = vnode.attrs.routes[2].hrefs
+    vnode.state.subnav = vnode.attrs.routes
   },
   view: (vnode) => (
     <div class="h-full">
@@ -34,15 +32,15 @@ const NavSection = {
           <div class="sub-nav-title">{vnode.attrs.routes.selected} Data:</div>
           <ul class="sub-nav-links">
             {
-              vnode.attrs.routes.map(route => { 
+              vnode.attrs.routes.map((route, index) => { 
                 return (
                   <HoverableLink
                   label={`${route.label}`}
                   class={`${vnode.attrs.routes.selected === route.label ? 'active' : 'inactive'}`}
                   id={`sub-nav-${route.label.toLowerCase()}`}
                   hrefs={`${route.hrefs}`} >
-                      { vnode.state.subnav }
-                    </HoverableLink>
+                    { vnode.state.subnav[index].hrefs }
+                  </HoverableLink>
                 )
               })
             }

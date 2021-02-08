@@ -9,16 +9,16 @@ body {
 }
 
 $strong: text-balance-lilac;
-$hover: text-balance-darkbg;
+$hoverable: text-balance-darkbg;
 $faint: text-balance-lightprimary;
 
 $light-bg: bg-balance-lightgrey;
 $dark-bg: bg-balance-darkprimary;
-$mega-menu-bg: bg-balance-darkbg;
+$mega-menu-bg: bg-balance-lightbg;
 
 $nav-bar-height: h-12;
 $nav-bar-xpad: px-16;
-
+$nav-border-color: #56CCF2;
 
 
 #masthead {
@@ -27,14 +27,6 @@ $nav-bar-xpad: px-16;
   mask-image: url('../../assets/images/fibonacci-mask-long.svg');
   z-index: 2;
   position: absolute;
-}
-
-.overlay {
-  background-image: url('../../assets/images/wm1.png');
-  background-repeat: no-repeat;
-  background-position: 0 -6em;
-  background-color: #000;
-  height: 360px;
 }
 
 body {
@@ -109,6 +101,28 @@ nav.sub-nav {
     > div.mega-menu {
       @apply mr-2 rounded-bl-lg rounded-br-lg;
 
+      .backdrop {
+        background-image: url('../../assets/images/wm1.png');
+        background-repeat: no-repeat;
+        background-position: 0 -6em;
+        background-color: #000;
+        height: 360px;
+        padding-right: 70%;
+      }
+
+      .hero-message {
+        @apply w-full text-white px-4 mb-8 text-right;
+
+        h2 {
+          @apply font-bold text-2xl py-4;
+        }
+
+        p {
+          width: 40%;
+          float: right;
+        }
+      }
+
       .inset,
       .mega-menu-container.container {
         display: none;
@@ -122,28 +136,23 @@ nav.sub-nav {
       }
 
       .mega-menu-container.container {
-        @apply px-5 py-8 mt-4 w-full flex justify-items-center rounded-xl bg-black bg-opacity-80 border-2 border-gray-300;
-
-        .hero-message {
-          @apply w-full text-white px-4 mb-8;
-
-          h2 {
-            @apply font-bold text-2xl;
-          }
+        @apply px-5 py-8 mt-4 w-full flex justify-items-center rounded-xl #{$mega-menu-bg} bg-opacity-80 border-2 border-gray-300;
+        margin-top: -0.75em;
         }
       }
     }
 
   }
 
-  li.hoverable:hover {
-    @apply h-14 #{$mega-menu-bg};
-
-    a {
+  .sub-nav-links > li.hoverable:hover, .active {
+    @apply h-12 #{$mega-menu-bg};
+    color: $nav-border-color;
+    border-bottom: 2px solid $nav-border-color;
+    
+    > a {
       @apply text-balance #{$nav-bar-height};
     }
   }
-}
 
 .habit-view {
   ul {
