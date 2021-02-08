@@ -42,16 +42,17 @@ body {
           bg-gray-100;
 }
 
-.main-content {
+.card-content {
   @apply text-gray-600
           absolute;
           z-index: 1;
-          top: 8em;
+          top: 6em;
 }
 
-nav {
+nav.sub-nav {
   @apply  #{$dark-bg}
           #{$nav-bar-height}
+          #{$nav-bar-xpad}
           w-full
           justify-end
           relative
@@ -65,23 +66,20 @@ nav {
     @apply  flex
             #{$nav-bar-height};
   }
-          
-  .sub-nav-container {
+
+  > .sub-nav-container {
     @apply  container
             flex
             justify-between
             items-center
             w-full
-            mr-2
-            #{$nav-bar-xpad};
+            mr-2;
             max-width: 100%;
 
-    .sub-nav {
-      @apply #{$nav-bar-xpad};
-      .sub-nav-title {
-        @apply items-center;
-      }
+    > .sub-nav-title {
+      @apply items-center;
     }
+
   }
   
 

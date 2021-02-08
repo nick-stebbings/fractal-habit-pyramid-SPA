@@ -2,7 +2,7 @@
 
 const CardSection = {
   view: ({attrs, children}) => (
-  <section class="main-content">
+  <section class="card-content">
     <div class="container px-5 py-8">
       <div class="flex flex-wrap -mx-4 -my-8">
         <div class="py-8 px-4 lg:w-1/3">
