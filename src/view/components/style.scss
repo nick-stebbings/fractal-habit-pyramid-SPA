@@ -65,8 +65,10 @@ nav {
     @apply  container
             flex
             justify-between
+            items-center
             w-full
-            mr-2;
+            mr-2
+            px-16;
             max-width: 100%;
   }
   
@@ -74,6 +76,7 @@ nav {
     @apply px-16;
   }
   .sub-nav-title {
+    @apply items-center;
   }
 
   .hero-message {
@@ -90,13 +93,17 @@ nav {
   li.hoverable {
     @apply  #{$dark-bg}
             hover:#{text-gray-100}
-            font-light;
+            px-2
+            font-light
+            border-2
+            rounded-tr-lg
+            rounded-tl-lg;
   }
 
   li.hoverable > a {
     @apply  text-sm
             font-bold
-            hover:text-gray-50;
+            hover:text-red-50;
             line-height: 3em;
   }
 
@@ -109,7 +116,7 @@ nav {
             rounded-bl-lg rounded-br-lg 
             #{$mega-menu-bg};
 
-      .inset, .sub-menu.container {
+      .inset, .mega-menu-container.container {
         display: none;
       }
 
@@ -120,7 +127,7 @@ nav {
                 margin-left: 30%;
       }
 
-      .sub-menu.container {
+      .mega-menu-container.container {
         @apply  px-5 py-8 mt-4
                 w-full
                 flex

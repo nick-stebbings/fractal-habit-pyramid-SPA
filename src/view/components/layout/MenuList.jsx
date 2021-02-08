@@ -4,7 +4,7 @@ import MenuListCard from "../ui/subnav/MenuListCard.jsx";
 
 const MenuList = {
   view: ({ children }) => (
-    <div class="sub-menu container">
+    <div class="mega-menu-container container">
       <div class="hero-message">
         <h2>Main Hero Message for the menu section</h2>
         <p>Sub-hero message, not too long and not too short. Make it just right!</p>
