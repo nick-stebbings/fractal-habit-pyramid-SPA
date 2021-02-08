@@ -59,31 +59,19 @@ nav {
           border-gray-300
           text-gray-900;
 
-  .sub-nav-title,
-  .sub-nav-links,
-  .sub-nav-links > li > a {
-    @apply  flex
-            #{$nav-bar-height};
-  }
-          
-  .sub-nav-container {
-    @apply  container
-            flex
-            justify-between
-            items-center
-            w-full
-            mr-2
-            #{$nav-bar-xpad};
-            max-width: 100%;
+  .sub-nav {
+    @apply #{$nav-bar-xpad};
 
-    .sub-nav {
-      @apply #{$nav-bar-xpad};
-      .sub-nav-title {
-        @apply items-center;
-      }
+    .sub-nav-container {
+      @apply container flex justify-between items-center w-full mr-2 #{$nav-bar-xpad};
+      max-width: 100%;
+
+      
     }
   }
-  
+  .sub-nav-title {
+    @apply items-center;
+  }
 
   li.hoverable {
     @apply  #{$dark-bg}
@@ -93,49 +81,57 @@ nav {
             border-2
             rounded-tr-lg
             rounded-tl-lg;
-    > a {
-        @apply  text-sm
-                font-bold
-                hover:text-gray-50;
-                line-height: 3em;
-    }
-       
-    > div.mega-menu {
-      @apply mr-2 rounded-bl-lg rounded-br-lg;
-
-      .inset,
-      .mega-menu-container.container {
-        display: none;
-      }
-
-      .inset {
-        @apply flex absolute pr-4;
-        right: 0;
-        background-image: linear-gradient(to right, rgb(97, 97, 97), rgb(241, 241, 241));
-        margin-left: 30%;
-      }
-
-      .mega-menu-container.container {
-        @apply px-5 py-8 mt-4 w-full flex justify-items-center rounded-xl bg-black bg-opacity-80 border-2 border-gray-300;
-
-        .hero-message {
-          @apply w-full text-white px-4 mb-8;
-
-          h2 {
-            @apply font-bold text-2xl;
-          }
-        }
-      }
-    }
-
   }
 
-  li.hoverable:hover {
+  li.hoverable > a {
+    @apply  text-sm
+            font-bold
+            hover:text-gray-50;
+            line-height: 3em;
+  }
+
+  .hoverable:hover {
     @apply h-14 #{$mega-menu-bg};
 
     a {
       @apply text-balance;
     }
+  } 
+
+  li.hoverable > div.mega-menu {
+    @apply  mr-2
+            rounded-bl-lg rounded-br-lg;
+
+      .inset, .mega-menu-container.container {
+        display: none;
+      }
+
+      .inset {
+        @apply  flex absolute pr-4;
+                right: 0;
+                background-image: linear-gradient(to right, rgb(97, 97, 97), rgb(241, 241, 241));
+                margin-left: 30%;
+      }
+
+      .mega-menu-container.container {
+        @apply  px-5 py-8 mt-4
+                w-full
+                flex
+                justify-items-center
+                rounded-xl
+                bg-black
+                bg-opacity-80
+                border-2
+                border-gray-300;
+
+                .hero-message {
+                  @apply w-full text-white px-4 mb-8;
+
+                  h2 {
+                    @apply font-bold text-2xl;
+                  }
+                }
+      }
   }
 }
 
