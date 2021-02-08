@@ -7,7 +7,7 @@ const HoverableLink = {
     <li class="hoverable">
       <a 
         id={`${attrs.id}`}
-        class="h-12"
+        class={`${attrs.class}`}
       >
         { attrs.label }  
       </a>

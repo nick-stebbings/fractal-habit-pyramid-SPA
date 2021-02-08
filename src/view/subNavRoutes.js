@@ -79,6 +79,6 @@ const habitRoutes = [
     },
   },
 ];
-habitRoutes['selected'] = "Objective";
+habitRoutes['selected'] = "Objectives";
 
 export default habitRoutes;

@@ -1,5 +1,13 @@
 // @import "../../../assets/fonts/Silka-Regular-&-Italic/Silka_Regular &_Italic_Webfont/Silka-Regular-&-Italic-Webfont/stylesheet.css"
 
+html,
+body {
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
+}
+
 $strong: text-balance-lilac;
 $hover: text-balance-darkbg;
 $faint: text-balance-lightprimary;
@@ -132,7 +140,7 @@ nav.sub-nav {
     @apply h-14 #{$mega-menu-bg};
 
     a {
-      @apply text-balance;
+      @apply text-balance #{$nav-bar-height};
     }
   }
 }

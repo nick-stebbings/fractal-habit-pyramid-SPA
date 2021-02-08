@@ -24,10 +24,13 @@ export default MainStage;
 
 
 // App
-//  - <MainNav></MainNav>
 //  - <MainStage></Main>
 //  //  - NavSection
-//  //  - Section
+//        - <MainNav></MainNav>
+//        - <MainNav></MainNav>
+//        - <SubNav></SubNav>
+
+//  //  - CardSection
 //  //  //  - Blocks
 //  //  //  - Blocks
 //  //  //  - Blocks

@@ -38,6 +38,7 @@ const NavSection = {
                 return (
                   <HoverableLink
                   label={`${route.label}`}
+                  class={`${vnode.attrs.routes.selected === route.label ? 'active' : 'inactive'}`}
                   id={`sub-nav-${route.label.toLowerCase()}`}
                   hrefs={`${route.hrefs}`} >
                       { vnode.state.subnav }
