@@ -1,6 +1,6 @@
 // src/view/components/ui/subnav/MenuListCard.jsx
 
-import Icon from "./Icon.jsx"
+import Icon from "../Icon.jsx"
 
 const MenuListCard = {
   view: ({ attrs }) => (

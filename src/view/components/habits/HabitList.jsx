@@ -7,7 +7,6 @@ import HabitNodes from "../../../models/index";
 
 // Components
 import CardSection from '../layout/CardSection.jsx';
-import ListCard from "../ui/ListCard.jsx";
 
 const HabitList = (function() {
   let habitNodes = stream([]);
@@ -18,15 +17,7 @@ const HabitList = (function() {
 
   return {
     view: () => (
-      <ul>
-        <CardSection>
-          { 
-            habitNodes().map(
-              habitNode => <ListCard key={ habitNode.id } habit={ habitNode } ></ListCard>
-            )
-          }
-        </CardSection>
-      </ul>
+      <CardSection cards={ habitNodes() }></CardSection>
     )
   }
 })()

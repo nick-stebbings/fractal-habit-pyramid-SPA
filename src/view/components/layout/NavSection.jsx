@@ -9,7 +9,7 @@ const NavSection = {
     vnode.state.subnav = vnode.attrs.routes
   },
   view: (vnode) => (
-    <div class="h-full">
+    <header id="masthead">
       <nav x-data="{show:false}" class="h-12 flex items-center justify-between" style="background-color:#121428">
         <div class="flex items-center flex-shrink-0 text-white mr-6 ml-16">
           <span class="font-semibold text-xl tracking-tight">Hab</span>
@@ -45,7 +45,7 @@ const NavSection = {
           </ul>
         </div>
       </nav>
-    </div>
+    </header>
   )
 };
 
