@@ -5,7 +5,7 @@
 
 const ListCard = {
   view: ({ attrs }) => (
-    <div class="mb-8 px-4 lg:w-1/3 md:w-1/2">
+    <div class="list-card mb-8 px-4 lg:w-1/3 md:w-1/2">
       <div>
         <h3 class="font-bold text-xl text-gray-100 text-bold mb-2">{ attrs.title }</h3>
         <span class="flex justify-end py-3 text-white">

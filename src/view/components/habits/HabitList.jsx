@@ -5,6 +5,8 @@ import stream from 'mithril/stream'
 // Model
 import HabitNodes from "../../../models/index";
 
+// Components
+import CardSection from '../layout/CardSection.jsx';
 import ListCard from "../ui/ListCard.jsx";
 
 const HabitList = (function() {
@@ -17,11 +19,13 @@ const HabitList = (function() {
   return {
     view: () => (
       <ul>
-        { 
-          habitNodes().map(
-            habitNode => <ListCard key={ habitNode.id } habit={ habitNode } ></ListCard>
-          )
-        }
+        <CardSection>
+          { 
+            habitNodes().map(
+              habitNode => <ListCard key={ habitNode.id } habit={ habitNode } ></ListCard>
+            )
+          }
+        </CardSection>
       </ul>
     )
   }

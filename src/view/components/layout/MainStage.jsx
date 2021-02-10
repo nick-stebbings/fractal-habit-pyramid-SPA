@@ -17,8 +17,9 @@ const MainStage = {
       <header id="masthead" class="w-full h-full">
         <NavSection routes={attrs.routes}></NavSection>
       </header>
-      <CardSection selected={attrs.selectedSection}></CardSection>
-      <HabitList />
+      <section class="main-content">
+        <HabitList></HabitList>
+      </section>
     </main>
   )
 };

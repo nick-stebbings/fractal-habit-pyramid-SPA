@@ -40,11 +40,10 @@ body {
           bg-gray-100;
 }
 
-.card-content {
-  @apply text-gray-600
-          absolute;
-          z-index: 1;
-          top: 6em;
+.main-content {
+  @apply text-gray-600 absolute;
+  top: 6em;
+  z-index: 1;
 }
 
 nav.sub-nav {
