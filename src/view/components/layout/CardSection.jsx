@@ -1,4 +1,4 @@
-// src/view/components/layout/BlockSection.jsx
+// src/view/components/layout/CardSection.jsx
 
 const CardSection = {
   view: ({attrs, children}) => (
@@ -6,7 +6,7 @@ const CardSection = {
     <div class="container px-5 py-8">
       <div class="flex flex-wrap -mx-4 -my-8">
         <div class="py-8 px-4 lg:w-1/3">
-          <div class="h-full flex items-start">
+          <div class="h- flex items-start">
             <div class="w-12 flex-shrink-0 flex flex-col text-center leading-none">
               <span class="text-gray-500 pb-2 mb-2 border-b-2 border-gray-200">Jul</span>
               <span class="font-medium text-lg text-gray-800 title-font leading-none">18</span>
@@ -24,7 +24,7 @@ const CardSection = {
             </div>
           </div>
         </div>
-        <div class="py-8 px-4 lg:w-1/3">
+        {/* <div class="py-8 px-4 lg:w-1/3">
           <div class="h-full flex items-start">
             <div class="w-12 flex-shrink-0 flex flex-col text-center leading-none">
               <span class="text-gray-500 pb-2 mb-2 border-b-2 border-gray-200">Jul</span>
@@ -43,8 +43,8 @@ const CardSection = {
             </div>
           </div>
         </div>
-        <div class="py-8 px-4 lg:w-1/3">
-          <div class="h-full flex items-start">
+        <div class="py-8 px-4 lg:w-1/3"> */}
+          {/* <div class="h-full flex items-start">
             <div class="w-12 flex-shrink-0 flex flex-col text-center leading-none">
               <span class="text-gray-500 pb-2 mb-2 border-b-2 border-gray-200">Jul</span>
               <span class="font-medium text-lg text-gray-800 title-font leading-none">18</span>
@@ -61,7 +61,7 @@ const CardSection = {
               </a>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   </section>

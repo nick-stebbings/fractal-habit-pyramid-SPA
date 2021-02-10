@@ -1,10 +1,7 @@
 // src/view/components/layout/NavBar.jsx
 
-// Layouts
-import HabitView from "./HabitView.jsx";
-
 // Components
-import ToggleableLink from "../ui/subnav/ToggleableLink.jsx";
+// import ToggleableLink from "../ui/subnav/ToggleableLink.jsx";
 import HoverableLink from "../ui/subnav/HoverableLink.jsx";
 
 const NavSection = {
@@ -36,7 +33,7 @@ const NavSection = {
                 return (
                   <HoverableLink
                   label={`${route.label}`}
-                  class={`${vnode.attrs.routes.selected === route.label ? 'active' : 'inactive'}`}
+                  class={ vnode.attrs.routes.selected === route.label ? 'active' : 'inactive' }
                   id={`sub-nav-${route.label.toLowerCase()}`}
                   hrefs={`${route.hrefs}`} >
                     { vnode.state.subnav[index].hrefs }

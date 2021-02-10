@@ -1,7 +1,9 @@
 // src/view/components/layout/MainStage.jsx
 
+// Components
 import NavSection from "./NavSection.jsx";
 import CardSection from "./CardSection.jsx";
+import HabitList from "../habits/HabitList.jsx";
 
 const MainStage = {
   view: ({attrs}) => (
@@ -16,6 +18,7 @@ const MainStage = {
         <NavSection routes={attrs.routes}></NavSection>
       </header>
       <CardSection selected={attrs.selectedSection}></CardSection>
+      <HabitList />
     </main>
   )
 };

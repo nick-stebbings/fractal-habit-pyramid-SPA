@@ -1,13 +1,13 @@
-// src/view/components/layout/HabitView.jsx
+// src/view/components/habits/HabitList.jsx
 
 import stream from 'mithril/stream'
 
 // Model
 import HabitNodes from "../../../models/index";
 
-import MenuListCard from "../ui/subnav/MenuListCard.jsx";
+import ListCard from "../ui/ListCard.jsx";
 
-const HabitView = (function() {
+const HabitList = (function() {
   let habitNodes = stream([]);
   HabitNodes.loadList()
     .then(response => JSON.parse(response.data).habit_nodes)
@@ -17,12 +17,14 @@ const HabitView = (function() {
   return {
     view: () => (
       <ul>
-        { habitNodes().map(
-            habitNode => <MenuListCard key={ habitNode.id } habit={ habitNode } ></MenuListCard>
-          ) }
+        { 
+          habitNodes().map(
+            habitNode => <ListCard key={ habitNode.id } habit={ habitNode } ></ListCard>
+          )
+        }
       </ul>
     )
   }
 })()
 
-export default HabitView;
+export default HabitList;

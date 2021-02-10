@@ -24,17 +24,17 @@ const habitRoutes = [
   {
     label: "Habits",
     hrefs: {
-      "/obj/list": {
+      "/habits/list": {
         title: "List Habits",
         description: "A flat list of all Habits for your perusal.",
         icon: "fa-tree",
       },
-      "/obj/new": {
+      "/habits/new": {
         title: "Add Habit",
         description: "Create a completely blank habit.",
         icon: "fa-tree",
       },
-      "/obj/edit": {
+      "/habits/edit": {
         title: "Link Habits",
         description:
           "Link existing behaviors to a new habit, or move habits from one Habit to the other.",
@@ -73,6 +73,6 @@ const habitRoutes = [
   },
 ];
 
-habitRoutes['selected'] = "Objectives"; // Default Page
+habitRoutes['selected'] = "Habits"; // Default Page
 
 export default habitRoutes;

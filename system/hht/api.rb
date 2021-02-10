@@ -79,7 +79,6 @@ module Hht
       get '' do
         nodes_list = habit_node_repo.all_as_json
         halt(404, { message:'No Nodes Found'}.to_json) unless nodes_list
-
         content_type 'application/json'
         json nodes_list
       end
