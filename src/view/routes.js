@@ -11,8 +11,6 @@ import MainStage from "./components/layout/MainStage.jsx";
 
 const appFactory = function (routes) {
   return {
-    // oninit: function() {
-    // },
     view: () => m(MainStage, {
       routes
     })

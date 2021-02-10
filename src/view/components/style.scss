@@ -1,4 +1,3 @@
-// @import "../../../assets/fonts/Silka-Regular-&-Italic/Silka_Regular &_Italic_Webfont/Silka-Regular-&-Italic-Webfont/stylesheet.css"
 
 html,
 body {
@@ -22,9 +21,9 @@ $nav-border-color: #56CCF2;
 
 
 #masthead {
+  mask-image: url('../../assets/images/fibonacci-mask-long.svg');
   mask-repeat: no-repeat;
   mask-position: 10px -20px;
-  mask-image: url('../../assets/images/fibonacci-mask-long.svg');
   z-index: 2;
   position: absolute;
 }
@@ -79,9 +78,7 @@ nav.sub-nav {
     > .sub-nav-title {
       @apply items-center;
     }
-
   }
-  
 
   li.hoverable {
     @apply  #{$dark-bg}
@@ -97,7 +94,7 @@ nav.sub-nav {
                 hover:text-gray-50;
                 line-height: 3em;
     }
-       
+
     > div.mega-menu {
       @apply mr-2 rounded-bl-lg rounded-br-lg;
 
@@ -133,6 +130,7 @@ nav.sub-nav {
         right: 0;
         background-image: linear-gradient(to right, rgb(97, 97, 97), rgb(241, 241, 241));
         margin-left: 30%;
+        width: 70%;
       }
 
       .mega-menu-container.container {
@@ -144,7 +142,8 @@ nav.sub-nav {
 
   }
 
-  .sub-nav-links > li.hoverable:hover, .active {
+  .sub-nav-links > li.hoverable:hover,
+  .active {
     @apply h-12 #{$mega-menu-bg};
     color: $nav-border-color;
     border-bottom: 2px solid $nav-border-color;

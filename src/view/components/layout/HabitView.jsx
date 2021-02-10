@@ -15,8 +15,6 @@ const HabitView = (function() {
     .then(() => m.redraw());
 
   return {
-    oninit: (vnode) => {
-    },
     view: () => (
       <ul>
         { habitNodes().map(

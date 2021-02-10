@@ -7,6 +7,7 @@ const path = require("path");
 module.exports = merge(common, {
   mode: "development",
   output: {
+    path: __dirname + "/images",
     filename: "main.js",
     filename: "[name].bundle.js",
   },
@@ -14,23 +15,23 @@ module.exports = merge(common, {
     inline: true,
     hot: true,
     // open: true,
-    contentBase: "./dist",
+    contentBase: "./src/assets/images",
     // Send API requests on localhost to API server get around CORS.
     proxy: {
-        '/api': {
-          target: {
-              host: "0.0.0.0",
-              protocol: 'http:',
-              port: 9292
-          },
-          pathRewrite: {
-              // '^/api': ''
-          }
-        }
+      "/api": {
+        target: {
+          host: "0.0.0.0",
+          protocol: "http:",
+          port: 9292,
+        },
+        pathRewrite: {
+          // '^/api': ''
+        },
+      },
     },
     headers: {
       "Access-Control-Allow-Origin": "*",
-    }
+    },
   },
   module: {
     rules: [

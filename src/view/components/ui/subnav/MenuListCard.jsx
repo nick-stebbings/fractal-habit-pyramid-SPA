@@ -1,12 +1,14 @@
 // src/view/components/ui/subnav/MenuListCard.jsx
 
+import Icon from "./Icon.jsx"
+
 const MenuListCard = {
   view: ({ attrs }) => (
     <div class="mb-8 px-4 lg:w-1/3 md:w-1/2">
       <div>
         <h3 class="font-bold text-xl text-gray-100 text-bold mb-2">{ attrs.title }</h3>
         <span class="flex justify-end py-3 text-white">
-          <i class={`fa ${attrs.icon}`} aria-hidden="true" />
+          <Icon id={ attrs.icon } />
         </span>
       </div>
       <p class="text-gray-100 text-sm">{ attrs.subtitle }</p>
