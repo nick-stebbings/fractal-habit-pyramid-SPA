@@ -11,44 +11,44 @@ import MainStage from "./components/layout/MainStage.jsx";
 
 import * as d3 from "d3";
 
-let page = function (mainView) {
-  return {
-    oncreate: (vnode) => { 
-      var xScale = d3.scaleLinear().domain([0, 10]).range([0, 40]);
-
-      var xAxis = d3.axisBottom(xScale);
-      d3.select(vnode.dom)
-        .append("svg")
-        .attr("width", 100)
-        .attr("height", 100)
-        .append("g")
-        .attr("transform", "translate(10,10)")
-        .call(xAxis);
-    },
-    view: () => {
-      if(mainView.type === 'vis'){
-        return m('div');
-      } else {
-        return m(MainStage, { page: mainView })
-      }
-    }
+let pageMaker = function (mainView) {
+  let page = { 
+    view: () => m(MainStage, { render: mainView })
   };
+
+  if(mainView.type === 'vis'){
+    const divId = "svg_container_" + Math.floor(Math.random() * 1000000000) + 1;
+
+    page.oncreate = function () { 
+      mainView.content(d3.select("div#" + divId)
+        .append("svg")
+        .attr("width", "100%")
+        .attr("height", "100%")
+      );
+    };
+
+    let d3Canvas = m("div", { id: divId });
+
+    page.view = () =>  m(MainStage, { render: m(mainView, d3Canvas) });
+  };
+
+  return page;
 };
 
 const Routes = {
   "/habits/list": {
     render: function () {
-      return m(Layout, m(page(HabitList)));
+      return m(Layout, m(pageMaker(HabitList)));
     },
   },
   "/vis/habit-tree": {
     render: function () {
-      return m(Layout, m(page(HabitTree)));
+      return m(Layout, m(pageMaker(HabitTree)));
     },
   },
   "/vis/radial-tree": {
     render: function () {
-      return m(Layout, m(page(RadialTree)));
+      return m(Layout, m(pageMaker(RadialTree)));
     },
   },
 };

@@ -16,9 +16,7 @@ const MainStage = {
       <div class="nav-container relative h-24 z-30">
         <NavSection></NavSection>
       </div>
-      <section class="main-content">
-        { m(attrs.page) }
-      </section>
+      <section class="main-content">{ attrs.render }</section>
     </main>
   )
 };

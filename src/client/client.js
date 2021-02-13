@@ -12,15 +12,15 @@ export default (function() {
     },
 
     create_node: function(parent_node) {
-      return axios.post("/api/habit_trees/nodes", { parent_id: parent_node });
+      return axios.post("/habit_trees/nodes", { parent_id: parent_node });
     },
 
     show_one_node: function(id) {
-      return axios.get("/api/habit_trees/nodes/" + id);
+      return axios.get("/habit_trees/nodes/" + id);
     },
 
     delete_node: function(id) {
-      return axios.delete("/api/habit_trees/nodes/" + id);
+      return axios.delete("/habit_trees/nodes/" + id);
     },
   };
 })();
