@@ -11,6 +11,7 @@ const HabitNode = {
 
 const HabitNodes = {
   loadList: HabitNode.load,
+  tree: client.get_tree,
   current: {},
   load: function(id) {
     return HabitNode

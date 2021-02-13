@@ -11,6 +11,10 @@ export default (function() {
       return axios.get("/habit_trees/nodes");
     },
 
+    get_tree: function() {
+      return axios.get("/habit_trees");
+    },
+
     create_node: function(parent_node) {
       return axios.post("/habit_trees/nodes", { parent_id: parent_node });
     },

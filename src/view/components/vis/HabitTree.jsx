@@ -19,18 +19,17 @@ const HabitTree = {
 
     var tree = d3.tree().size([height, width - 160]);
     var stratify = d3.stratify().parentId(function (d) {
-      return d.id.substring(0, d.id.lastIndexOf("."));
+      return d.name.substring(0, d.name.lastIndexOf("."));
     });
 
-    let allNodes = HabitNodes.loadList();
-    allNodes.then(function (error, data) {
-      if (error) throw error;
-      data = JSON.parse(data).habit_nodes;
-
-      var root = stratify(data).sort(function (a, b) {
-        return a.height - b.height || a.id.localeCompare(b.id);
-      });
-
+    let allNodes = HabitNodes.tree();
+    allNodes.then(function (response) {
+      let data = response.data;
+      var root = d3.hierarchy((data));
+      // var root = stratify(JSON.stringify(data)).sort(function (a, b) {
+      //   return a.height - b.height || a.id.localeCompare(b.id);
+      // });
+console.log(root);
       var link = g
         .selectAll(".link")
         .data(tree(root).links())
@@ -73,7 +72,7 @@ const HabitTree = {
           return d.children ? "end" : "start";
         })
         .text(function (d) {
-          return d.id.substring(d.id.lastIndexOf(".") + 1);
+          return d.name.substring(d.name.lastIndexOf(".") + 1);
         });
     });
 
