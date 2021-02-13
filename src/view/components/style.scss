@@ -15,7 +15,7 @@ $dark-bg: bg-balance-darkprimary;
 $mega-menu-bg: bg-balance-lightbg;
 
 $nav-bar-height: h-12;
-$nav-bar-xpad: px-16;
+$nav-bar-xpad: px-20;
 $nav-border-color: #56CCF2;
 
 
@@ -57,7 +57,8 @@ body {
     @apply flex flex-wrap h-full items-start -mt-2;
 
     > .container {
-      @apply p-2 pr-0 flex flex-wrap;
+      @apply pr-0 flex flex-wrap;
+      padding: 0.6em;
       max-width: 100%;
 
       > .list-card-container {
@@ -75,13 +76,14 @@ body {
                 bg-balance-lightgrey;
 
                   > .list-card {
-                    @apply flex items-start;
+                    @apply flex items-start h-full;
 
                     .label-col {
-                      @apply w-16 flex-shrink-0 flex flex-col text-right;
+                      @apply flex-shrink-0 flex flex-col text-right pr-2;
+                        width: 3.6em;
                     }
                     .label-col > * {
-                      @apply pr-2 w-16 flex-shrink-0 flex flex-col text-right;
+                      @apply pr-6 mt-2 h-16 w-16 flex-shrink-0 flex flex-col text-right text-xs uppercase;
                     }
 
                     .details-col {
@@ -108,10 +110,6 @@ body {
                         @apply text-2xl;
                       }
                     }
-                    
-                    // > h2 { 
-                    //   @apply tracking-widest text-lg font-medium text-yellow-500 mb-1;
-                    // }
                 }
               }
     }
