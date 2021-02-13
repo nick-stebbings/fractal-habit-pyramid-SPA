@@ -79,7 +79,7 @@ body {
                     @apply flex items-start h-full;
 
                     .label-col {
-                      @apply flex-shrink-0 flex flex-col text-right pr-2;
+                      @apply h-full flex-shrink-0 flex flex-col text-right pr-2;
                         width: 3.6em;
                     }
                     .label-col > * {
@@ -87,7 +87,7 @@ body {
                     }
 
                     .details-col {
-                      @apply flex flex-col;
+                      @apply h-full flex flex-col;
                     }
                     .details-col > div {
                       @apply h-8 flex-row flex justify-items-center;
@@ -99,7 +99,7 @@ body {
 
                     .stats-row > span {
                       > span {
-                        @apply justify-center;
+                        @apply justify-center pr-4;
                       }
 
                       > span:first-of-type {
@@ -116,7 +116,7 @@ body {
   }
 }
 
-nav.sub-nav {
+nav.nav {
   @apply  #{$dark-bg}
           #{$nav-bar-height}
           #{$nav-bar-xpad}
@@ -126,14 +126,14 @@ nav.sub-nav {
           border-gray-300
           text-gray-900;
 
-  .sub-nav-title,
-  .sub-nav-links,
-  .sub-nav-links > li > a {
+  .nav-title,
+  .nav-links,
+  .nav-links > li > a {
     @apply  flex
             #{$nav-bar-height};
   }
 
-  > .sub-nav-container {
+  > .nav-container {
     @apply  container
             flex
             justify-between
@@ -142,7 +142,7 @@ nav.sub-nav {
             mr-2;
             max-width: 100%;
 
-    > .sub-nav-title {
+    > .nav-title {
       @apply items-center;
     }
   }
@@ -209,7 +209,7 @@ nav.sub-nav {
 
   }
 
-  .sub-nav-links > li.hoverable:hover,
+  .nav-links > li.hoverable:hover,
   .active {
     @apply h-12 #{$mega-menu-bg};
     color: $nav-border-color;

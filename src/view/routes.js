@@ -1,6 +1,5 @@
 // Layouts
 import Layout from "./components/index";
-import habitRoutes from "./subNavRoutes";
 
 // Individual pages
 //.. by date
@@ -9,11 +8,9 @@ import habitRoutes from "./subNavRoutes";
 // Components
 import MainStage from "./components/layout/MainStage.jsx";
 
-const appFactory = function (routes) {
+const appFactory = function () {
   return {
-    view: () => m(MainStage, {
-      routes
-    })
+    view: () => m(MainStage)
   }
 }
 
@@ -23,7 +20,7 @@ let App = appFactory();
 const Routes = {
   "/": {
     render: function () {
-      return m(Layout, m(appFactory(habitRoutes)));
+      return m(Layout, m(appFactory()));
     },
   },
   "/test1": {

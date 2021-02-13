@@ -1,12 +1,13 @@
 // src/view/components/layout/NavBar.jsx
 
 // Components
+import habitRoutes from "../../subNavRoutes";
 // import ToggleableLink from "../ui/subnav/ToggleableLink.jsx";
-import HoverableLink from "../ui/subnav/HoverableLink.jsx";
+import NavBar from "../ui/navigation/NavBar.jsx";
 
 const NavSection = {
   oninit: (vnode) => {
-    vnode.state.subnav = vnode.attrs.routes
+    // vnode.state.subnav = habitRoutes
   },
   view: (vnode) => (
     <header id="masthead">
@@ -24,27 +25,7 @@ const NavSection = {
           </div>
         </div>
       </nav>
-      <nav class="sub-nav">
-        <div class="sub-nav-container">
-          <div class="sub-nav-title">{vnode.attrs.routes.selected} Data:</div>
-          <ul class="sub-nav-links">
-            {
-              vnode.attrs.routes.map((route, index) => { 
-                return (
-                  <HoverableLink
-                  label={`${route.label}`}
-                  class={ vnode.attrs.routes.selected === route.label ? 'active' : 'inactive' }
-                  id={`sub-nav-${route.label.toLowerCase()}`}
-                  hrefs={`${route.hrefs}`} >
-                    { vnode.state.subnav[index].hrefs }
-                  </HoverableLink>
-                )
-              })
-            }
-            {/* <NavListButton path={`/list`}icon={<i class="far fa-calendar-alt"></i>} /> */}
-          </ul>
-        </div>
-      </nav>
+      <NavBar routes={habitRoutes}></NavBar>
     </header>
   )
 };
