@@ -1,12 +1,12 @@
-// src/view/components/ui/navigation/NavSection.jsx
+// src/view/components/ui/layout/NavSection.jsx
 
 // import "./style.scss";
 
 // Components
-import Routes from "../../../subNavRoutes";
+import Routes from "../../subNavRoutes";
 // import ToggleableLink from "../ui/subnav/ToggleableLink.jsx";
-import NavBar from "./NavBar.jsx";
-import RegularLink from "./RegularLink.jsx";
+import NavBar from "../ui/navigation/NavBar.jsx";
+import RegularLink from "../ui/navigation/RegularLink.jsx";
 
 const NavSection = {
   oninit: (vnode) => {

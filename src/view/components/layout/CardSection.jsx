@@ -2,7 +2,7 @@
 
 // Components
 import ListCard from "../ui/ListCard.jsx";
-import MenuListCard from "../ui/navigation/MenuListCard.jsx";
+import MenuListCard from "../ui/MenuListCard.jsx";
 
 const CardSection = {
   view: ({attrs}) => (
