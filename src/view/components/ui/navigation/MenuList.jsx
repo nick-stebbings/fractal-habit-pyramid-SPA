@@ -1,6 +1,6 @@
-// src/view/components/layout/MenuList.jsx
+// src/view/components/ui/navigation/MenuList.jsx
 
-import MenuListCard from "../ui/subnav/MenuListCard.jsx";
+import MenuListCard from "./MenuListCard.jsx";
 
 const MenuList = {
   view: ({ children }) => (

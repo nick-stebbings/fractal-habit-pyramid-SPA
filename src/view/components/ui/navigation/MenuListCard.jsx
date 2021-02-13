@@ -1,4 +1,4 @@
-// src/view/components/ui/subnav/MenuListCard.jsx
+// src/view/components/ui/navigation/MenuListCard.jsx
 
 import Icon from "../Icon.jsx"
 

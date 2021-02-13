@@ -1,7 +1,7 @@
 // src/view/components/layout/MainStage.jsx
 
 // Components
-import NavSection from "./NavSection.jsx";
+import NavSection from "../ui/navigation/NavSection.jsx";
 import HabitList from "../habits/HabitList.jsx";
 
 const MainStage = {

@@ -1,6 +1,6 @@
-// src/view/components/ui/subnav/HoverableLink.jsx
+// src/view/components/ui/navigation/HoverableLink.jsx
 
-import MenuList from "../../layout/MenuList.jsx";
+import MenuList from "./MenuList.jsx";
 
 const HoverableLink = {
   view: ({ attrs, children }) => (

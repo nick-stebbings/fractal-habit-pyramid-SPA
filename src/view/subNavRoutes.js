@@ -1,5 +1,5 @@
 
-const habitRoutes = [
+const Routes = [
   {
     label: "Objectives",
     hrefs: {
@@ -73,6 +73,6 @@ const habitRoutes = [
   },
 ];
 
-habitRoutes['selected'] = "Habits"; // Default Page
+Routes['selected'] = "Habits"; // Default Page
 
-export default habitRoutes;
+export default Routes;

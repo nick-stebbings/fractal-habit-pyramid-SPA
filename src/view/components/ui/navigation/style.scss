@@ -1,0 +1,91 @@
+$nav-bar-height: h-12;
+$nav-bar-xpad: px-20;
+$nav-border-color: #56CCF2;
+
+$light-bg: bg-balance-lightgrey;
+$dark-bg: bg-balance-darkprimary;
+$mega-menu-bg: bg-balance-lightbg;
+
+nav.nav {
+  @apply #{$dark-bg} #{$nav-bar-height} #{$nav-bar-xpad} w-full justify-end border-b-2 border-gray-300 text-gray-900;
+
+  .nav-title,
+  .nav-links,
+  .nav-links > li > a {
+    @apply flex #{$nav-bar-height};
+  }
+
+  > .nav-container {
+    @apply container flex justify-between items-center w-full mr-2;
+    max-width: 100%;
+
+    > .nav-title {
+      @apply items-center;
+    }
+  }
+
+  li.hoverable {
+    @apply #{$dark-bg} hover:#{text-gray-100} px-2 font-light border-2 rounded-tr-lg rounded-tl-lg;
+
+    > a {
+      @apply text-sm font-bold hover: text-gray-50;
+      line-height: 3em;
+    }
+
+    > div.mega-menu {
+      @apply mr-2 rounded-bl-lg rounded-br-lg absolute z-10 -mt-1;
+
+      .backdrop {
+        background-image: url('../../assets/images/wm1.png');
+        background-repeat: no-repeat;
+        background-position: 0 -6em;
+        background-color: #000;
+        height: 360px;
+        padding-right: 70%;
+      }
+
+      .hero-message {
+        @apply w-full text-white px-4 mb-8 text-right;
+
+        h2 {
+          @apply font-bold text-2xl py-4;
+        }
+
+        p {
+          width: 40%;
+          float: right;
+        }
+      }
+
+      .inset,
+      .mega-menu-container.container {
+        display: none;
+      }
+
+      .inset {
+        @apply flex absolute pr-4;
+        right: 0;
+        background-image: linear-gradient(to right, rgb(97, 97, 97), rgb(241, 241, 241));
+        margin-left: 30%;
+        width: 70%;
+      }
+
+      .mega-menu-container.container {
+        @apply px-5 py-6 mt-4 w-full flex justify-items-center rounded-xl #{$mega-menu-bg} bg-opacity-80 border-2 border-gray-300;
+        margin-top: -0.25em;
+      }
+    }
+  }
+
+}
+
+.nav-links > li.hoverable:hover,
+.active {
+  @apply h-12 #{$mega-menu-bg};
+  color: $nav-border-color;
+  border-bottom: 2px solid $nav-border-color;
+
+  > a {
+    @apply text-balance #{$nav-bar-height};
+  }
+}

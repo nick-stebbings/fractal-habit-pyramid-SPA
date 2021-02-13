@@ -1,4 +1,4 @@
-// src/view/components/ui/subnav/ToggleableLink.jsx
+// src/view/components/ui/navigation/ToggleableLink.jsx
 
 import MenuList from "../../layout/MenuList.jsx";
 
