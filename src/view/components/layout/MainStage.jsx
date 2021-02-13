@@ -5,7 +5,7 @@ import NavSection from "../ui/navigation/NavSection.jsx";
 import HabitList from "../habits/HabitList.jsx";
 
 const MainStage = {
-  view: ({attrs}) => (
+  view: ({attrs, children}) => (
     <main>
       <svg  id="logo" 
             class="fill-current h-8 w-8 ml-1 mt-2 text-balance fixed" 
@@ -17,7 +17,7 @@ const MainStage = {
         <NavSection></NavSection>
       </div>
       <section class="main-content">
-        <HabitList></HabitList>
+        { m(attrs.page) }
       </section>
     </main>
   )

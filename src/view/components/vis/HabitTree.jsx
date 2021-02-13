@@ -1,10 +1,11 @@
 // src/view/components/vis/HabitTree.jsx
 
-const CardSection = {
+const HabitTree = {
   view: ({attrs, children}) => (
 
+    <div></div>
 
       )
 };
 
-export default CardSection;
+export default HabitTree;

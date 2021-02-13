@@ -22,7 +22,6 @@ const NavBar = {
               )
             })
           }
-          {/* <NavListButton path={`/list`}icon={<i class="far fa-calendar-alt"></i>} /> */}
         </ul>
       </div>
     </nav>
