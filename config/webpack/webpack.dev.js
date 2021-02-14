@@ -3,19 +3,19 @@ const {
 } = require("webpack-merge");
 const common = require("./webpack.common");
 const path = require("path");
+const fs = require("fs");
 
 module.exports = merge(common, {
   mode: "development",
   output: {
-    path: __dirname + "/images",
-    filename: "main.js",
+    path: path.join(__dirname, "bin"),
     filename: "[name].bundle.js",
   },
   devServer: {
     inline: true,
-    hot: true,
+    hot: true,  
     // open: true,
-    contentBase: "./src/assets/images",
+    contentBase: '/',
     // Send API requests on localhost to API server get around CORS.
     proxy: {
       "/api": {

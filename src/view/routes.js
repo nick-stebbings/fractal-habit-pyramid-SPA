@@ -13,13 +13,13 @@ import * as d3 from "d3";
 
 let pageMaker = function (mainView) {
   let page = { 
-    view: () => m(MainStage, { render: mainView })
+    view: () => m(MainStage, {}, mainView)
   };
 
   if(mainView.type === 'vis'){
     const divId = "svg_container_" + Math.floor(Math.random() * 1000000000) + 1;
 
-    page.oncreate = function () { 
+    page.oncreate = function () {
       mainView.content(d3.select("div#" + divId)
         .append("svg")
         .attr("width", "100%")
@@ -27,9 +27,12 @@ let pageMaker = function (mainView) {
       );
     };
 
-    let d3Canvas = m("div", { id: divId });
-
-    page.view = () =>  m(MainStage, { render: m(mainView, d3Canvas) });
+    page.view = () => {
+      let d3Canvas = m("div", { id: divId });
+      return m(MainStage,
+        m(mainView, d3Canvas)
+      );
+    } 
   };
 
   return page;

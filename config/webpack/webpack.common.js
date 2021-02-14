@@ -1,20 +1,30 @@
-const Path = require("path");
 const webpack = require("webpack");
+const fs = require("fs"); 
+const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const SpriteLoaderPlugin = require("svg-sprite-loader/plugin");
 
+// App directory
+const appDirectory = fs.realpathSync(path.resolve(process.cwd()));
+
+// Gets absolute path of file within app directory
+const resolveAppPath = (relativePath) =>
+  path.resolve(appDirectory, relativePath);
+
+// Host
+const host = process.env.HOST || "localhost";
+
 module.exports = {
   entry: {
-    main: "./src/index.jsx",
-    vendor: "./src/vendor.js",
-    // publicPath: "/images/",
+    main: resolveAppPath("src/index.jsx"),
+    vendor: resolveAppPath("src/vendor.js"),
   },
   plugins: [
     new webpack.ProvidePlugin({
       m: "mithril", //Global access
     }),
     new HtmlWebpackPlugin({
-      template: "./src/template.html",
+      template: resolveAppPath('src/template.html'),
     }),
     new SpriteLoaderPlugin({
       plainSprite: true,
@@ -48,7 +58,8 @@ module.exports = {
         test: /assets\/(images|icons)\/.*\.(svg|png|jpg|jpeg|gif)$/i,
         loader: "file-loader",
         options: {
-          name: "/images/[name].[ext]",
+          publicPath: resolveAppPath('src/assets/images'),
+          name: "[name].[ext]",
         },
       },
       // {
@@ -64,7 +75,7 @@ module.exports = {
     ],
   },
   node: {
-   fs: "empty"
+    fs: "empty",
   },
   watch: true,
 };
