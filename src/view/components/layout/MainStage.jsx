@@ -15,7 +15,7 @@ const MainStage = {
       <div class="nav-container relative h-24 z-30">
         <NavSection></NavSection>
       </div>
-      <section class="main-content">{ m.render(children[0]) }</section>
+      <section class="main-content">{ children[0] }</section>
     </main>
   )
 };
