@@ -4,7 +4,7 @@
 import NavSection from "./NavSection.jsx";
 
 const MainStage = {
-  view: ({children}) => (
+  view: ({ children: [mainPage, ...rest]}) => (
     <main>
       <svg  id="logo" 
             class="fill-current h-8 w-8 ml-1 mt-2 text-balance fixed" 
@@ -15,7 +15,7 @@ const MainStage = {
       <div class="nav-container relative h-24 z-30">
         <NavSection></NavSection>
       </div>
-      <section class="main-content">{ children[0] }</section>
+      <section class="main-content">{ mainPage }</section>
     </main>
   )
 };
