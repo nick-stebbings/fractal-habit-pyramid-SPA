@@ -3,23 +3,29 @@
 // Components
 import TextInput from "../ui/forms/TextInput.jsx"
 
+import "../ui/forms/form-style.scss";
+
 const AddHabit = {
   view: ({attrs, children}) => (
-    <section class="add-habit-form card-content">
+    <section class="add-habit-form form-content">
       <div class="container">
-
-      <form class="mx-auto max-w-sm" action="">
-        <TextInput
-          labelText="hi"
-          placeholder="this#thi.com"
-          type="email"
-        ></TextInput>
-        <TextInput
-          labelText="hiagain"
-          placeholder="this#thi.com"
-          type="email"
-        ></TextInput>
-      </form>
+        <form class="mx-auto max-w-sm w-full" action="">
+          <TextInput
+            labelText="Habit Name:"
+            placeholder="Cut out caffeine"
+            type="text"
+          ></TextInput>
+          <TextInput
+            labelText="Motivation:"
+            placeholder="To feel more clear-headed in the mornings"
+            type="text"
+          ></TextInput>
+          <TextInput
+            labelText="Date of Initiation:"
+            value={'2012-12-12'}
+            type="date"
+          ></TextInput>
+        </form>
       </div>
     </section>
   )

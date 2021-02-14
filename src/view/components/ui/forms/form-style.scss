@@ -1,0 +1,9 @@
+.form-content {
+  > .container {
+    > form {
+        @apply flex flex-col justify-between 
+                mx-auto max-w-sm w-full
+              text-balance border-balance-darkgrey border-2 rounded-3xl rounded-r-none rounded-tl divide-y-2 divide-balance-darkgrey divide-double bg-balance-lightgrey;
+    }
+  }
+}
