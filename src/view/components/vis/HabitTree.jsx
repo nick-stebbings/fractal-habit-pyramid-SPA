@@ -3,80 +3,43 @@
 // Model
 import HabitNodes from "../../../models/index";
 
-// import tidyTree from "./tidyTree";
 import "./tree-style.scss";
 import * as d3 from "d3";
+
+const svgWidth = 960;
+const svgHeight = 1000;
 
 const HabitTree = {
   type: 'vis',
   view: ({children}) => (
-    <div id="vis" width="960" height="1000">{ children }</div>
+    <div id="vis" width={svgWidth} height={svgWidth}>{ children }</div>
   ),
   content(svg) {
-    var width = +svg.attr("width"),
-        height = +svg.attr("height"),
-        g = svg.append("g").attr("transform", "translate(40,0)");
+    let margin = {top: 20, right: 120, bottom: 20, left: 120},
+        width = svgWidth - margin.right - margin.left,
+        height = svgHeight - margin.top - margin.bottom;
+    svg.append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    var tree = d3.tree().size([height, width - 160]);
-    var stratify = d3.stratify().parentId(function (d) {
-      return d.name.substring(0, d.name.lastIndexOf("."));
-    });
+      
+      let fetchTreeData = HabitNodes.tree();
+      
+      fetchTreeData.then(function (response) {
+        const root = d3.hierarchy(response.data);
+        const dy = width / 6;
+        const dx = 10;
+        const tree = d3.tree().nodeSize([dx, dy]);
+        const diagonal = d3.svg.diagonal()
 
-    let allNodes = HabitNodes.tree();
-    allNodes.then(function (response) {
-      let data = response.data;
-      var root = d3.hierarchy((data));
-      // var root = stratify(JSON.stringify(data)).sort(function (a, b) {
-      //   return a.height - b.height || a.id.localeCompare(b.id);
-      // });
-console.log(root);
-      var link = g
-        .selectAll(".link")
-        .data(tree(root).links())
-        .enter()
-        .append("path")
-        .attr("class", "link")
-        .attr(
-          "d",
-          d3
-            .linkHorizontal()
-            .x(function (d) {
-              return d.y;
-            })
-            .y(function (d) {
-              return d.x;
-            })
-        );
+        let i = 0;
+console.log(diagonal);
+//         update(root);
 
-      var node = g
-        .selectAll(".node")
-        .data(root.descendants())
-        .enter()
-        .append("g")
-        .attr("class", function (d) {
-          return "node" + (d.children ? " node--internal" : " node--leaf");
-        })
-        .attr("transform", function (d) {
-          return "translate(" + d.y + "," + d.x + ")";
-        });
 
-      node.append("circle").attr("r", 2.5);
+      })
+    }
+  }
 
-      node
-        .append("text")
-        .attr("dy", 3)
-        .attr("x", function (d) {
-          return d.children ? -8 : 8;
-        })
-        .style("text-anchor", function (d) {
-          return d.children ? "end" : "start";
-        })
-        .text(function (d) {
-          return d.name.substring(d.name.lastIndexOf(".") + 1);
-        });
-    });
 
-  },
-};
 
 export default HabitTree;
