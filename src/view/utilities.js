@@ -22,6 +22,7 @@ let pageMaker = function (layoutView, pageView) {
       // Pass an appended SVG selection to the vis component to consume
       pageView.content(
         select("div#" + divId)
+          .classed("h-full", true)
           .append("svg")
           .attr("width", "100%")
           .attr("height", "100%")
