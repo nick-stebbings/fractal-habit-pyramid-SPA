@@ -60,10 +60,10 @@ module Hht
       # Nested relation of children (nesting retricted by parent_id)
       def nest_parent_with_immediate_child_nodes(parent_id)
         nest_parents = habit_nodes
-                       .combine(habit_nodes: :parent)
-                       .node(:parent) do |habit_node|
-          habit_node.by_pk(parent_id)
-        end
+                        .combine(habit_nodes: :parent)
+                        .node(:parent) do |habit_node|
+                          habit_node.by_pk(parent_id)
+                        end
 
         nest_parents
           .order(:lft)

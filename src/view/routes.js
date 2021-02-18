@@ -1,5 +1,5 @@
 // Layouts
-import Layout from "./components/index";
+import Layout from "./components/layout";
 import MainStage from "./components/layout/MainStage.jsx";
 
 // Individual Component Pages
@@ -9,7 +9,7 @@ import HabitTree from "./components/vis/HabitTree.jsx";
 import RadialTree from "./components/vis/RadialTree.jsx";
 
 // Libraries
-import { p, pageMaker } from "./utilities";
+import { pageMaker } from "./utilities";
 
 const Routes = {
   "/habits/list": {

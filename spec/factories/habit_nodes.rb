@@ -12,7 +12,7 @@ Factory.define(:habit_node, struct_namespace: Entities) do |f|
   f.sequence(:id) { |n| 1 + n }
   f.lft 1
   f.rgt 2
-  f.sequence(:parent_id) { |n| n  }
+  f.sequence(:parent_id) { |n| 1  }
   # f.association(:habits)
   # f.association(:parent)
 end

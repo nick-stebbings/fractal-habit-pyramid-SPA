@@ -61,9 +61,6 @@ module Hht
       end
     end
 
-    # get "/favicon.ico" do
-    # end
-
     namespace '/api' do
       get '' do
         'Hello, world!'

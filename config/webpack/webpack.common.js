@@ -24,12 +24,14 @@ module.exports = {
       m: "mithril", //Global access
     }),
     new HtmlWebpackPlugin({
-      template: resolveAppPath('src/template.html'),
+      template: resolveAppPath("src/template.html"),
     }),
     new SpriteLoaderPlugin({
       plainSprite: true,
     }),
   ],
+  watch: true,
+  target: "web",
   module: {
     rules: [
       {
@@ -55,27 +57,17 @@ module.exports = {
         use: ["html-loader"],
       },
       {
-        test: /assets\/(images|icons)\/.*\.(svg|png|jpg|jpeg|gif)$/i,
+        test: /\.svg$/,
+        use: [{ loader: "raw-loader" }],
+      },
+      {
+        test: /assets\/images\/.*\.(svg|png|jpg|jpeg|gif)$/i,
         loader: "file-loader",
         options: {
-          publicPath: resolveAppPath('src/assets/images'),
+          publicPath: resolveAppPath("src/assets/images"),
           name: "[name].[ext]",
         },
       },
-      // {
-      //   test: /assets\/icons\/mega-menu\/.*\.svg$/,
-      //   loader: "svg-sprite-loader",
-      //   options: {
-      //     extract: true,
-      //     spriteFilename: "icons.svg",
-      //     outputPath: 'images/sprites/',
-      //     publicPath: 'sprites/'
-      //   },
-      // },
     ],
   },
-  node: {
-    fs: "empty",
-  },
-  watch: true,
 };

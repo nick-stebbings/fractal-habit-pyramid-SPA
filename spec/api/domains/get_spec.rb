@@ -13,7 +13,7 @@ RSpec.describe 'Feature: domains resource' do
       let(:response) { get '/api/domains' }
       let(:resource) { JSON.load response.body }
 
-      it 'Then returns correct status code' do
+      it 'Then returns status code 200' do
         expect(response.status).to eq 200
       end
 
@@ -22,7 +22,7 @@ RSpec.describe 'Feature: domains resource' do
           expect(response.header['Content-Type']).to eq 'application/json'
         end
 
-        it 'returns the created json objects' do
+        it 'returns the expected json objects' do
           expect(resource).to include_json(@domain1.attributes.to_json).at_path("domains")
           expect(resource).to include_json(@domain2.attributes.to_json).at_path("domains")
         end
@@ -61,7 +61,7 @@ RSpec.describe 'Feature: domains resource' do
         it 'has json mime type in response header' do
           expect(response.header['Content-Type']).to eq 'application/json'
         end
-        it 'returns the created json object' do
+        it 'returns the expected json object' do
           expect(response.body).to be_json_eql(@domain1.attributes.to_json)
         end
       end
