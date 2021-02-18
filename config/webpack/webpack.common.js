@@ -2,7 +2,6 @@ const webpack = require("webpack");
 const fs = require("fs"); 
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const SpriteLoaderPlugin = require("svg-sprite-loader/plugin");
 
 // App directory
 const appDirectory = fs.realpathSync(path.resolve(process.cwd()));
@@ -26,12 +25,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: resolveAppPath("src/template.html"),
     }),
-    new SpriteLoaderPlugin({
-      plainSprite: true,
-    }),
   ],
   watch: true,
-  target: "web",
   module: {
     rules: [
       {
@@ -56,10 +51,10 @@ module.exports = {
         test: /\.html$/,
         use: ["html-loader"],
       },
-      {
-        test: /\.svg$/,
-        use: [{ loader: "raw-loader" }],
-      },
+      // {
+      //   test: /\.svg$/,
+      //   use: [{ loader: "raw-loader" }],
+      // },
       {
         test: /assets\/images\/.*\.(svg|png|jpg|jpeg|gif)$/i,
         loader: "file-loader",

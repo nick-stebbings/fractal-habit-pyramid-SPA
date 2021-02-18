@@ -6,7 +6,7 @@ require 'sinatra/reloader'
 require 'sinatra/json'
 require 'sinatra/cross_origin'
 require 'multi_json'
-
+require 'pry'
 require_relative 'container'
 require File.join(APP_ROOT, 'lib', 'subtree')
 
@@ -87,11 +87,11 @@ module Hht
         # TODO: Use contract to verify payload
         #       MODIFIED PREORDER TRAVERSAL
         habit_node_repo.create(habit_node)
-        url = "http://localhost:9393/habit_trees/nodes/#{habit_node['id']}"
+
+        url = "http://localhost:9393/habit_trees/nodes/#{habit_node[:id]}"
         response.headers['Location'] = url
-        
-        # So we can return 201 (and the persisted item?)
         status 201
+        json habit_node
       end
 
       get '/:node_id' do |node_id|
@@ -107,11 +107,11 @@ module Hht
         habit_node = MultiJson.load(request.body.read, :symbolize_keys => true)
         # TODO: Use contract to verify payload
         #       MODIFIED PREORDER TRAVERSAL
-        habit_node_repo.update(node_id, habit_node)
-        url = "http://localhost:9393/habit_trees/nodes/#{habit_node['id']}"
-        response.headers['Location'] = url
 
-        status 201
+        existing_node = habit_node_repo.as_json(node_id)
+        existing_node ? habit_node_repo.update(node_id, habit_node) : habit_node_repo.create(node_id, habit_node)
+
+        status existing_node ? 204 : 201
       end
 
       patch '/:node_id' do |node_id|
@@ -124,6 +124,22 @@ module Hht
         response.headers['Location'] = url
 
         status 201
+          # type = accepted_media_type
+
+  # user_client = JSON.parse(request.body.read)
+  user_server = users[first_name.to_sym]
+
+  user_client.each do |key, value|
+    user_server[key.to_sym] = value
+  end
+
+  if type == 'json'
+    content_type 'application/json'
+    user_server.merge(id: first_name).to_json
+  elsif type == 'xml'
+    content_type 'application/xml'
+    Gyoku.xml(first_name => user_server)
+  end
       end
 
       delete '/:node_id' do |node_id|
