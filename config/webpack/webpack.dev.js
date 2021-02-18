@@ -1,9 +1,7 @@
-const {
-  merge
-} = require("webpack-merge");
+const { merge } = require("webpack-merge");
 const common = require("./webpack.common");
 const path = require("path");
-const fs = require("fs");
+const ESLintPlugin = require("eslint-webpack-plugin");
 
 module.exports = merge(common, {
   mode: "development",
@@ -11,11 +9,16 @@ module.exports = merge(common, {
     path: path.join(__dirname, "bin"),
     filename: "[name].bundle.js",
   },
+  plugins: [
+    new ESLintPlugin({
+      overrideConfigFile: ".eslintrc",
+      emitWarning: true,
+    }),
+  ],
   devServer: {
     inline: true,
-    hot: true,  
-    // open: true,
-    contentBase: '/',
+    hot: true,
+    contentBase: "/",
     // Send API requests on localhost to API server get around CORS.
     proxy: {
       "/api": {
