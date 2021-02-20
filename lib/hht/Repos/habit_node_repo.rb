@@ -25,6 +25,7 @@ module Hht
 
       def as_json(id)
         habit_node = by_id(id).one
+        return nil unless habit_node
         { 
           'id' => habit_node.fetch(:id),
           'lft' => habit_node.fetch(:lft),

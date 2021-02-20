@@ -2,7 +2,7 @@
 
 import Icon from "./Icon.jsx"
 
-import mountain from "svg-url-loader!../../../assets/icons/mega-menu/objective-mountain.svg";
+import mountain from "../../../assets/icons/mega-menu/objective-mountain.svg";
 // import "./assets/icons/mega-menu/objective-completion.svg";
 // import "./assets/icons/mega-menu/objective-compose.svg";
 

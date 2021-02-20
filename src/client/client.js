@@ -16,6 +16,6 @@ export default (function() {
     delete_node: (id) => axios.delete(`${basePath}/${id}`),
 
     put_node: (id) => axios.put(`${basePath}/${id}`),
-    patch_node: (id) => axios.patch(`${basePath}/${id}`),
+    patch_node: (id, update) => axios.patch(`${basePath}/${id}`, update),
   };
 })();

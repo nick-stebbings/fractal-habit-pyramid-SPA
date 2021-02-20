@@ -10,10 +10,10 @@ module.exports = merge(common, {
     filename: "[name].bundle.js",
   },
   plugins: [
-    new ESLintPlugin({
-      overrideConfigFile: ".eslintrc",
-      emitWarning: true,
-    }),
+    // new ESLintPlugin({
+    //   overrideConfigFile: ".eslintrc",
+    //   emitWarning: true,
+    // }),
   ],
   devServer: {
     inline: true,

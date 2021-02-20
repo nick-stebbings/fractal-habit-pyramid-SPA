@@ -114,7 +114,7 @@ RSpec.describe 'Feature: habit_nodes resource' do
 
       describe 'And the child node has parent id attr' do
         it 'has an integer as parent_id' do expect(resource).to have_json_type(Integer).at_path("habit_nodes/1/parent_id") end
-        it 'has the parents id as parent_id' do expect(JSON.parse(resource)['habit_nodes'][1]['parent_id']).to eq 1 end
+        it 'has the parents id as parent_id' do expect(parse_json(resource)['habit_nodes'][1]['parent_id']).to eq 1 end
       end
 
       # describe 'And the child node has updated lft/rgt attribute' do

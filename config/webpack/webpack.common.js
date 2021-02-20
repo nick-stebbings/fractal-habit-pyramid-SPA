@@ -51,10 +51,10 @@ module.exports = {
         test: /\.html$/,
         use: ["html-loader"],
       },
-      // {
-      //   test: /\.svg$/,
-      //   use: [{ loader: "raw-loader" }],
-      // },
+      {
+        test: /assets\/icons\/.*\.svg$/,
+        use: [{ loader: "file-loader" }],
+      },
       {
         test: /assets\/images\/.*\.(svg|png|jpg|jpeg|gif)$/i,
         loader: "file-loader",

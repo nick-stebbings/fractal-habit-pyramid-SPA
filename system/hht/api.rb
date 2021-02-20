@@ -6,6 +6,7 @@ require 'sinatra/reloader'
 require 'sinatra/json'
 require 'sinatra/cross_origin'
 require 'multi_json'
+
 require 'pry'
 require_relative 'container'
 require File.join(APP_ROOT, 'lib', 'subtree')
@@ -62,12 +63,10 @@ module Hht
     end
 
     namespace '/api' do
-      get '' do
-        'Hello, world!'
-      end
-
-      post '' do
-        halt 405
+      [:get, :put, :patch, :delete].each do |method|
+        send(method, '') do
+          halt 405
+        end
       end
     end
 
@@ -76,7 +75,6 @@ module Hht
       get '' do
         nodes_list = habit_node_repo.all_as_json
         halt(404, { message:'No Nodes Found'}.to_json) unless nodes_list
-        content_type 'application/json'
         json nodes_list
       end
 
@@ -95,15 +93,12 @@ module Hht
       end
 
       get '/:node_id' do |node_id|
-        node = habit_node_repo.as_json(node_id)
-        halt(404, { message:'Node Not Found'}.to_json) unless node
-
-        content_type 'application/json'
-        json node
+        habit_node = habit_node_repo.as_json(node_id)
+        halt(404, { message:'Node Not Found'}.to_json) unless habit_node
+        json habit_node
       end
 
       put '/:node_id' do |node_id|
-        # Parse payload
         habit_node = MultiJson.load(request.body.read, :symbolize_keys => true)
         # TODO: Use contract to verify payload
         #       MODIFIED PREORDER TRAVERSAL
@@ -115,38 +110,26 @@ module Hht
       end
 
       patch '/:node_id' do |node_id|
-        # Parse payload
-        habit_node = MultiJson.load(request.body.read, :symbolize_keys => true)
+        habit_node_client = MultiJson.load(request.body.read, :symbolize_keys => true)
+        habit_node_server = habit_node_repo.as_json(node_id)
+        halt(404, { message:'Node Not Found'}.to_json) unless habit_node_server
+
         # TODO: Use contract to verify payload
         #       MODIFIED PREORDER TRAVERSAL
-        habit_node_repo.update(node_id, habit_node)
-        url = "http://localhost:9393/habit_trees/nodes/#{habit_node['id']}"
-        response.headers['Location'] = url
 
-        status 201
-          # type = accepted_media_type
-
-  # user_client = JSON.parse(request.body.read)
-  user_server = users[first_name.to_sym]
-
-  user_client.each do |key, value|
-    user_server[key.to_sym] = value
-  end
-
-  if type == 'json'
-    content_type 'application/json'
-    user_server.merge(id: first_name).to_json
-  elsif type == 'xml'
-    content_type 'application/xml'
-    Gyoku.xml(first_name => user_server)
-  end
+        habit_node_client.each do |key, value|
+          habit_node_server[key.to_sym] = value
+        end
+        habit_node_repo.update(node_id, habit_node_server)
+        status 204
       end
 
       delete '/:node_id' do |node_id|
+        # binding.pry
         node = habit_node_repo.as_json(node_id)
         halt(404, { message:'Node Not Found'}.to_json) unless node
 
-        habit_node_repo.delete(node_id)
+        habit_node_repo.delete(node_id.to_i)
         status 204
       end
     end
