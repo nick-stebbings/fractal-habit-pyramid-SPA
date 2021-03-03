@@ -83,12 +83,12 @@ module Hht
 
         # TODO: Use contract to verify payload
         #       MODIFIED PREORDER TRAVERSAL
-        habit_node_repo.create(habit_node)
+        created = habit_node_repo.create(habit_node)
 
-        url = "http://localhost:9393/habit_trees/nodes/#{habit_node[:id]}"
+        url = "http://localhost:9393/habit_trees/nodes/#{created[:id]}"
         response.headers['Location'] = url
         status 201
-        json habit_node
+        json created.attributes
       end
 
       get '/:node_id' do |node_id|
@@ -165,20 +165,21 @@ module Hht
         domain_list = domain_repo.all_as_json
         halt(404, { message:'No Domains Found'}.to_json) unless domain_list
 
-        status 201
+        status 200
         json domain_list
       end
   
       post '' do
         domain = MultiJson.load(request.body.read, :symbolize_keys => true)
         # TODO: Use contract to verify payload
-        domain_repo.create(domain)
+        created = domain_repo.create(domain)
         # If returns success monad, we know it persisted
         # So redirect
-        url = "http://localhost:9393/domains/#{domain['id']}"
+        url = "http://localhost:9393/domains/#{created[:id]}"
         response.headers['Location'] = url
         
         status 201
+        json created.attributes
       end
 
       get '/:domain_id' do |id|
@@ -195,28 +196,28 @@ module Hht
         domain_repo.update(id, domain)
         # TODO: If returns success monad, we know it persisted
         # So redirect
-        url = "http://localhost:9393/domains/#{domain['id']}"
+        url = "http://localhost:9393/domains/#{id}"
         response.headers['Location'] = url
         status 204
       end
 
       patch '/:domain_id' do |id|
         domain_client = MultiJson.load(request.body.read, :symbolize_keys => true)
-        domain_server = domain_repo.as_json(node_id)
+        domain_server = domain_repo.as_json(id)
         halt(404, { message:'Domain Not Found'}.to_json) unless domain_server
 
         domain_client.each do |key, value|
           domain_server[key.to_sym] = value
         end
-        domain_repo.update(domain_id, domain_server)
+        domain_repo.update(id, domain_server)
         status 204
       end
 
-      delete '/:domain_id' do |domain|
-        domain = domain_repo.as_json(domain)
+      delete '/:domain_id' do |id|
+        domain = domain_repo.as_json(id)
         halt(404, { message:'Domain Not Found'}.to_json) unless domain
 
-        domain_repo.delete(domain.to_i)
+        domain_repo.delete(id.to_i)
         status 204
       end
     end

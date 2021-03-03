@@ -25,7 +25,7 @@ Factory.define(:parent_node, relation: :habit_nodes, struct_namespace: Entities)
 end
 
 Factory.define(:child_node, relation: :habit_nodes, struct_namespace: Entities) do |f|
-  f.id 3
+  f.id 1
   f.lft 1
   f.rgt 2
   f.parent_id 4

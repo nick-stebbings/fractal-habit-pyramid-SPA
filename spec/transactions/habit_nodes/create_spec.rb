@@ -34,13 +34,12 @@ RSpec.describe Hht::Transactions::HabitNodes::Create do
       subject { described_class.new(habit_node_repo: habit_node_repo) }
 
       it 'Then it persists a node' do
-        binding.pry
         transaction = subject.call(@child_node.attributes)
+
         expect(transaction).to return_success_monad
-        
-        monad_payload = transaction.value_or(0)
-        binding.pry
-        expect(monad_payload).to eq(@child_node.attributes)
+
+        get "/api/habit_trees/nodes/1"
+        expect(last_response.body).to be_json_eql(@child_node.attributes.to_json)
       end
 
       it 'Then updates the lft value of the parent' do end
