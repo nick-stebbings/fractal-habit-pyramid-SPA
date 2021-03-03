@@ -23,6 +23,7 @@ module Hht
         end
 
         def persist(result)
+          binding.pry
           Success(habit_node_repo.create(result.values))
         end
       end

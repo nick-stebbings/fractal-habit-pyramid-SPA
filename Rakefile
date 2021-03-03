@@ -3,6 +3,7 @@ require_relative 'system/hht/container'
 require 'rom-sql'
 require 'rom/sql/rake_task'
 require 'rspec/core/rake_task'
+require 'pry'
 
 namespace :db do
   task :setup do
@@ -22,6 +23,7 @@ end
 RSpec::Core::RakeTask.new(:spec) do |t|
   ROM::SQL::RakeSupport.env = Hht::Container['db.config']
   t.pattern = Dir.glob('spec/**/*_spec.rb')
+  binding.pry
   # t.pattern = Dir.glob('spec/api/domains/**/*_spec.rb')
 end
 task default: :spec

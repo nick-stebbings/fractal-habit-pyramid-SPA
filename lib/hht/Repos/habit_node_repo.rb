@@ -77,6 +77,38 @@ module Hht
           .where { rgt <= rgt_val }
           .combine(habit_nodes: :parent)
       end
+
+      # Modified preorder traversal queries:
+      def restrict_on_rgt_vals_greater_than_value(val)
+        habit_nodes
+          .where { rgt > val }
+      end
+
+      def restrict_on_lft_vals_greater_than_value(val)
+        habit_nodes
+          .where { lft > val }
+      end
+# Addition
+#     To add a node, simply add 2 to all the values after that node, then insert the node into place. As an example, inserting a "Horror" section under Fiction is a simple matter of:
+
+#         Finding where to insert "Horror" (after 7)
+        # Do this by taking the rgt value of the parent (this will add as last child)
+#         Adding 2 to every Left value past 7
+#         Adding 2 to every Right value past 7
+#         Inserting a new row, "Horror", with Left=8 and Right=9
+
+#     At the end of this, "Fiction" would have a Left of 3 and Right of 10. 
+# Removal
+#     A very similar process is used to delete a node from the tree. For example, to delete "Fantasy":
+
+#         Fetch the Right value of the node (in this case, 5)
+#         Subtract 2 from every Left value past 5
+#         Subtract 2 from every Right value past 5
+#         Remove the node row
+
+
+
+
     end
   end
 end

@@ -37,5 +37,13 @@ module Test
     def valid_habit_node
       Factory.registry.elements[:habit_node]
     end
+
+    def valid_parent_node
+      Factory.registry.elements[:parent_node]
+    end
+
+    def valid_child_node
+      Factory.registry.elements[:child_node]
+    end
   end
 end

@@ -18,7 +18,7 @@ RSpec.describe 'Feature: habit_nodes resource' do
         expect(response.status).to eq 204
       end
 
-      it 'And it persisted the habit_node' do
+      it 'And it persists the habit node' do
         expect(habit_node_repo.as_json(@habit_node_id)).to eq (parse_json @habit_node_as_json)
       end
 

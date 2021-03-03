@@ -12,6 +12,8 @@ RSpec.describe 'Feature: habit_trees' do
       it 'Then returns correct status code' do
         expect(response.status).to eq 200
       end
+
+      it 'And ' do end
     end
   end
 end

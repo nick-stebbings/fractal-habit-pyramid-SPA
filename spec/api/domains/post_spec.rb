@@ -18,7 +18,6 @@ RSpec.describe 'Feature: domains resource' do
 
       describe 'And it persisted the domain json' do
         it do
-          response
           expect(domain_repo.as_json(@domain_id)).to eq (parse_json @domain_as_json)
         end
       end

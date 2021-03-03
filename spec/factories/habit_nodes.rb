@@ -16,3 +16,17 @@ Factory.define(:habit_node, struct_namespace: Entities) do |f|
   # f.association(:habits)
   # f.association(:parent)
 end
+
+Factory.define(:parent_node, relation: :habit_nodes, struct_namespace: Entities) do |f|
+  f.id 4
+  f.lft 1
+  f.rgt 2
+  f.parent_id nil
+end
+
+Factory.define(:child_node, relation: :habit_nodes, struct_namespace: Entities) do |f|
+  f.id 3
+  f.lft 1
+  f.rgt 2
+  f.parent_id 4
+end

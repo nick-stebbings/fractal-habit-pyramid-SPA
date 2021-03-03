@@ -14,13 +14,12 @@ RSpec.describe 'Feature: domains resource' do
       let(:response) { put("/api/domains/#{@domain_id}", @domain_as_json) }
       let(:resource) { JSON.load response.body }
 
-      it 'Then returns status code 201' do
-        expect(response.status).to eq 201
+      it 'Then returns status code 204' do
+        expect(response.status).to eq 204
       end
 
       describe 'And it persisted the new domain json' do
         it do
-          response
           expect(domain_repo.as_json(@domain_id)).to eq (parse_json @domain_as_json)
         end
       end

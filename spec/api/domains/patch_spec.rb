@@ -15,8 +15,8 @@ RSpec.describe 'Feature: domains resource' do
     describe 'When #patch to /api/domains/:id' do
       let!(:response) { patch("/api/domains/#{@domain_id}", @domain_update.to_json) }
 
-      it 'Then returns status code 201' do
-        expect(response.status).to eq 201
+      it 'Then returns status code 204' do
+        expect(response.status).to eq 204
       end
 
       it 'And it patched the domain' do
