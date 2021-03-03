@@ -30,23 +30,12 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx$/,
+        test: /\.(jsx|js)$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
         },
       },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-        },
-      },
-      // {
-      //   test: /\.woff$/,
-      //   use: 'url-loader?mimetype=application/font-woff&name=/fonts/[name].[ext]'
-      // },
       {
         test: /\.html$/,
         use: ["html-loader"],
