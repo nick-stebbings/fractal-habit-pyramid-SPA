@@ -18,12 +18,17 @@ module Hht
         end
 
         def validate(input)
-          binding.pry
           create.call(input).to_monad
         end
 
         def persist(result)
-          Success(habit_node_repo.create(result.values))
+          parent_id = result.values.data[:parent_id]
+          siblings = habit_node_repo.children_of_parent(parent_id).to_a
+          # Find siblings to append after,
+          # Or else append after parent.
+          rgt = siblings.empty? ? habit_node_repo.by_id(parent_id).one.rgt : siblings.last.rgt
+          modified = habit_node_repo.modify_nodes_after(rgt, :add, parent_id)
+          Success(habit_node_repo.create(modified)) if modified
         end
       end
     end

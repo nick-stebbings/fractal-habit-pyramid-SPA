@@ -103,9 +103,9 @@ module Hht
           .where { lft < val }
       end
 
+      # This method splits the modified pre-order traversal 
+      # into a minimum number of update queries
       def mppt_node_adjust(nodes, operation)
-        # This method splits the modified pre-order traversal 
-        # into a minimum number of update queries
         direction = nodes.shift; # Which 'direction' needs updating, ( lft/rgt)
 
         raise ArgumentError if nodes.empty? || nodes[0].length == 1 || nodes[0].length > 3
@@ -125,8 +125,8 @@ module Hht
         end
       end
 
+      # Split the node modification into queries based on which values need modifying
       def mppt_queries(rgt_val)
-        # Split the node modification into queries based on which values need modifying
         change_lft = [:lft, *nodes_to_adjust_left_only(rgt_val).pluck(:id, :lft)]
         change_rgt = [:rgt, *nodes_to_adjust_right_only(rgt_val).pluck(:id, :rgt)]
         change_both = [:both, *nodes_to_adjust_both_values(rgt_val).pluck(:id, :lft, :rgt)]
@@ -134,18 +134,15 @@ module Hht
       end
 
       # Making the adjustments to 'further right' nodes ON :add/:del operations
-      def modify_nodes_after(rgt_val, operation)
+      def modify_nodes_after(rgt_val, operation, parent_id)
         mppt_queries(rgt_val).each do |node_set|
           # Size of 1 means there is no meaningful data, so skip
           mppt_node_adjust(node_set, operation) unless node_set.size == 1
         end
         if operation == :add
-          parent_id = query(rgt: (rgt_val)).one.parent_id
-          new_node = { lft: (rgt_val + 1), rgt: (rgt_val + 2), parent_id: parent_id}
-          create(new_node)
+          { lft: (rgt_val + 1), rgt: (rgt_val + 2), parent_id: parent_id}
         elsif operation == :del
-          node = habit_nodes.where({rgt: rgt_val}).one.id
-          delete(node)
+          habit_nodes.where({rgt: rgt_val}).one.id
         end
       end
     end

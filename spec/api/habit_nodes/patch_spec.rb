@@ -7,10 +7,10 @@ RSpec.describe 'Feature: habit_nodes resource' do
     before do
       @habit_node_update = { id: 3 }
       
-      @habit_node = valid_root_node.create
-      habit_node_repo.create(@habit_node.attributes)
-      @habit_node_id = @habit_node.attributes[:id]
-      @updated_attributes = @habit_node.attributes.merge(@habit_node_update).to_json
+      @habit_node = valid_root_node
+      habit_node_repo.create(@habit_node)
+      @habit_node_id = @habit_node[:id]
+      @updated_attributes = @habit_node.merge(@habit_node_update).to_json
     end
 
     describe 'When #patch to /api/habit_trees/nodes/:id' do

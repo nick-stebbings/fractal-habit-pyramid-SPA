@@ -27,7 +27,7 @@ group :test do
   gem 'database_cleaner'
   gem 'json_spec'
   gem 'rack-test'
-  gem 'rom-factory'
+  gem "factory_bot"
   gem 'rspec'
   gem 'multi_json'
   gem 'faker'

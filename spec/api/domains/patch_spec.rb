@@ -7,9 +7,9 @@ RSpec.describe 'Feature: domains resource' do
     before do
       @domain_update = { id: 3, name: 'Mental Wellbeing' }
       
-      @domain = valid_domain.create
-      domain_repo.create(@domain.attributes)
-      @domain_id = @domain.attributes[:id]
+      @domain = valid_domain
+      domain_repo.create(@domain)
+      @domain_id = @domain[:id]
     end
 
     describe 'When #patch to /api/domains/:id' do
@@ -20,8 +20,8 @@ RSpec.describe 'Feature: domains resource' do
       end
 
       it 'And it patched the domain' do
-        updated_attributes = @domain.attributes.merge(@domain_update).to_json
-        expect(domain_repo.as_json(3)).to eq (parse_json updated_attributes)
+        updated_attributes = @domain.merge(@domain_update).to_json
+        expect(domain_repo.as_json(3)).to eq (parse_json updated)
       end
     end
   end

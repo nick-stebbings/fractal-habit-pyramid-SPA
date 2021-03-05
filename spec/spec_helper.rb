@@ -11,24 +11,22 @@ require 'rspec'
 require 'json_spec'
 require 'rack/test'
 require 'database_cleaner'
+require 'factory_bot'
+require 'faker'
 # require 'capybara/rspec'
 # require 'capybara/dsl'
 
 RSpec.configure do |config|
   config.include Rack::Test::Methods
   config.include Test::DatabaseHelpers
+  config.include FactoryBot::Syntax::Methods
   config.include JsonSpec::Helpers
   config.include Hht::Import[
     'repos.domain_repo',
     'repos.habit_node_repo',
   ]
+  
   Faker::Config.random = Random.new(42)
-
-def logger
-   logger = Logger.new File.new('example.log', 'a')
-   logger.level = Logger::INFO  
-   logger
-end
 
   config.backtrace_exclusion_patterns = [
     /\/lib\d*\/ruby\//,
@@ -49,6 +47,7 @@ end
   config.shared_context_metadata_behavior = :apply_to_host_groups
 
   config.before(:suite) do
+    FactoryBot.find_definitions
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
   end

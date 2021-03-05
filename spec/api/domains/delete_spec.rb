@@ -5,9 +5,9 @@
 #     let(:resource) { JSON.load response.body }
 
 #     before do
-#       @domain = valid_domain.create
-#       @domain_id = @domain.attributes[:id]
-#       domain_repo.create(@domain.attributes)
+#       @domain = valid_domain
+#       @domain_id = @domain[:id]
+#       domain_repo.create(@domain)
 #     end
 
 #     describe 'When #delete to /api/domains/:id' do

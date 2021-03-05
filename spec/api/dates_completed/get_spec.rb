@@ -3,8 +3,8 @@
 # RSpec.describe 'Feature: habit_date resource' do
 #   context 'Given a persisted habit_date' do
 #     before do
-#       @habit_date = valid_habit_date.create  # A factory object
-#       habit_date_repo.create(@habit_date.attributes)
+#       @habit_date = valid_habit_date  # A factory object
+#       habit_date_repo.create(@habit_date)
 #     end
 
 #     describe 'When #get to /api/habit-dates/@habit_date.id' do
@@ -25,8 +25,8 @@
 #     before do
 #       @habit_date_1 = habit_date.create
 #       @habit_date_2 = habit_date.create
-#       habit_date_repo.create(@habit_date_1.attributes)
-#       habit_date_repo.create(@habit_date_2.attributes)
+#       habit_date_repo.create(@habit_date_1)
+#       habit_date_repo.create(@habit_date_2)
 #     end
 
 #     describe 'When #get to /api/habit-dates' do

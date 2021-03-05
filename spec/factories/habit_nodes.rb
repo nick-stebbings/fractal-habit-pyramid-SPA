@@ -1,32 +1,31 @@
 # frozen_string_literal: true
 
-Factory.define(:root_node, relation: :habit_nodes, struct_namespace: Entities) do |f|
-  f.id 1
-  f.lft 1
-  f.rgt 2
-  f.parent_id nil
-  # f.association(:habits)
-end
+FactoryBot.define do
+  factory :habit_node, class: 'Hht::Repos::HabitNodeRepo' do
+    id { 69 }
+    lft { 14 }
+    rgt { 15 }
+    parent_id { 68 }
+  end
 
-Factory.define(:habit_node, struct_namespace: Entities) do |f|
-  f.sequence(:id) { |n| 1 + n }
-  f.lft 1
-  f.rgt 2
-  f.sequence(:parent_id) { |n| 1  }
-  # f.association(:habits)
-  # f.association(:parent)
-end
+  factory :root_node, class: 'Hht::Repos::HabitNodeRepo' do
+    id { 1 }
+    lft { 1 }
+    rgt { 2 }
+    parent_id { nil }
+  end
 
-Factory.define(:parent_node, relation: :habit_nodes, struct_namespace: Entities) do |f|
-  f.id 4
-  f.lft 1
-  f.rgt 2
-  f.parent_id nil
-end
+  factory :parent_node, class: 'Hht::Repos::HabitNodeRepo' do
+    id { 4 }
+    lft { 1 }
+    rgt { 2 }
+    parent_id { nil }
+  end
 
-Factory.define(:child_node, relation: :habit_nodes, struct_namespace: Entities) do |f|
-  f.id 1
-  f.lft nil
-  f.rgt nil
-  f.parent_id 4
+  factory :child_node, class: 'Hht::Repos::HabitNodeRepo' do
+    id { 5 }
+    lft { nil }
+    rgt { nil }
+    parent_id { 4 }
+  end
 end

@@ -5,10 +5,10 @@ RSpec.describe 'Feature: habit_nodes resource' do
     let(:resource) { JSON.load response.body }
 
     before do
-      @habit_node = valid_root_node.create
-      @habit_node_id = @habit_node.attributes[:id]
-      habit_node_repo.create(@habit_node.attributes)
-      @habit_node_as_json = @habit_node.attributes.to_json
+      @habit_node = valid_root_node
+      @habit_node_id = @habit_node[:id]
+      habit_node_repo.create(@habit_node)
+      @habit_node_as_json = @habit_node.to_json
     end
 
     describe 'When #put to /api/habit_trees/nodes/:id' do

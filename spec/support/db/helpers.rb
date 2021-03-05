@@ -27,23 +27,23 @@ module Test
     end
 
     def valid_domain
-      Factory.registry.elements[:domain]
+      attributes_for(:domain)
     end
 
     def valid_root_node
-      Factory.registry.elements[:root_node]
+      attributes_for(:root_node)
     end
 
     def valid_habit_node
-      Factory.registry.elements[:habit_node]
+      attributes_for(:parent_node)
     end
 
     def valid_parent_node
-      Factory.registry.elements[:parent_node]
+      attributes_for(:parent_node)
     end
 
     def valid_child_node
-      Factory.registry.elements[:child_node]
+      attributes_for(:child_node)
     end
   end
 end

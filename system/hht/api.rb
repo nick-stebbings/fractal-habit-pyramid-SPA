@@ -51,7 +51,7 @@ module Hht
       def map_node_and_descendants_to_struct_nodes(root_id)
         root = habit_node_repo.by_id(root_id).one
         habit_node_repo
-          .nest_parent_with_descendant_nodes(root.lft, root.rgt)
+          .nest_parent_with_descendant_nodes_between_lr(root.lft, root.rgt)
           .to_a
       end
 

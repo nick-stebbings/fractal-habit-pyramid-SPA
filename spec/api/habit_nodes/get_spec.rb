@@ -3,8 +3,8 @@
 RSpec.describe 'Feature: habit_nodes resource' do
   context 'Given a persisted node' do
     before do
-      @habit_node = valid_root_node.create  # A factory object
-      habit_node_repo.create(@habit_node.attributes)
+      @habit_node = valid_root_node  # A factory object
+      habit_node_repo.create(@habit_node)
     end
 
     describe 'When #get to /api/habit_trees/nodes' do
@@ -33,7 +33,7 @@ RSpec.describe 'Feature: habit_nodes resource' do
         end
 
         it 'returns the expected json object' do
-          expect(response.body).to be_json_eql(@habit_node.attributes.to_json)
+          expect(response.body).to be_json_eql(@habit_node.to_json)
         end
       end
 
@@ -58,10 +58,10 @@ RSpec.describe 'Feature: habit_nodes resource' do
 
   context 'Given two persisted nodes (parent/child)' do
     before do
-      @habit_node_1 = valid_root_node.create  # A factory object for valid root node
-      @habit_node_2 = valid_habit_node.create  # A factory object for valid child node
-      habit_node_repo.create(@habit_node_1.attributes)
-      habit_node_repo.create(@habit_node_2.attributes)
+      @habit_node_1 = valid_root_node  # A factory object for valid root node
+      @habit_node_2 = valid_habit_node  # A factory object for valid child node
+      habit_node_repo.create(@habit_node_1)
+      habit_node_repo.create(@habit_node_2)
     end
 
     describe 'When #get to /api/habit_trees/nodes' do
@@ -78,8 +78,8 @@ RSpec.describe 'Feature: habit_nodes resource' do
         end
 
         it 'returns the expected json objects' do
-          expect(resource).to include_json(@habit_node_1.attributes.to_json).at_path("habit_nodes")
-          expect(resource).to include_json(@habit_node_2.attributes.to_json).at_path("habit_nodes")
+          expect(resource).to include_json(@habit_node_1.to_json).at_path("habit_nodes")
+          expect(resource).to include_json(@habit_node_2.to_json).at_path("habit_nodes")
         end
       end
 

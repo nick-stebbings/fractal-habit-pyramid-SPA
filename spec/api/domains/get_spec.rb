@@ -3,10 +3,10 @@
 RSpec.describe 'Feature: domains resource' do
   context 'Given two persisted domain tuples' do    
     before do
-      @domain1 = valid_domain.create
-      @domain2 = valid_domain.create
-      domain_repo.create(@domain1.attributes)
-      domain_repo.create(@domain2.attributes)
+      @domain1 = valid_domain
+      @domain2 = valid_domain
+      domain_repo.create(@domain1)
+      domain_repo.create(@domain2)
     end
     
     describe 'When #get to /api/domains' do
@@ -23,8 +23,8 @@ RSpec.describe 'Feature: domains resource' do
         end
 
         it 'returns the expected json objects' do
-          expect(resource).to include_json(@domain1.attributes.to_json).at_path("domains")
-          expect(resource).to include_json(@domain2.attributes.to_json).at_path("domains")
+          expect(resource).to include_json(@domain1.to_json).at_path("domains")
+          expect(resource).to include_json(@domain2.to_json).at_path("domains")
         end
       end
 
@@ -62,7 +62,7 @@ RSpec.describe 'Feature: domains resource' do
           expect(response.header['Content-Type']).to eq 'application/json'
         end
         it 'returns the expected json object' do
-          expect(response.body).to be_json_eql(@domain1.attributes.to_json)
+          expect(response.body).to be_json_eql(@domain1.to_json)
         end
       end
 

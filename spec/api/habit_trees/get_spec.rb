@@ -3,7 +3,7 @@
 RSpec.describe 'Feature: habit_trees' do
   context 'Given a persisted node' do
     before do
-      habit_node_repo.create(valid_root_node.create.attributes)
+      habit_node_repo.create(valid_root_node)
     end
 
     describe 'When #get to /api/habit_trees' do
