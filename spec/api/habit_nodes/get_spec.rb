@@ -58,8 +58,8 @@ RSpec.describe 'Feature: habit_nodes resource' do
 
   context 'Given two persisted nodes (parent/child)' do
     before do
-      @habit_node_1 = valid_root_node  # A factory object for valid root node
-      @habit_node_2 = valid_habit_node  # A factory object for valid child node
+      @habit_node_1 = valid_parent_node  # A factory object for valid root node
+      @habit_node_2 = valid_child_node  # A factory object for valid child node
       habit_node_repo.create(@habit_node_1)
       habit_node_repo.create(@habit_node_2)
     end
@@ -114,18 +114,8 @@ RSpec.describe 'Feature: habit_nodes resource' do
 
       describe 'And the child node has parent id attr' do
         it 'has an integer as parent_id' do expect(resource).to have_json_type(Integer).at_path("habit_nodes/1/parent_id") end
-        it 'has the parents id as parent_id' do expect(parse_json(resource)['habit_nodes'][1]['parent_id']).to eq 1 end
+        it 'has the parents id as parent_id' do expect(parse_json(resource)['habit_nodes'][1]['parent_id']).to eq @habit_node_1[:id] end
       end
-
-      # describe 'And the child node has updated lft/rgt attribute' do
-      #   it {'has correct lft attr'}
-      #   it {'has correct rgt attr'}
-      # end
-
-      # describe 'And the parent node has updated lft/rgt attribute' do
-      #   it {'has correct lft attr'}
-      #   it {'has correct rgt attr'}
-      # end
     end
   end
 end

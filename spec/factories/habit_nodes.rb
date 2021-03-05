@@ -24,6 +24,20 @@ FactoryBot.define do
 
   factory :child_node, class: 'Hht::Repos::HabitNodeRepo' do
     id { 5 }
+    lft { 3 }
+    rgt { 4 }
+    parent_id { 4 }
+  end
+
+  factory :prospective_parent_node, class: 'Hht::Repos::HabitNodeRepo' do
+    id { 4 }
+    lft { 1 }
+    rgt { 2 }
+    parent_id { nil }
+  end
+
+  factory :prospective_child_node, class: 'Hht::Repos::HabitNodeRepo' do
+    id { 5 }
     lft { nil }
     rgt { nil }
     parent_id { 4 }

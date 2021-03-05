@@ -21,7 +21,7 @@ RSpec.describe 'Feature: domains resource' do
 
       it 'And it patched the domain' do
         updated_attributes = @domain.merge(@domain_update).to_json
-        expect(domain_repo.as_json(3)).to eq (parse_json updated)
+        expect(domain_repo.as_json(3)).to eq (parse_json updated_attributes)
       end
     end
   end
