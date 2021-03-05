@@ -26,7 +26,7 @@ end
 
 Factory.define(:child_node, relation: :habit_nodes, struct_namespace: Entities) do |f|
   f.id 1
-  f.lft 1
-  f.rgt 2
+  f.lft nil
+  f.rgt nil
   f.parent_id 4
 end

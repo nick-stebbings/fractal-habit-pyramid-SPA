@@ -42,10 +42,10 @@ RSpec.describe Hht::Transactions::HabitNodes::Create do
         expect(last_response.body).to be_json_eql(@child_node.attributes.to_json)
       end
 
-      it 'Then updates the lft value of the parent' do end
-      it 'Then updates the rgt value of the parent' do end
-      it 'Then updates the lft value of the child' do end
-      it 'Then updates the rgt value of the child' do end
+      it 'And updates the lft value of the parent' do end
+      it 'And updates the rgt value of the parent' do end
+      it 'And updates the lft value of the child' do end
+      it 'And updates the rgt value of the child' do end
     end
   end
 end

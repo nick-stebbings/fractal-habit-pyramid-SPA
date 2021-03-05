@@ -38,6 +38,10 @@ module Hht
         { :habit_nodes => habit_nodes.all }.to_json
       end
 
+      def all_ordered_left
+        habit_nodes.order(:lft)
+      end
+
       def root_node
         query(parent_id: nil)
       end
@@ -50,7 +54,7 @@ module Hht
         habit_nodes.where(parent_id: parent_id)
       end
 
-      def restrict_on_id_combine_with_domain(id)
+      def restrict_on_id_combine_with_domain(id) # WORKING?
         habit_nodes.combine(:domains).by_pk(id)
       end
 
@@ -59,7 +63,7 @@ module Hht
       end
 
       # Nested relation of children (nesting retricted by parent_id)
-      def nest_parent_with_immediate_child_nodes(parent_id)
+      def nest_parents_with_immediate_child_nodes(parent_id)
         nest_parents = habit_nodes
                         .combine(habit_nodes: :parent)
                         .node(:parent) do |habit_node|
@@ -71,44 +75,79 @@ module Hht
       end
 
       # Nested relation of nodes with parents, retricted by lft/rgt values
-      def nest_parent_with_descendant_nodes(lft_val, rgt_val)
+      def nest_parent_with_descendant_nodes_between_lr(lft_val, rgt_val)
         habit_nodes
           .where { lft >= lft_val }
           .where { rgt <= rgt_val }
           .combine(habit_nodes: :parent)
       end
 
-      # Modified preorder traversal queries:
-      def restrict_on_rgt_vals_greater_than_value(val)
+    ## Modified preorder traversal queries:
+
+      # For adjusting 'further right than candidate' nodes
+      def nodes_to_adjust_both_values(val)
         habit_nodes
           .where { rgt > val }
-      end
-
-      def restrict_on_lft_vals_greater_than_value(val)
-        habit_nodes
           .where { lft > val }
       end
-# Addition
-#     To add a node, simply add 2 to all the values after that node, then insert the node into place. As an example, inserting a "Horror" section under Fiction is a simple matter of:
 
-#         Finding where to insert "Horror" (after 7)
-        # Do this by taking the rgt value of the parent (this will add as last child)
-#         Adding 2 to every Left value past 7
-#         Adding 2 to every Right value past 7
-#         Inserting a new row, "Horror", with Left=8 and Right=9
+      def nodes_to_adjust_left_only(val)
+        habit_nodes
+          .where { lft > val }
+          .where { rgt < val }
+      end
 
-#     At the end of this, "Fiction" would have a Left of 3 and Right of 10. 
-# Removal
-#     A very similar process is used to delete a node from the tree. For example, to delete "Fantasy":
+      def nodes_to_adjust_right_only(val)
+        habit_nodes
+          .where { rgt > val }
+          .where { lft < val }
+      end
 
-#         Fetch the Right value of the node (in this case, 5)
-#         Subtract 2 from every Left value past 5
-#         Subtract 2 from every Right value past 5
-#         Remove the node row
+      def mppt_node_adjust(nodes, operation)
+        # This method splits the modified pre-order traversal 
+        # into a minimum number of update queries
+        direction = nodes.shift; # Which 'direction' needs updating, ( lft/rgt)
 
+        raise ArgumentError if nodes.empty? || nodes[0].length == 1 || nodes[0].length > 3
+        if direction == :both
+          nodes.each do |node_details|
+            id, lft, rgt = node_details
+            new_attribs = [lft, rgt].map { |attrib| operation == :add ? (attrib + 2) : (attrib - 2)}
+            update(id, [[:lft, :rgt], new_attribs].to_h)
+          end
+        else
+          # It is just a lft/rgt atttrib update
+          nodes.each do |node_details|
+            id, attrib = node_details
+            new_value = (operation == :add) ? (attrib + 2) : (attrib - 2)
+            update(id, { direction =>  new_value })
+          end
+        end
+      end
 
+      def mppt_queries(rgt_val)
+        # Split the node modification into queries based on which values need modifying
+        change_lft = [:lft, *nodes_to_adjust_left_only(rgt_val).pluck(:id, :lft)]
+        change_rgt = [:rgt, *nodes_to_adjust_right_only(rgt_val).pluck(:id, :rgt)]
+        change_both = [:both, *nodes_to_adjust_both_values(rgt_val).pluck(:id, :lft, :rgt)]
+        [change_lft, change_rgt, change_both]
+      end
 
-
+      # Making the adjustments to 'further right' nodes ON :add/:del operations
+      def modify_nodes_after(rgt_val, operation)
+        mppt_queries(rgt_val).each do |node_set|
+          # Size of 1 means there is no meaningful data, so skip
+          mppt_node_adjust(node_set, operation) unless node_set.size == 1
+        end
+        if operation == :add
+          parent_id = query(rgt: (rgt_val)).one.parent_id
+          new_node = { lft: (rgt_val + 1), rgt: (rgt_val + 2), parent_id: parent_id}
+          create(new_node)
+        elsif operation == :del
+          node = habit_nodes.where({rgt: rgt_val}).one.id
+          delete(node)
+        end
+      end
     end
   end
 end
