@@ -3,9 +3,9 @@
 module Hht
   module Repos
     class HabitNodeRepo < ROM::Repository[:habit_nodes]
-      struct_namespace Entities
       include Import['persistence.container']
-      # include Import['mappers.subtree']
+      
+      struct_namespace Entities
       commands :create, delete: :by_pk, update: :by_pk
 
       # restrict by passed criteria
@@ -94,19 +94,19 @@ module Hht
       def nodes_to_adjust_left_only(val)
         habit_nodes
           .where { lft > val }
-          .where { rgt < val }
+          .where { rgt <= val }
       end
 
       def nodes_to_adjust_right_only(val)
         habit_nodes
           .where { rgt > val }
-          .where { lft < val }
+          .where { lft <= val }
       end
 
       # This method splits the modified pre-order traversal 
       # into a minimum number of update queries
-      def mppt_node_adjust(nodes, operation)
-        direction = nodes.shift; # Which 'direction' needs updating, ( lft/rgt)
+      def mptt_node_adjust!(nodes, operation)
+        direction = nodes.shift; # Which 'direction' needs updating, (lft/rgt)
 
         raise ArgumentError if nodes.empty? || nodes[0].length == 1 || nodes[0].length > 3
         if direction == :both
@@ -115,8 +115,7 @@ module Hht
             new_attribs = [lft, rgt].map { |attrib| operation == :add ? (attrib + 2) : (attrib - 2)}
             update(id, [[:lft, :rgt], new_attribs].to_h)
           end
-        else
-          # It is just a lft/rgt atttrib update
+        else  # It is just a lft/rgt atttrib update
           nodes.each do |node_details|
             id, attrib = node_details
             new_value = (operation == :add) ? (attrib + 2) : (attrib - 2)
@@ -126,23 +125,26 @@ module Hht
       end
 
       # Split the node modification into queries based on which values need modifying
-      def mppt_queries(rgt_val)
+      def mptt_queries(rgt_val)
         change_lft = [:lft, *nodes_to_adjust_left_only(rgt_val).pluck(:id, :lft)]
         change_rgt = [:rgt, *nodes_to_adjust_right_only(rgt_val).pluck(:id, :rgt)]
         change_both = [:both, *nodes_to_adjust_both_values(rgt_val).pluck(:id, :lft, :rgt)]
         [change_lft, change_rgt, change_both]
       end
 
-      # Making the adjustments to 'further right' nodes ON :add/:del operations
+      # Making the adjustments to 'further right' nodes on :add/:del operations
       def modify_nodes_after(rgt_val, operation, parent_id)
-        mppt_queries(rgt_val).each do |node_set|
+
+        mptt_queries(rgt_val).each do |node_set|
           # Size of 1 means there is no meaningful data, so skip
-          mppt_node_adjust(node_set, operation) unless node_set.size == 1
+          mptt_node_adjust!(node_set, operation) unless node_set.size == 1
         end
+        #TODO add failure branch
+
         if operation == :add
-          { lft: (rgt_val + 1), rgt: (rgt_val + 2), parent_id: parent_id}
+          { lft: (rgt_val + 1), rgt: (rgt_val + 2), parent_id: parent_id }
         elsif operation == :del
-          habit_nodes.where({rgt: rgt_val}).one.id
+          habit_nodes.where({rgt: rgt_val}).one.id #TODO
         end
       end
     end

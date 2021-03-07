@@ -1,11 +1,11 @@
 # frozen_string_literal: true
-require 'pry'
+
 RSpec.describe 'Feature: habit_nodes resource' do
   context 'Given a valid habit_node json' do
     let(:resource) { JSON.load response.body }
 
     before do
-      @habit_node = valid_root_node
+      @habit_node = valid_root_only_node
       @habit_node_id = @habit_node[:id]
       habit_node_repo.create(@habit_node)
       @habit_node_as_json = @habit_node.to_json

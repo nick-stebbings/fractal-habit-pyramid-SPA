@@ -62,13 +62,19 @@ RSpec.configure do |config|
 end
 
 RSpec::Matchers.define(:return_success_monad) do
-  match do |transaction|
-    transaction.is_a?(Test::DatabaseHelpers.success)
+  match do |result|
+    result.is_a?(Test::DatabaseHelpers.success)
   end
 end
 
 RSpec::Matchers.define(:return_failure_monad) do
-  match do |transaction|
-    transaction.is_a?(Test::DatabaseHelpers.failure)
+  match do |result|
+    result.is_a?(Test::DatabaseHelpers.failure)
+  end
+end
+
+RSpec::Matchers.define(:return_validation_failure) do
+  match do |result|
+    return_validation_failure(result)
   end
 end

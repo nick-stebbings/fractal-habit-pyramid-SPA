@@ -14,6 +14,10 @@ module Test
       Failure
     end
 
+    def validation_failure(result)
+      result.class.name == 'Dry::Validation::Failures'
+    end
+
     def app
       Hht::Api
     end
@@ -30,20 +34,28 @@ module Test
       attributes_for(:domain)
     end
 
-    def valid_root_node
-      attributes_for(:root_node)
+    def valid_new_root_node
+      attributes_for(:new_root_node)
     end
 
-    def valid_habit_node
-      attributes_for(:parent_node)
+    def valid_root_only_node
+      attributes_for(:root_only_node)
     end
 
-    def valid_parent_node
-      attributes_for(:parent_node)
+    def valid_new_parent_node
+      attributes_for(:new_parent_node)
+    end
+    
+    def valid_new_child_node
+      attributes_for(:new_child_node)
     end
 
-    def valid_child_node
-      attributes_for(:child_node)
+    def valid_parent_of_one_node
+      attributes_for(:parent_of_one_node)
+    end
+
+    def valid_first_child_node
+      attributes_for(:first_child_node)
     end
   end
 end

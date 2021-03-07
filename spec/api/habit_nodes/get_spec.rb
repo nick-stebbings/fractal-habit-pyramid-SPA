@@ -3,7 +3,7 @@
 RSpec.describe 'Feature: habit_nodes resource' do
   context 'Given a persisted node' do
     before do
-      @habit_node = valid_root_node  # A factory object
+      @habit_node = valid_root_only_node  # A factory object
       habit_node_repo.create(@habit_node)
     end
 
@@ -58,8 +58,8 @@ RSpec.describe 'Feature: habit_nodes resource' do
 
   context 'Given two persisted nodes (parent/child)' do
     before do
-      @habit_node_1 = valid_parent_node  # A factory object for valid root node
-      @habit_node_2 = valid_child_node  # A factory object for valid child node
+      @habit_node_1 = valid_parent_of_one_node  # A factory object for valid root node
+      @habit_node_2 = valid_first_child_node  # A factory object for valid child node
       habit_node_repo.create(@habit_node_1)
       habit_node_repo.create(@habit_node_2)
     end
