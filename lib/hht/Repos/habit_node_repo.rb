@@ -6,8 +6,14 @@ module Hht
       include Import['persistence.container']
       
       struct_namespace Entities
-      commands :create, delete: :by_pk, update: :by_pk
+      commands :create, update: :by_pk
 
+      def delete(pk)
+        # contract = Hht::Contracts::HabitNodes::Delete.new
+        # contract.call(pk)
+        t = Hht::Transactions::HabitNodes::Delete.new
+        binding.pry 
+      end
       # restrict by passed criteria
       def query(criteria)
         habit_nodes.where(criteria)
@@ -144,7 +150,7 @@ module Hht
         if operation == :add
           { lft: (rgt_val + 1), rgt: (rgt_val + 2), parent_id: parent_id }
         elsif operation == :del
-          habit_nodes.where({rgt: rgt_val}).one.id #TODO
+          { message: 'Other nodes modified.' }
         end
       end
     end

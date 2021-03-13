@@ -10,7 +10,7 @@ module Hht
         end
 
         rule(:parent_id) do
-          key.failure('Must be not be a string') if (value.is_a? String)
+          key.failure('Must not be a string') if (value.is_a? String)
         end
 
         rule(:parent_id) do
